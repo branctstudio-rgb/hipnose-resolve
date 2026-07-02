@@ -1,43 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 
-const areas = [
-  { nome: 'Ansiedade e Pânico', txt: 'Quando a mente não desliga e o corpo vive em alerta.' },
-  { nome: 'Medos e Fobias', txt: 'Voar, conduzir, falar em público — medos que encolhem a vida.' },
-  { nome: 'Stress e Burnout', txt: 'Recuperar energia e limites antes do corpo os exigir.' },
-  { nome: 'Depressão', txt: 'Reencontrar cor e sentido, um passo de cada vez.' },
-  { nome: 'Emagrecimento', txt: 'Mudar a relação com a comida — não mais uma dieta.' },
-  { nome: 'Cessação Tabágica', txt: 'Deixar de fumar sem sentir que perde algo.' },
-  { nome: 'Autoestima e Empoderamento', txt: 'Silenciar o crítico interno e ocupar o seu lugar.' },
-  { nome: 'Mudança de Hábitos', txt: 'Trocar o piloto automático por escolhas conscientes.' },
-  { nome: 'Relacionamentos e Sexualidade', txt: 'Intimidade, confiança e ligação — consigo e com o outro.' },
-  { nome: 'Trauma', txt: 'Fazer as pazes com o que aconteceu, ao seu ritmo.' },
-  { nome: 'Vidas Passadas', txt: 'Explorar memórias profundas com acompanhamento seguro.' },
-  { nome: 'Vícios', txt: 'Recuperar o controlo, sem julgamento.' },
-  { nome: 'Hipnoterapia Infantil', txt: 'Ajudar os mais pequenos com linguagem à medida deles.' },
-  { nome: 'Luto', txt: 'Espaço para a dor — e caminho para continuar.' },
-];
-
-const programas = [
-  {
-    kicker: 'Programa · Emagrecimento',
-    nome: 'MagraMente',
-    txt: 'Reprograme a relação com a comida e com o espelho. Hipnose, mentalidade e acompanhamento — sem dietas impossíveis.',
-    area: 'Emagrecimento',
-  },
-  {
-    kicker: 'Programa · Libertação',
-    nome: 'Set You Free',
-    txt: 'Solte o que o prende: medos, padrões e crenças que já não lhe servem. Um caminho guiado para viver mais leve.',
-    area: 'Medos e Fobias',
-  },
-  {
-    kicker: 'Programa digital · Auto-hipnose',
-    nome: 'TRANSFORMA-TE',
-    txt: 'O método de auto-hipnose da Hipnose Resolve em formato digital: áudios, guias e prática diária — comece hoje, ao seu ritmo.',
-    area: 'Mudança de Hábitos',
-  },
-];
+const areas = (await getCollection('areas')).sort((a, b) => a.data.ordem - b.data.ordem);
+const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
+const areaNome = (id: string) => areas.find((a) => a.id === id)?.data.nome ?? '';
 ---
 <Base
   title="Hipnose Resolve — Clínica de Hipnoterapia · Online e Presencial"
@@ -54,11 +21,11 @@ const programas = [
           Acompanhamento humano, em português — esteja em Portugal ou no Brasil.
         </p>
         <div class="hero__cta" data-rise="4">
-          <a class="btn btn--primary" href="#consultas">
+          <a class="btn btn--primary" href="/consultas">
             Marcar Consulta de Avaliação
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="btn btn--ghost" href="#programas">Conhecer os programas</a>
+          <a class="btn btn--ghost" href="/programas">Conhecer os programas</a>
         </div>
         <div class="hero__proof" data-rise="5">
           <span class="stars" aria-hidden="true">★★★★★</span>
@@ -84,7 +51,7 @@ const programas = [
   <!-- FITA DE ÁREAS -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      {[...areas, ...areas].map((a) => <span>{a.nome}</span>)}
+      {[...areas, ...areas].map((a) => <span>{a.data.nome}</span>)}
     </div>
   </div>
 
@@ -105,12 +72,12 @@ const programas = [
       </div>
       <div class="areas__grid reveal" data-d="1">
         {areas.map((a) => (
-          <a class="area" href="#consultas">
-            <h3>{a.nome}</h3>
-            <p>{a.txt}</p>
+          <a class="area" href={`/areas/${a.id}`}>
+            <h3>{a.data.nome}</h3>
+            <p>{a.data.curto}</p>
           </a>
         ))}
-        <a class="area area--cta" href="#consultas">
+        <a class="area area--cta" href="/contactos">
           <h3>Não sabe por onde começar?</h3>
           <p>Fale connosco — ajudamos a encontrar a terapeuta e o caminho certos para si.</p>
         </a>
@@ -190,8 +157,9 @@ const programas = [
             <b>A equipa está a crescer.</b> Em breve, terapeutas dedicadas a Trauma e Vícios,
             Vidas Passadas e Hipnoterapia Infantil — cada área com a especialista certa.
           </p>
-          <div style="margin-top:2rem;">
-            <a class="btn btn--primary" href="#consultas">Marcar com a Marta</a>
+          <div style="margin-top:2rem; display:flex; gap:.9rem; flex-wrap:wrap;">
+            <a class="btn btn--primary" href="/consultas">Marcar com a Marta</a>
+            <a class="btn btn--ghost" href="/equipa">Conhecer a equipa</a>
           </div>
         </div>
       </div>
@@ -209,11 +177,11 @@ const programas = [
       <div class="programs__grid">
         {programas.map((p, i) => (
           <article class="program reveal" data-d={String(i + 1)}>
-            <span class="kicker">{p.kicker}</span>
-            <h3>{p.nome}</h3>
-            <p>{p.txt}</p>
-            <p class="cross">Prefere acompanhamento 1-para-1? <a href="#consultas">Marque uma consulta de {p.area}</a>.</p>
-            <a class="btn btn--paper" href="#programas">Saber mais</a>
+            <span class="kicker">{p.data.kicker}</span>
+            <h3>{p.data.nome}</h3>
+            <p>{p.data.sub}</p>
+            <p class="cross">Prefere acompanhamento 1-para-1? <a href={`/areas/${p.data.area}`}>Marque uma consulta de {areaNome(p.data.area)}</a>.</p>
+            <a class="btn btn--paper" href={`/programas/${p.id}`}>Saber mais</a>
           </article>
         ))}
       </div>
@@ -277,7 +245,7 @@ const programas = [
     <div class="cta-final reveal">
       <h2>O primeiro passo é <em>uma conversa</em>.</h2>
       <p class="lead" style="margin-inline:auto;">Marque a sua Consulta de Avaliação — online ou presencial — e comece o caminho ao seu ritmo.</p>
-      <a class="btn btn--primary" href="#consultas">
+      <a class="btn btn--primary" href="/consultas">
         Marcar Consulta de Avaliação
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>

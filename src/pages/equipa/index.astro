@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const terapeutas = await getCollection('terapeutas');
+const ativas = terapeutas.filter((t) => t.data.estado === 'ativa');
+const breve = terapeutas.filter((t) => t.data.estado === 'breve');
+---
+<Base
+  title="Equipa — Corpo Clínico · Hipnose Resolve"
+  description="Conheça a equipa de hipnoterapeutas da Hipnose Resolve: especialidades, línguas de atendimento e como marcar diretamente com cada terapeuta."
+>
+  <section class="wrap page-hero">
+    <p class="eyebrow">Equipa</p>
+    <h1>Quem a vai <em>acompanhar</em></h1>
+    <p class="lead">
+      Pessoas antes de credenciais. Conheça quem está do outro lado — e marque diretamente
+      com a terapeuta da sua área.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-bottom: var(--space-section);">
+    <div class="cards" style="margin-top:0;">
+      {ativas.map((t) => (
+        <a class="tcard reveal" href={`/equipa/${t.id}`}>
+          <div class="arch" role="img" aria-label={`Retrato de ${t.data.nome} (a substituir por fotografia real)`}>
+            <span class="arch__label">fotografia · {t.data.nome}</span>
+          </div>
+          <h3>{t.data.nome}</h3>
+          <p class="papel">{t.data.papel}</p>
+        </a>
+      ))}
+      {breve.map((t, i) => (
+        <div class="tcard tcard--breve reveal" data-d={String(i + 1)}>
+          <div class="arch" role="img" aria-label={`${t.data.nome} — em breve na equipa`}>
+            <span class="arch__label">{t.data.nome}</span>
+          </div>
+          <h3>{t.data.nome}</h3>
+          <p class="papel">{t.data.papel}</p>
+          <span class="badge-breve">Em breve na equipa</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="team__note reveal" style="margin-top:3rem; max-width:640px;">
+      <b>A equipa está a crescer.</b> A Hipnose Resolve nasceu com a Marta e está a reunir
+      especialistas dedicadas por área — para que cada pessoa seja acompanhada por quem mais
+      percebe do seu tema.
+    </div>
+  </section>
+</Base>

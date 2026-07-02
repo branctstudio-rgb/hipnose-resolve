@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.data).getTime() - new Date(a.data.data).getTime()
+);
+const fmt = (d: string) =>
+  new Date(d).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base
+  title="Blog — Hipnose Resolve"
+  description="Artigos sobre hipnoterapia, ansiedade, hábitos, emagrecimento e transformação pessoal — escritos com humanidade pela equipa da Hipnose Resolve."
+>
+  <section class="wrap page-hero">
+    <p class="eyebrow">Blog</p>
+    <h1>Ler também <em>transforma</em></h1>
+    <p class="lead">
+      Artigos sobre a mente, os hábitos e a mudança — sem jargão, sem promessas vazias.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-bottom: var(--space-section);">
+    <div class="cards" style="margin-top:0;">
+      {posts.map((p, i) => (
+        <a class="card-l reveal" data-d={String(i)} href={`/blog/${p.id}`}>
+          <span class="meta">{fmt(p.data.data)} · {p.data.categoria}</span>
+          <h3>{p.data.titulo}</h3>
+          <p>{p.data.resumo}</p>
+          <span class="mais">Ler artigo →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

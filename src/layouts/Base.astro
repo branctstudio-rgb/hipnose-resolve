@@ -24,14 +24,19 @@ const { title, description } = Astro.props;
     <header class="header">
       <div class="wrap header__in">
         <a class="logo" href="/">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></a>
-        <nav class="nav" aria-label="Navegação principal">
-          <a href="#areas">Áreas de Intervenção</a>
-          <a href="#consultas">Consultas</a>
-          <a href="#equipa">Equipa</a>
-          <a href="#programas">Programas</a>
-          <a href="#contactos">Contactos</a>
+        <nav class="nav" id="nav" aria-label="Navegação principal">
+          <a href="/areas">Áreas de Intervenção</a>
+          <a href="/consultas">Consultas</a>
+          <a href="/equipa">Equipa</a>
+          <a href="/programas">Programas</a>
+          <a href="/blog">Blog</a>
+          <a href="/contactos">Contactos</a>
+          <a href="/membros">Área de Membros</a>
         </nav>
-        <a class="btn btn--primary" href="#consultas">Marcar consulta</a>
+        <a class="btn btn--primary" href="/consultas">Marcar consulta</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </header>
 
@@ -51,10 +56,12 @@ const { title, description } = Astro.props;
           <div>
             <h4>Navegar</h4>
             <ul>
-              <li><a href="#areas">Áreas de intervenção</a></li>
-              <li><a href="#consultas">Consultas</a></li>
-              <li><a href="#equipa">Equipa</a></li>
-              <li><a href="#programas">Programas</a></li>
+              <li><a href="/areas">Áreas de intervenção</a></li>
+              <li><a href="/consultas">Consultas</a></li>
+              <li><a href="/equipa">Equipa</a></li>
+              <li><a href="/programas">Programas</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/membros">Área de Membros</a></li>
             </ul>
           </div>
           <div>
@@ -80,6 +87,14 @@ const { title, description } = Astro.props;
     </a>
 
     <script>
+      // Menu mobile
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('nav');
+      toggle?.addEventListener('click', () => {
+        const open = nav!.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
       // Reveals suaves — movimento que acalma, não que distrai
       const io = new IntersectionObserver(
         (entries) => entries.forEach((e) => {

@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const areas = (await getCollection('areas')).sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base
+  title="Áreas de Intervenção — Hipnose Resolve"
+  description="Hipnoterapia para ansiedade, medos e fobias, stress, emagrecimento, cessação tabágica, trauma e mais. Conheça todas as áreas de intervenção da Hipnose Resolve."
+>
+  <section class="wrap page-hero">
+    <p class="eyebrow">Áreas de intervenção</p>
+    <h1>Onde a hipnoterapia pode <em>ajudar</em></h1>
+    <p class="lead">
+      Cada área tem uma abordagem própria — e a terapeuta certa. Escolha o tema que lhe diz
+      respeito e veja como podemos ajudar.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-bottom: var(--space-section);">
+    <div class="areas__grid">
+      {areas.map((a) => (
+        <a class="area" href={`/areas/${a.id}`}>
+          <h3>{a.data.nome}</h3>
+          <p>{a.data.curto}</p>
+        </a>
+      ))}
+      <a class="area area--cta" href="/contactos">
+        <h3>Não sabe por onde começar?</h3>
+        <p>Fale connosco — ajudamos a encontrar a terapeuta e o caminho certos para si.</p>
+      </a>
+    </div>
+  </section>
+</Base>

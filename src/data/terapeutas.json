@@ -1,0 +1,39 @@
+[
+  {
+    "id": "marta",
+    "nome": "Marta",
+    "papel": "Hipnoterapeuta · Fundadora",
+    "estado": "ativa",
+    "frase": "Ninguém \"é assim\" para sempre — apenas aprendeu a ser.",
+    "bio": "A Marta acredita que ninguém \"é assim\" para sempre — apenas aprendeu a ser. Há anos que ajuda pessoas a desaprender a ansiedade, os medos e os hábitos que as prendem, com uma abordagem calorosa, prática e profundamente humana. Nas consultas dela não há julgamento: há escuta, método e a convicção tranquila de que a mudança é possível. Fundou a Hipnose Resolve com uma missão simples — que ninguém fique preso a uma versão de si que já não escolhe.",
+    "especialidades": ["Emagrecimento", "Cessação Tabágica", "Mudança de Hábitos", "Ansiedade e Pânico", "Autoestima"],
+    "linguas": ["Português (PT e BR)"]
+  },
+  {
+    "id": "catia",
+    "nome": "Cátia Fena",
+    "papel": "Hipnoterapeuta · Trauma e Vícios",
+    "estado": "breve",
+    "bio": "Especialista nas áreas de Trauma e Vícios, a Cátia junta-se em breve à equipa da Hipnose Resolve.",
+    "especialidades": ["Trauma", "Vícios"],
+    "linguas": ["Português"]
+  },
+  {
+    "id": "margarida",
+    "nome": "Margarida Ferreira",
+    "papel": "Hipnoterapeuta · Vidas Passadas",
+    "estado": "breve",
+    "bio": "Dedicada à terapia regressiva e de Vidas Passadas, a Margarida junta-se em breve à equipa.",
+    "especialidades": ["Vidas Passadas"],
+    "linguas": ["Português"]
+  },
+  {
+    "id": "marlene",
+    "nome": "Marlene",
+    "papel": "Hipnoterapeuta · Infantil",
+    "estado": "breve",
+    "bio": "Especializada em hipnoterapia infantil, a Marlene junta-se em breve à equipa.",
+    "especialidades": ["Hipnoterapia Infantil"],
+    "linguas": ["Português"]
+  }
+]

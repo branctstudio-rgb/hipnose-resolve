@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((p) => ({ params: { slug: p.id }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const area = post.data.areaRelacionada ? await getEntry('areas', post.data.areaRelacionada) : null;
+const fmt = new Date(post.data.data).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={`${post.data.titulo} — Blog · Hipnose Resolve`} description={post.data.resumo}>
+  <article>
+    <section class="wrap page-hero" style="max-width: 860px;">
+      <p class="breadcrumb"><a href="/blog">Blog</a> · {post.data.categoria}</p>
+      <h1 style="max-width: 22ch;">{post.data.titulo}</h1>
+      <p class="lead" style="margin-top:1.2rem;">{post.data.resumo}</p>
+      <p style="margin-top:1.4rem; font-size: var(--fs-small); color: var(--ink-soft);">{fmt} · Hipnose Resolve</p>
+    </section>
+
+    <section class="wrap" style="max-width: 860px; padding-bottom: clamp(3rem, 6vw, 5rem);">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+  </article>
+
+  <!-- cross-sell: conteúdo vende consultas e programas -->
+  <section class="wrap" style="max-width: 860px; padding-bottom: var(--space-section);">
+    <div class="duo" style="margin-top:0;">
+      <div class="duo__cell duo__cell--sage">
+        <h3>Deu que pensar?</h3>
+        <p>A Consulta de Avaliação são duas horas dedicadas à sua história — online ou presencial.</p>
+        <a class="btn btn--paper" href="/consultas">Marcar Consulta de Avaliação</a>
+      </div>
+      {area && (
+        <div class="duo__cell duo__cell--terra">
+          <h3>{area.data.nome}</h3>
+          <p>{area.data.curto}</p>
+          <a class="btn btn--primary" href={`/areas/${area.id}`}>Saber como ajudamos</a>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

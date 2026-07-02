@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base
+  title="Programas de Transformação — Hipnose Resolve"
+  description="MagraMente, Set You Free e TRANSFORMA-TE: programas de hipnoterapia e auto-hipnose para emagrecimento, libertação de medos e mudança de hábitos."
+>
+  <section class="wrap page-hero">
+    <p class="eyebrow">Programas de transformação</p>
+    <h1>Um método, <em>três caminhos</em></h1>
+    <p class="lead">
+      Programas guiados que complementam — ou começam — o seu percurso de mudança.
+      Cada um com método, materiais e acompanhamento próprios.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-bottom: var(--space-section);">
+    <div class="cards" style="margin-top:0;">
+      {programas.map((p, i) => (
+        <a class="card-l reveal" data-d={String(i)} href={`/programas/${p.id}`}>
+          <span class="kicker">{p.data.kicker}</span>
+          <h3>{p.data.nome}</h3>
+          <p>{p.data.sub}</p>
+          <span class="mais">{p.data.comprarOnline ? 'Comprar online →' : 'Conhecer o programa →'}</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="team__note reveal" style="margin-top:3rem; max-width:640px;">
+      <b>Não sabe qual é o seu?</b> A Consulta de Avaliação define o caminho certo —
+      consultas, programa, ou os dois. <a href="/consultas">Comece por aqui</a>.
+    </div>
+  </section>
+</Base>

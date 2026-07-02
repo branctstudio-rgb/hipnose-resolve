@@ -1,0 +1,136 @@
+---
+/*
+  LANDING TEMPLATE REPLICÁVEL
+  Nova landing = novo ficheiro .md em src/data/programas/
+  Secções: promessa → dor → método → conteúdo → testemunho → preço → FAQ → CTA
+*/
+import Base from '../../layouts/Base.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const programas = await getCollection('programas');
+  return programas.map((p) => ({ params: { slug: p.id }, props: { programa: p } }));
+}
+
+const { programa } = Astro.props;
+const d = programa.data;
+const area = await getEntry('areas', d.area);
+---
+<Base
+  title={`${d.nome} — ${d.promessa} · Hipnose Resolve`}
+  description={d.sub}
+>
+  <!-- PROMESSA -->
+  <section class="hero" style="padding-bottom: clamp(2.5rem, 6vw, 4.5rem);">
+    <div class="wrap" style="max-width: 880px; text-align:center;">
+      <p class="eyebrow" style="justify-content:center; display:flex;" data-rise="1">{d.kicker}</p>
+      <h1 data-rise="2" style="font-size: clamp(2.4rem, 5.4vw, 4.4rem);">{d.promessa.split(' ').map((w, i, arr) => i === arr.length - 1 ? <em>{w} </em> : `${w} `)}</h1>
+      <p class="lead" data-rise="3" style="margin-inline:auto; margin-top:1.5rem;">{d.sub}</p>
+      <div class="hero__cta" data-rise="4" style="justify-content:center;">
+        {d.comprarOnline
+          ? <a class="btn btn--primary" href="#oferta">Quero começar hoje</a>
+          : <a class="btn btn--primary" href="/consultas">Marcar Consulta de Avaliação</a>}
+        <a class="btn btn--ghost" href="#metodo">Como funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOR -->
+  <section class="section" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap" style="max-width: 760px;">
+      <p class="eyebrow reveal">Se isto lhe soa familiar…</p>
+      <ul style="list-style:none; padding:0; display:grid; gap:1.2rem;">
+        {d.dor.map((p, i) => (
+          <li class="reveal" data-d={String(i)} style="font-family:var(--serif); font-size: clamp(1.15rem, 2vw, 1.45rem); line-height:1.5; display:flex; gap:1rem;">
+            <span style="color:var(--terra);" aria-hidden="true">—</span>{p}
+          </li>
+        ))}
+      </ul>
+      <p class="reveal" style="margin-top:2rem; color:var(--ink-soft);">…então o {d.nome} foi desenhado para si.</p>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="section" id="metodo">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">O método</p>
+        <h2>Como o {d.nome} <em>funciona</em></h2>
+      </div>
+      <div class="steps">
+        {d.metodo.map((m, i) => (
+          <div class="step reveal" data-d={String(i)}>
+            <h3>{m.titulo}</h3>
+            <p>{m.txt}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO + TESTEMUNHO + PREÇO -->
+  <section class="section programs" style="padding-block: clamp(3.5rem, 8vw, 6rem);">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">O que está incluído</p>
+        <h2 style="font-size: clamp(1.7rem, 3vw, 2.4rem);">Tudo o que <em>recebe</em></h2>
+        <ul style="list-style:none; padding:0; margin-top:1.8rem; display:grid; gap:.9rem;">
+          {d.conteudo.map((c) => (
+            <li style="display:flex; gap:.8rem; color:#D8D4C6;">
+              <span style="color:var(--gold);" aria-hidden="true">✓</span>{c}
+            </li>
+          ))}
+        </ul>
+        <blockquote style="margin-top:2.4rem; border-left:2px solid var(--gold); padding-left:1.4rem;">
+          <p style="font-family:var(--serif); font-style:italic; font-size:1.15rem; color:#EFEDE3;">“{d.testemunho.txt}”</p>
+          <footer style="margin-top:.7rem; font-size:.86rem; color:#A8B394;">{d.testemunho.autor}</footer>
+        </blockquote>
+      </div>
+      <aside class="offer reveal" data-d="1" id="oferta">
+        <p class="eyebrow" style="justify-content:center; display:flex; margin-bottom:.4rem;">{d.nome}</p>
+        <p class="valor">{d.preco.valor}</p>
+        <p class="nota">{d.preco.nota}</p>
+        {d.comprarOnline
+          ? <a class="btn btn--primary" style="width:100%; justify-content:center;" href="/membros">Comprar e aceder já</a>
+          : <a class="btn btn--primary" style="width:100%; justify-content:center;" href="/consultas">Começar com uma Avaliação</a>}
+        <p style="margin-top:1rem; font-size:.8rem; color:var(--ink-soft);">
+          Dúvidas? <a href="/contactos">Fale connosco no WhatsApp</a>.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;">
+        <p class="eyebrow" style="justify-content:center; display:flex;">Perguntas frequentes</p>
+        <h2 style="margin-bottom:2.5rem;">Antes de <em>começar</em></h2>
+      </div>
+      <div class="faq reveal" data-d="1">
+        {d.faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL + cross-sell consulta -->
+  <section class="section" style="padding-top:0;">
+    <div class="cta-final reveal">
+      <h2>{d.comprarOnline ? 'Comece hoje, ao seu ritmo.' : 'O seu caminho começa aqui.'}</h2>
+      <p class="lead" style="margin-inline:auto;">
+        {area ? `Prefere acompanhamento 1-para-1? Veja as consultas de ${area.data.nome}.` : 'Prefere acompanhamento 1-para-1? Comece por uma Consulta de Avaliação.'}
+      </p>
+      <div style="display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap;">
+        {d.comprarOnline
+          ? <a class="btn btn--primary" href="#oferta">Quero o {d.nome}</a>
+          : <a class="btn btn--primary" href="/consultas">Marcar Consulta de Avaliação</a>}
+        {area && <a class="btn btn--ghost" href={`/areas/${area.id}`}>Consultas de {area.data.nome}</a>}
+      </div>
+    </div>
+  </section>
+</Base>

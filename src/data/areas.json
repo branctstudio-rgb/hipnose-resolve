@@ -1,0 +1,310 @@
+[
+  {
+    "id": "ansiedade-panico",
+    "nome": "Ansiedade e Pânico",
+    "curto": "Quando a mente não desliga e o corpo vive em alerta.",
+    "dor": [
+      "O coração acelera sem aviso. A cabeça ensaia mil cenários antes de dormir. Há dias em que sair de casa já custa — e ninguém à volta parece perceber o esforço que isso exige.",
+      "A ansiedade não é fraqueza: é um alarme que aprendeu a disparar cedo demais. E o que se aprende, pode desaprender-se."
+    ],
+    "ajuda": [
+      "Em estado de hipnose, acedemos à raiz desse alarme — a memória, a crença ou o padrão que o mantém ligado — e ensinamos a mente a responder de outra forma.",
+      "Sessão a sessão, o corpo reaprende a calma: menos picos, mais espaço para respirar, mais confiança para viver sem estar sempre à espera do pior."
+    ],
+    "sinais": [
+      "Preocupação constante, difícil de controlar",
+      "Ataques de pânico ou medo de os ter",
+      "Tensão no corpo, sono difícil, cansaço sem razão",
+      "Evitar lugares ou situações \"por precaução\""
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 1
+  },
+  {
+    "id": "medos-fobias",
+    "nome": "Medos e Fobias",
+    "curto": "Voar, conduzir, falar em público — medos que encolhem a vida.",
+    "dor": [
+      "Há quem organize a vida inteira à volta de um medo: recusar viagens, evitar autoestradas, dizer não a oportunidades por causa de uma apresentação.",
+      "A fobia não é irracional para quem a sente — é real no corpo. Mas foi aprendida num instante, e pode ser desaprendida com método."
+    ],
+    "ajuda": [
+      "A hipnoterapia vai ao momento em que o medo se instalou e dessensibiliza a resposta automática, substituindo-a por calma e controlo.",
+      "É um dos campos onde a hipnose clínica mostra resultados mais rápidos — muitas fobias transformam-se em poucas sessões."
+    ],
+    "sinais": [
+      "Medo desproporcional de algo específico",
+      "Evitamento que limita escolhas e rotinas",
+      "Reação física intensa (suor, tremores, bloqueio)",
+      "Saber que \"não faz sentido\" — e mesmo assim sentir"
+    ],
+    "terapeuta": "marta",
+    "programa": "set-you-free",
+    "ordem": 2
+  },
+  {
+    "id": "stress-burnout",
+    "nome": "Stress e Burnout",
+    "curto": "Recuperar energia e limites antes do corpo os exigir.",
+    "dor": [
+      "Acordar já cansado. Trabalhar a sentir que nunca chega. Irritação à flor da pele, memória a falhar, domingo à noite com o estômago apertado.",
+      "O burnout não chega de um dia para o outro — instala-se enquanto empurramos os sinais com a barriga. Parar para cuidar de si não é luxo: é a única forma de continuar."
+    ],
+    "ajuda": [
+      "Trabalhamos o sistema nervoso em profundidade: o descanso real, os limites que custam a pôr, a exigência interna que nunca está satisfeita.",
+      "Com hipnose, o corpo reencontra o estado de recuperação — e a mente aprende a distinguir urgência real de urgência aprendida."
+    ],
+    "sinais": [
+      "Exaustão que o fim de semana já não resolve",
+      "Cinismo ou distância em relação ao trabalho",
+      "Dificuldade de concentração e memória",
+      "Sintomas físicos: tensão, dores, insónia"
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 3
+  },
+  {
+    "id": "depressao",
+    "nome": "Depressão",
+    "curto": "Reencontrar cor e sentido, um passo de cada vez.",
+    "dor": [
+      "Não é tristeza — é um cinzento que se instala. As coisas que davam prazer deixaram de o dar, e até as tarefas pequenas pesam.",
+      "Pedir ajuda quando não há energia nem para isso é um ato de coragem. Este pode ser o primeiro passo."
+    ],
+    "ajuda": [
+      "A hipnoterapia trabalha os padrões de pensamento e as memórias que alimentam o estado depressivo, reativando gradualmente motivação e ligação à vida.",
+      "Atuamos sempre em complemento — nunca em substituição — do acompanhamento médico ou psicológico, em articulação com os profissionais que já o acompanham."
+    ],
+    "sinais": [
+      "Perda de interesse no que antes dava prazer",
+      "Energia em baixo, sono e apetite alterados",
+      "Autocrítica constante, sensação de vazio",
+      "Isolamento, dificuldade em pedir ajuda"
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 4
+  },
+  {
+    "id": "emagrecimento",
+    "nome": "Emagrecimento",
+    "curto": "Mudar a relação com a comida — não mais uma dieta.",
+    "dor": [
+      "Já contou calorias, cortou hidratos, começou mil segundas-feiras. Perde, recupera, e a cada ciclo a confiança encolhe um pouco mais.",
+      "O problema raramente é falta de informação ou de força de vontade — é o padrão emocional que se alimenta em piloto automático."
+    ],
+    "ajuda": [
+      "A hipnose trabalha onde as dietas não chegam: a fome emocional, a recompensa, a imagem de si. Mudamos a relação com a comida por dentro — e o comportamento segue naturalmente.",
+      "É a especialidade da Marta, e a base do programa MagraMente."
+    ],
+    "sinais": [
+      "Comer por emoção — stress, tédio, tristeza",
+      "Ciclos de dieta e compensação",
+      "Relação difícil com o espelho e com a balança",
+      "Sensação de perda de controlo à mesa"
+    ],
+    "terapeuta": "marta",
+    "programa": "magramente",
+    "ordem": 5
+  },
+  {
+    "id": "cessacao-tabagica",
+    "nome": "Cessação Tabágica",
+    "curto": "Deixar de fumar sem sentir que perde algo.",
+    "dor": [
+      "Já sabe tudo o que há para saber sobre os malefícios. Não é informação que falta — é o hábito entranhado no café, nas pausas, no stress.",
+      "Deixar de fumar \"à força\" transforma cada dia numa luta. Há outro caminho: deixar de precisar."
+    ],
+    "ajuda": [
+      "Em hipnose, desligamos as associações automáticas (café–cigarro, stress–cigarro) e reposicionamos a identidade: de \"fumador a tentar parar\" para \"não fumador\".",
+      "Especialidade da Marta, com protocolo focado e objetivo."
+    ],
+    "sinais": [
+      "Várias tentativas de parar sem sucesso duradouro",
+      "Cigarro colado a rotinas e emoções",
+      "Medo de engordar ou de \"perder a válvula de escape\"",
+      "Vontade real de parar — à procura do método"
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 6
+  },
+  {
+    "id": "autoestima-empoderamento",
+    "nome": "Autoestima e Empoderamento",
+    "curto": "Silenciar o crítico interno e ocupar o seu lugar.",
+    "dor": [
+      "A voz que diz \"não és capaz\" fala mais alto do que qualquer elogio. Compara-se, encolhe-se, pede desculpa por existir.",
+      "Essa voz teve origem algures — e o que foi aprendido pode ser reescrito."
+    ],
+    "ajuda": [
+      "A hipnoterapia acede às crenças formadas cedo (\"não sou suficiente\") e substitui-as por alicerces reais de valor próprio.",
+      "O resultado não é arrogância — é a tranquilidade de quem já não precisa de se provar a cada instante."
+    ],
+    "sinais": [
+      "Autocrítica constante, perfeccionismo",
+      "Dificuldade em dizer não e em receber elogios",
+      "Comparação permanente com os outros",
+      "Sensação de fraude apesar das conquistas"
+    ],
+    "terapeuta": "marta",
+    "programa": "transforma-te",
+    "ordem": 7
+  },
+  {
+    "id": "mudanca-habitos",
+    "nome": "Mudança de Hábitos",
+    "curto": "Trocar o piloto automático por escolhas conscientes.",
+    "dor": [
+      "Roer as unhas, adiar tudo, ecrãs até de madrugada, compras por impulso — hábitos que já tentou mudar \"com força de vontade\" e que voltam sempre.",
+      "O hábito vive abaixo da decisão consciente. É lá que tem de ser trabalhado."
+    ],
+    "ajuda": [
+      "A hipnose fala diretamente com o piloto automático: interrompe o circuito gatilho–comportamento–recompensa e instala a alternativa que escolher.",
+      "Especialidade da Marta — e a base do método TRANSFORMA-TE."
+    ],
+    "sinais": [
+      "Comportamentos repetidos \"sem dar por isso\"",
+      "Ciclos de mudança e recaída",
+      "Procrastinação que gera culpa",
+      "Saber o que fazer — e não conseguir fazê-lo"
+    ],
+    "terapeuta": "marta",
+    "programa": "transforma-te",
+    "ordem": 8
+  },
+  {
+    "id": "relacionamentos-sexualidade",
+    "nome": "Relacionamentos e Sexualidade",
+    "curto": "Intimidade, confiança e ligação — consigo e com o outro.",
+    "dor": [
+      "Padrões que se repetem de relação em relação. Ciúme que sufoca, medo de abandono, bloqueios na intimidade que ninguém vê mas pesam todos os dias.",
+      "Falar disto exige um espaço seguro e sem julgamento. É exatamente isso que encontra aqui."
+    ],
+    "ajuda": [
+      "Trabalhamos as raízes: vinculação, experiências passadas, crenças sobre merecimento e corpo.",
+      "A hipnoterapia permite abordar temas íntimos com profundidade e delicadeza, ao ritmo de cada pessoa."
+    ],
+    "sinais": [
+      "Padrões repetidos nas relações",
+      "Dificuldade de confiança ou medo de abandono",
+      "Bloqueios na intimidade e no desejo",
+      "Conflitos que escalam sempre da mesma forma"
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 9
+  },
+  {
+    "id": "trauma",
+    "nome": "Trauma",
+    "curto": "Fazer as pazes com o que aconteceu, ao seu ritmo.",
+    "dor": [
+      "Há memórias que o tempo não arruma sozinho. Voltam em flashes, em reações desproporcionais, num corpo que se fecha sem pedir licença.",
+      "Não é preciso reviver tudo para curar. É preciso um método seguro e alguém que saiba conduzi-lo."
+    ],
+    "ajuda": [
+      "A hipnoterapia permite processar memórias traumáticas com distância protetora — o cérebro rearquiva o que ficou \"em aberto\", sem re-traumatizar.",
+      "Área da Cátia Fena, terapeuta dedicada a Trauma e Vícios (em breve na equipa; até lá, a Marta faz o encaminhamento certo)."
+    ],
+    "sinais": [
+      "Memórias intrusivas ou pesadelos",
+      "Reações intensas a gatilhos específicos",
+      "Entorpecimento emocional, hipervigilância",
+      "Evitar tudo o que lembre o acontecimento"
+    ],
+    "terapeuta": "catia",
+    "programa": "set-you-free",
+    "ordem": 10
+  },
+  {
+    "id": "vidas-passadas",
+    "nome": "Vidas Passadas",
+    "curto": "Explorar memórias profundas com acompanhamento seguro.",
+    "dor": [
+      "Padrões que não têm explicação na sua história. Medos que \"vieram consigo\". Uma curiosidade profunda por compreender-se para além do óbvio.",
+      "A terapia de vidas passadas é uma viagem interior — e como toda a viagem profunda, pede um guia experiente."
+    ],
+    "ajuda": [
+      "Em estado hipnótico profundo, exploramos as narrativas simbólicas que a mente apresenta e trabalhamos o seu significado emocional no presente.",
+      "Independentemente da interpretação de cada um, o efeito terapêutico está na resolução do padrão. Área da Margarida Ferreira (em breve na equipa)."
+    ],
+    "sinais": [
+      "Padrões e medos sem origem identificável",
+      "Sensações de familiaridade inexplicáveis",
+      "Busca de sentido e autoconhecimento profundo",
+      "Curiosidade pela abordagem regressiva"
+    ],
+    "terapeuta": "margarida",
+    "programa": null,
+    "ordem": 11
+  },
+  {
+    "id": "vicios",
+    "nome": "Vícios",
+    "curto": "Recuperar o controlo, sem julgamento.",
+    "dor": [
+      "Álcool, jogo, ecrãs, compras — o que começou como escape passou a comando. E a vergonha só aperta mais o ciclo.",
+      "Aqui não há sermões. Há método, respeito e um caminho para retomar as rédeas."
+    ],
+    "ajuda": [
+      "A hipnoterapia trabalha o mecanismo do impulso e a dor que ele anestesia, reconstruindo alternativas reais de regulação emocional.",
+      "Área da Cátia Fena (em breve na equipa). Em casos de dependência química, trabalhamos sempre em articulação com acompanhamento médico."
+    ],
+    "sinais": [
+      "Perda de controlo sobre o comportamento",
+      "Necessidade crescente para o mesmo efeito",
+      "Prejuízos em relações, trabalho ou finanças",
+      "Tentativas de parar seguidas de recaída"
+    ],
+    "terapeuta": "catia",
+    "programa": "set-you-free",
+    "ordem": 12
+  },
+  {
+    "id": "infantil",
+    "nome": "Hipnoterapia Infantil",
+    "curto": "Ajudar os mais pequenos com linguagem à medida deles.",
+    "dor": [
+      "Medos noturnos, ansiedade de separação, xixi na cama, birras que escondem angústia — e uns pais que já não sabem o que fazer para ajudar.",
+      "As crianças vivem naturalmente perto do estado hipnótico: a imaginação é a língua delas. Por isso respondem tão bem a esta abordagem."
+    ],
+    "ajuda": [
+      "Com histórias, jogo e imaginação guiada, a criança encontra os seus próprios recursos para lidar com o que a assusta.",
+      "Os pais são sempre parte do processo. Área da Marlene (em breve na equipa)."
+    ],
+    "sinais": [
+      "Medos intensos, pesadelos, ansiedade",
+      "Enurese, onicofagia, tiques",
+      "Dificuldades escolares ligadas à confiança",
+      "Alterações após mudanças familiares"
+    ],
+    "terapeuta": "marlene",
+    "programa": null,
+    "ordem": 13
+  },
+  {
+    "id": "luto",
+    "nome": "Luto",
+    "curto": "Espaço para a dor — e caminho para continuar.",
+    "dor": [
+      "A vida dos outros continuou e a sua ficou suspensa. A dor aparece por ondas, nos aniversários, numa música, num cheiro.",
+      "O luto não se \"ultrapassa\" — atravessa-se. E ninguém devia atravessá-lo sem apoio."
+    ],
+    "ajuda": [
+      "A hipnoterapia oferece um espaço protegido para sentir, despedir-se do que ficou por dizer e reorganizar a ligação com quem partiu.",
+      "O objetivo não é esquecer: é poder lembrar com amor em vez de apenas com dor."
+    ],
+    "sinais": [
+      "Dor intensa que não abranda com o tempo",
+      "Culpa, assuntos por resolver com quem partiu",
+      "Dificuldade em retomar a vida quotidiana",
+      "Evitar lugares, datas ou memórias"
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 14
+  }
+]

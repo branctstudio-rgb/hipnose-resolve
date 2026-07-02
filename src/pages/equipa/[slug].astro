@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const terapeutas = await getCollection('terapeutas');
+  return terapeutas
+    .filter((t) => t.data.estado === 'ativa')
+    .map((t) => ({ params: { slug: t.id }, props: { terapeuta: t } }));
+}
+
+const { terapeuta } = Astro.props;
+const t = terapeuta.data;
+
+const areas = (await getCollection('areas'))
+  .filter((a) => a.data.terapeuta === terapeuta.id)
+  .sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base
+  title={`${t.nome} — ${t.papel} · Hipnose Resolve`}
+  description={`${t.nome}, ${t.papel.toLowerCase()} na Hipnose Resolve. Especialidades: ${t.especialidades.join(', ')}. Marque diretamente a sua consulta.`}
+>
+  <section class="wrap page-hero">
+    <p class="breadcrumb"><a href="/equipa">Equipa</a> · {t.nome}</p>
+  </section>
+
+  <section class="wrap team__grid" style="margin-top:0; padding-bottom: var(--space-section); align-items:start;">
+    <div style="position:relative;">
+      <div class="arch arch--photo" role="img" aria-label={`Retrato de ${t.nome} (a substituir por fotografia real)`}>
+        <span class="arch__label">fotografia · {t.nome}</span>
+      </div>
+    </div>
+    <div class="team__bio">
+      <h1 style="font-size: clamp(2rem, 4vw, 3rem);">{t.nome}</h1>
+      <p class="role">{t.papel} da Hipnose Resolve</p>
+      {t.frase && <p style="font-family:var(--serif); font-style:italic; font-size:1.25rem; margin-bottom:1rem;">“{t.frase}”</p>}
+      <p>{t.bio}</p>
+      <div class="team__chips">
+        {t.especialidades.map((e) => <span>{e}</span>)}
+        {t.linguas.map((l) => <span>Atende em {l}</span>)}
+      </div>
+
+      {areas.length > 0 && (
+        <div style="margin-top:2.2rem;">
+          <h3 style="font-size:1.15rem; margin-bottom:.8rem;">Áreas que acompanha</h3>
+          <ul style="list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:.55rem;">
+            {areas.map((a) => (
+              <li><a class="btn btn--ghost" style="padding:.5rem 1.1rem; font-size:.88rem;" href={`/areas/${a.id}`}>{a.data.nome}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div style="margin-top:2.4rem;">
+        <a class="btn btn--primary" href="/consultas">Marcar com {t.nome === 'Marta' ? 'a Marta' : t.nome}</a>
+      </div>
+    </div>
+  </section>
+</Base>

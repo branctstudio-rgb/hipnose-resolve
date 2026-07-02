@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Área de Membros — Hipnose Resolve"
+  description="Aceda aos materiais dos seus programas: áudios de hipnose, ebooks e receitas. Login reservado a participantes dos programas Hipnose Resolve."
+>
+  <section class="login-wrap wrap">
+    <div class="login-card reveal in">
+      <p class="eyebrow" style="margin-bottom:.8rem;">Área de Membros</p>
+      <h1>Bem-vinda de <em>volta</em></h1>
+      <p class="lead">
+        Os seus áudios de hipnose, ebooks e materiais — tudo num só lugar,
+        desbloqueado com os seus programas.
+      </p>
+      <form onsubmit="return false;">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="o.seu@email.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="password">Palavra-passe</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <button class="btn btn--primary" type="submit" title="Disponível brevemente">Entrar</button>
+      </form>
+      <p class="login-note">
+        O acesso é criado automaticamente quando adquire um programa.<br />
+        Ainda não tem? <a href="/programas" style="color:var(--sage-deep); font-weight:600;">Conheça os programas</a>.
+      </p>
+    </div>
+  </section>
+</Base>

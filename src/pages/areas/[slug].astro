@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const areas = await getCollection('areas');
+  return areas.map((a) => ({ params: { slug: a.id }, props: { area: a } }));
+}
+
+const { area } = Astro.props;
+const d = area.data;
+const terapeuta = await getEntry('terapeutas', d.terapeuta);
+const programa = d.programa ? await getEntry('programas', d.programa) : null;
+const t = terapeuta?.data;
+---
+<Base
+  title={`${d.nome} — Hipnoterapia · Hipnose Resolve`}
+  description={`Hipnoterapia para ${d.nome.toLowerCase()}: ${d.curto} Consultas online e presenciais, em português.`}
+>
+  <section class="wrap page-hero">
+    <p class="breadcrumb"><a href="/areas">Áreas de Intervenção</a> · {d.nome}</p>
+    <p class="eyebrow">Hipnoterapia para</p>
+    <h1>{d.nome}</h1>
+    <p class="lead">{d.curto}</p>
+  </section>
+
+  <section class="wrap split" style="padding-bottom: var(--space-section);">
+    <div>
+      <div class="prose reveal">
+        <h2 style="margin-top:0;">Talvez se reconheça aqui</h2>
+        {d.dor.map((p) => <p>{p}</p>)}
+        <h2>Como a hipnoterapia ajuda</h2>
+        {d.ajuda.map((p) => <p>{p}</p>)}
+      </div>
+
+      {t && (
+        <div class="team__note reveal" style="margin-top:2.5rem;">
+          <b>Quem acompanha esta área:</b> {t.nome} — {t.papel}.
+          {t.estado === 'breve'
+            ? ' Junta-se em breve à equipa; até lá, a Marta faz a avaliação e o encaminhamento certo.'
+            : ''}
+          {t.estado === 'ativa' && <a href={`/equipa/${terapeuta.id}`} style="margin-left:.3rem;">Conhecer →</a>}
+        </div>
+      )}
+    </div>
+
+    <aside class="sinais reveal" data-d="1">
+      <h3>Sinais frequentes</h3>
+      <ul>
+        {d.sinais.map((s) => <li>{s}</li>)}
+      </ul>
+    </aside>
+  </section>
+
+  <section class="wrap" style="padding-bottom: var(--space-section);">
+    <div class="duo">
+      <div class="duo__cell duo__cell--sage reveal">
+        <h3>Começar com uma consulta</h3>
+        <p>A Consulta de Avaliação são duas horas dedicadas à sua história — e um plano claro no fim. Online ou presencial.</p>
+        <a class="btn btn--paper" href="/consultas">Marcar Consulta de Avaliação</a>
+      </div>
+      {programa ? (
+        <div class="duo__cell duo__cell--terra reveal" data-d="1">
+          <h3>Programa {programa.data.nome}</h3>
+          <p>{programa.data.promessa}</p>
+          <a class="btn btn--primary" href={`/programas/${programa.id}`}>Conhecer o programa</a>
+        </div>
+      ) : (
+        <div class="duo__cell duo__cell--terra reveal" data-d="1">
+          <h3>Prefere falar primeiro?</h3>
+          <p>Tire as suas dúvidas pelo WhatsApp — respondemos com humanidade, a qualquer hora.</p>
+          <a class="btn btn--primary" href="/contactos">Falar connosco</a>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>
