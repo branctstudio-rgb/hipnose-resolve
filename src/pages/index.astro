@@ -1,0 +1,286 @@
+---
+import Base from '../layouts/Base.astro';
+
+const areas = [
+  { nome: 'Ansiedade e Pânico', txt: 'Quando a mente não desliga e o corpo vive em alerta.' },
+  { nome: 'Medos e Fobias', txt: 'Voar, conduzir, falar em público — medos que encolhem a vida.' },
+  { nome: 'Stress e Burnout', txt: 'Recuperar energia e limites antes do corpo os exigir.' },
+  { nome: 'Depressão', txt: 'Reencontrar cor e sentido, um passo de cada vez.' },
+  { nome: 'Emagrecimento', txt: 'Mudar a relação com a comida — não mais uma dieta.' },
+  { nome: 'Cessação Tabágica', txt: 'Deixar de fumar sem sentir que perde algo.' },
+  { nome: 'Autoestima e Empoderamento', txt: 'Silenciar o crítico interno e ocupar o seu lugar.' },
+  { nome: 'Mudança de Hábitos', txt: 'Trocar o piloto automático por escolhas conscientes.' },
+  { nome: 'Relacionamentos e Sexualidade', txt: 'Intimidade, confiança e ligação — consigo e com o outro.' },
+  { nome: 'Trauma', txt: 'Fazer as pazes com o que aconteceu, ao seu ritmo.' },
+  { nome: 'Vidas Passadas', txt: 'Explorar memórias profundas com acompanhamento seguro.' },
+  { nome: 'Vícios', txt: 'Recuperar o controlo, sem julgamento.' },
+  { nome: 'Hipnoterapia Infantil', txt: 'Ajudar os mais pequenos com linguagem à medida deles.' },
+  { nome: 'Luto', txt: 'Espaço para a dor — e caminho para continuar.' },
+];
+
+const programas = [
+  {
+    kicker: 'Programa · Emagrecimento',
+    nome: 'MagraMente',
+    txt: 'Reprograme a relação com a comida e com o espelho. Hipnose, mentalidade e acompanhamento — sem dietas impossíveis.',
+    area: 'Emagrecimento',
+  },
+  {
+    kicker: 'Programa · Libertação',
+    nome: 'Set You Free',
+    txt: 'Solte o que o prende: medos, padrões e crenças que já não lhe servem. Um caminho guiado para viver mais leve.',
+    area: 'Medos e Fobias',
+  },
+  {
+    kicker: 'Programa digital · Auto-hipnose',
+    nome: 'TRANSFORMA-TE',
+    txt: 'O método de auto-hipnose da Hipnose Resolve em formato digital: áudios, guias e prática diária — comece hoje, ao seu ritmo.',
+    area: 'Mudança de Hábitos',
+  },
+];
+---
+<Base
+  title="Hipnose Resolve — Clínica de Hipnoterapia · Online e Presencial"
+  description="Hipnoterapia clínica para ansiedade, medos, hábitos, emagrecimento e mais. Consultas online e presenciais, em português — Portugal e Brasil. Marque a sua Consulta de Avaliação."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
+        <h1 data-rise="2">A mudança que procura já vive <em>dentro de si</em>.</h1>
+        <p class="lead" data-rise="3">
+          Hipnoterapia clínica para ansiedade, medos, hábitos e muito mais.
+          Acompanhamento humano, em português — esteja em Portugal ou no Brasil.
+        </p>
+        <div class="hero__cta" data-rise="4">
+          <a class="btn btn--primary" href="#consultas">
+            Marcar Consulta de Avaliação
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#programas">Conhecer os programas</a>
+        </div>
+        <div class="hero__proof" data-rise="5">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>Sessões online com link automático</span>
+          <span aria-hidden="true">·</span>
+          <span>Respostas no WhatsApp a qualquer hora</span>
+        </div>
+      </div>
+      <div style="position:relative;" data-rise="3">
+        <div class="arch" role="img" aria-label="Imagem das instalações da clínica (a substituir por fotografia real)">
+          <span class="arch__label">respire · está no sítio certo</span>
+        </div>
+        <div class="chip-float" style="top:9%; left:-4%;">
+          <span class="dot"></span> Consulta confirmada — link Meet enviado
+        </div>
+        <div class="chip-float" style="bottom:14%; right:-3%;">
+          🌿 Online e presencial
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FITA DE ÁREAS -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      {[...areas, ...areas].map((a) => <span>{a.nome}</span>)}
+    </div>
+  </div>
+
+  <!-- EMPATIA -->
+  <section class="section empathy">
+    <div class="wrap reveal">
+      <p class="eyebrow" style="justify-content:center; display:flex;">É bem-vinda. É bem-vindo.</p>
+      <p>Se chegou até aqui às onze da noite, de coração apertado — <em>há caminho</em>. E não o vai percorrer sozinho.</p>
+    </div>
+  </section>
+
+  <!-- ÁREAS -->
+  <section class="section areas" id="areas">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Áreas de intervenção</p>
+        <h2>Onde a hipnoterapia<br />pode <em>ajudar</em></h2>
+      </div>
+      <div class="areas__grid reveal" data-d="1">
+        {areas.map((a) => (
+          <a class="area" href="#consultas">
+            <h3>{a.nome}</h3>
+            <p>{a.txt}</p>
+          </a>
+        ))}
+        <a class="area area--cta" href="#consultas">
+          <h3>Não sabe por onde começar?</h3>
+          <p>Fale connosco — ajudamos a encontrar a terapeuta e o caminho certos para si.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTAS / COMO FUNCIONA -->
+  <section class="section" id="consultas">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Consultas</p>
+        <h2>Como <em>funciona</em></h2>
+        <p class="lead" style="margin-top:1.2rem;">Sem formulários que não marcam nada: escolhe, agenda e recebe a confirmação com tudo o que precisa.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal" data-d="1">
+          <h3>Consulta de Avaliação</h3>
+          <p>Duas horas para si: a sua história, os seus objetivos e um plano claro de acompanhamento, desenhado consigo.</p>
+          <span class="tag">2 horas · online ou presencial</span>
+        </div>
+        <div class="step reveal" data-d="2">
+          <h3>Plano personalizado</h3>
+          <p>Sessões, programas ou ambos — cada percurso é único, com a terapeuta certa para a sua área.</p>
+          <span class="tag">à sua medida</span>
+        </div>
+        <div class="step reveal" data-d="3">
+          <h3>Consultas de Tratamento</h3>
+          <p>Sessões de uma hora, com continuidade e lembretes automáticos. Se for online, o link chega no email.</p>
+          <span class="tag">1 hora · lembretes incluídos</span>
+        </div>
+      </div>
+      <div class="flow reveal" data-d="2" aria-label="Passos da marcação online">
+        <div class="flow__step"><i>1</i><span>Escolhe a área</span></div>
+        <span class="flow__arrow" aria-hidden="true">→</span>
+        <div class="flow__step"><i>2</i><span>Escolhe a terapeuta</span></div>
+        <span class="flow__arrow" aria-hidden="true">→</span>
+        <div class="flow__step"><i>3</i><span>Online ou presencial</span></div>
+        <span class="flow__arrow" aria-hidden="true">→</span>
+        <div class="flow__step"><i>4</i><span>Escolhe o horário</span></div>
+        <span class="flow__arrow" aria-hidden="true">→</span>
+        <div class="flow__step"><i>5</i><span>Confirmado — Meet no email ✓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPA -->
+  <section class="section" id="equipa" style="background: var(--paper-deep);">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Equipa</p>
+        <h2>Quem a vai <em>acompanhar</em></h2>
+      </div>
+      <div class="team__grid">
+        <div class="reveal" data-d="1" style="position:relative;">
+          <div class="arch arch--photo" role="img" aria-label="Retrato da Marta (a substituir por fotografia real)">
+            <span class="arch__label">fotografia da Marta</span>
+          </div>
+        </div>
+        <div class="team__bio reveal" data-d="2">
+          <h3>Marta</h3>
+          <p class="role">Hipnoterapeuta · Fundadora da Hipnose Resolve</p>
+          <p>
+            A Marta acredita que ninguém “é assim” para sempre — apenas aprendeu a ser. Há anos que ajuda
+            pessoas a desaprender a ansiedade, os medos e os hábitos que as prendem, com uma abordagem
+            calorosa, prática e profundamente humana. Nas consultas dela não há julgamento: há escuta,
+            método e a convicção tranquila de que a mudança é possível.
+          </p>
+          <div class="team__chips">
+            <span>Emagrecimento</span>
+            <span>Cessação Tabágica</span>
+            <span>Mudança de Hábitos</span>
+            <span>Ansiedade</span>
+            <span>Atende Portugal & Brasil</span>
+          </div>
+          <p class="team__note">
+            <b>A equipa está a crescer.</b> Em breve, terapeutas dedicadas a Trauma e Vícios,
+            Vidas Passadas e Hipnoterapia Infantil — cada área com a especialista certa.
+          </p>
+          <div style="margin-top:2rem;">
+            <a class="btn btn--primary" href="#consultas">Marcar com a Marta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMAS -->
+  <section class="section programs" id="programas">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Programas de transformação</p>
+        <h2>Um método, <em>três caminhos</em></h2>
+        <p class="lead" style="margin-top:1.2rem;">Programas guiados que complementam — ou começam — o seu percurso de mudança.</p>
+      </div>
+      <div class="programs__grid">
+        {programas.map((p, i) => (
+          <article class="program reveal" data-d={String(i + 1)}>
+            <span class="kicker">{p.kicker}</span>
+            <h3>{p.nome}</h3>
+            <p>{p.txt}</p>
+            <p class="cross">Prefere acompanhamento 1-para-1? <a href="#consultas">Marque uma consulta de {p.area}</a>.</p>
+            <a class="btn btn--paper" href="#programas">Saber mais</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTEMUNHOS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Histórias reais</p>
+        <h2>O que dizem <em>depois</em></h2>
+      </div>
+      <div class="quotes__grid">
+        <blockquote class="quote reveal" data-d="1">
+          <p>Cheguei a pensar que ia viver sempre com aquele aperto no peito. Hoje durmo, respiro e sou eu outra vez.</p>
+          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>C.</b> · Consultas de Ansiedade</footer>
+        </blockquote>
+        <blockquote class="quote reveal" data-d="2">
+          <p>Não foi mais uma dieta. Foi a primeira vez que mudei por dentro — e o resto seguiu.</p>
+          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>R.</b> · Programa MagraMente</footer>
+        </blockquote>
+        <blockquote class="quote reveal" data-d="3">
+          <p>Fiz tudo online, do Brasil. Senti-me acompanhada como se estivesse na sala ao lado.</p>
+          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>A.</b> · Consultas online, do Brasil</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;">
+        <p class="eyebrow" style="justify-content:center; display:flex;">Perguntas frequentes</p>
+        <h2 style="margin-bottom:2.5rem;">Antes de <em>dar o passo</em></h2>
+      </div>
+      <div class="faq reveal" data-d="1">
+        <details>
+          <summary>A hipnose é segura? Vou perder o controlo?</summary>
+          <p>Sim, é segura — e não, nunca perde o controlo. Em hipnoterapia clínica está sempre consciente e no comando; a terapeuta apenas guia um estado de foco profundo, semelhante ao de estar absorto num bom livro.</p>
+        </details>
+        <details>
+          <summary>As consultas online funcionam tão bem como as presenciais?</summary>
+          <p>Sim. A hipnoterapia adapta-se muito bem ao formato online: basta um lugar tranquilo, auscultadores e ligação estável. O link da sessão chega automaticamente com a confirmação.</p>
+        </details>
+        <details>
+          <summary>Qual a diferença entre a Consulta de Avaliação e a de Tratamento?</summary>
+          <p>A Avaliação (2h) é o ponto de partida: conhecer a sua história e definir o plano. As consultas de Tratamento (1h) são as sessões de acompanhamento contínuo desse plano.</p>
+        </details>
+        <details>
+          <summary>A hipnoterapia substitui o médico ou psicólogo?</summary>
+          <p>Não. É uma prática complementar de bem-estar e não substitui diagnóstico nem tratamento médico ou psicológico. Sempre que necessário, trabalhamos em articulação com outros profissionais de saúde.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" style="padding-top:0;">
+    <div class="cta-final reveal">
+      <h2>O primeiro passo é <em>uma conversa</em>.</h2>
+      <p class="lead" style="margin-inline:auto;">Marque a sua Consulta de Avaliação — online ou presencial — e comece o caminho ao seu ritmo.</p>
+      <a class="btn btn--primary" href="#consultas">
+        Marcar Consulta de Avaliação
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+</Base>
