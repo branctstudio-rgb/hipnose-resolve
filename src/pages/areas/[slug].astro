@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { fotoDeArea } from '../../lib/fotos';
 
 export async function getStaticPaths() {
   const areas = await getCollection('areas');
@@ -11,6 +13,7 @@ const { area } = Astro.props;
 const d = area.data;
 const terapeuta = await getEntry('terapeutas', d.terapeuta);
 const programa = d.programa ? await getEntry('programas', d.programa) : null;
+const fotoArea = fotoDeArea(area.id);
 const t = terapeuta?.data;
 
 const schema = [
@@ -67,11 +70,18 @@ const schema = [
       )}
     </div>
 
-    <aside class="sinais reveal" data-d="1">
+    <aside class="reveal" data-d="1">
+      {fotoArea && (
+        <div class="photo-frame" style="aspect-ratio: 4 / 3; margin-bottom: 1.4rem;">
+          <Image src={fotoArea} alt={`Hipnoterapia para ${d.nome} — Hipnose Resolve`} widths={[480, 760]} sizes="(max-width: 940px) 92vw, 38vw" />
+        </div>
+      )}
+      <div class="sinais">
       <h3>Sinais frequentes</h3>
       <ul>
         {d.sinais.map((s) => <li>{s}</li>)}
       </ul>
+      </div>
     </aside>
   </section>
 

@@ -1,6 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import fotoMarta from '../assets/img/marta.jpeg';
+import fotoMarta3 from '../assets/img/marta-3.png';
+import fotoMagra from '../assets/img/magramente-1.jpg';
+import fotoTabaco from '../assets/img/tabaco.jpeg';
 
 const areas = (await getCollection('areas')).sort((a, b) => a.data.ordem - b.data.ordem);
 const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
@@ -32,7 +37,20 @@ const schema = [
     name: 'Hipnose Resolve',
     description: 'Clínica de hipnoterapia — consultas online e presenciais, Portugal e Brasil, em português.',
     url: 'https://hipnoseresolve.pt',
-    founder: { '@type': 'Person', name: 'Marta', jobTitle: 'Hipnoterapeuta' },
+    telephone: '+351915574759',
+    email: 'info@hipnoseresolve.pt',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Rua Dr. Álvaro Monteiro, 12 R/C dto.',
+      postalCode: '3510-014',
+      addressLocality: 'Viseu',
+      addressCountry: 'PT',
+    },
+    founder: { '@type': 'Person', name: 'Marta Brito', jobTitle: 'Hipnoterapeuta' },
+    sameAs: [
+      'https://www.instagram.com/hipnoseresolve/',
+      'https://www.facebook.com/profile.php?id=61555999870032',
+    ],
     areaServed: ['PT', 'BR'],
     availableLanguage: 'pt',
   },
@@ -77,8 +95,8 @@ const schema = [
         </div>
       </div>
       <div style="position:relative;" data-rise="3">
-        <div class="arch" role="img" aria-label="Imagem das instalações da clínica (a substituir por fotografia real)">
-          <span class="arch__label">respire · está no sítio certo</span>
+        <div class="arch arch--img">
+          <Image src={fotoMarta} alt="Marta Brito, hipnoterapeuta e fundadora da Hipnose Resolve, no consultório" widths={[480, 800, 1100]} sizes="(max-width: 940px) 92vw, 44vw" loading="eager" />
         </div>
         <div class="chip-float" style="top:9%; left:-4%;">
           <span class="dot"></span> Consulta confirmada — link Meet enviado
@@ -102,6 +120,40 @@ const schema = [
     <div class="wrap reveal">
       <p class="eyebrow" style="justify-content:center; display:flex;">É bem-vinda. É bem-vindo.</p>
       <p>Se chegou até aqui às onze da noite, de coração apertado — <em>há caminho</em>. E não o vai percorrer sozinho.</p>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES DA MARTA (foco) -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">As especialidades da Marta Brito</p>
+        <h2>Dois caminhos, <em>uma missão</em></h2>
+        <p class="lead" style="margin-top:1.2rem;">
+          Emagrecer sem guerra com a comida. Deixar de fumar sem sentir que perde algo.
+          São as duas grandes especialidades da fundadora — cada uma com o seu programa.
+        </p>
+      </div>
+      <div class="spec">
+        <a class="spec-card reveal" href="/programas/magramente">
+          <Image src={fotoMagra} alt="Marta Brito em consulta online do programa MagraMente" widths={[600, 900]} sizes="(max-width: 880px) 92vw, 46vw" />
+          <div class="spec-card__body">
+            <span class="kicker">Emagrecimento · Programa MagraMente</span>
+            <h3>Emagreça de dentro para fora</h3>
+            <p>Hipnose para eliminar a fome emocional e mudar a relação com a comida. Protocolos de 4, 6 ou 12 terapias.</p>
+            <span class="mais">Conhecer o MagraMente →</span>
+          </div>
+        </a>
+        <a class="spec-card reveal" data-d="1" href="/programas/set-you-free">
+          <Image src={fotoTabaco} alt="Marta Brito numa sessão de cessação tabágica" widths={[600, 900]} sizes="(max-width: 880px) 92vw, 46vw" />
+          <div class="spec-card__body">
+            <span class="kicker">Cessação Tabágica · Programa Set You Free</span>
+            <h3>Deixe de fumar numa sessão</h3>
+            <p>Hipnose, PNL e coaching para desinstalar o hábito — com 30 dias de acompanhamento.</p>
+            <span class="mais">Conhecer o Set You Free →</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -175,24 +227,25 @@ const schema = [
       </div>
       <div class="team__grid">
         <div class="reveal" data-d="1" style="position:relative;">
-          <div class="arch arch--photo" role="img" aria-label="Retrato da Marta (a substituir por fotografia real)">
-            <span class="arch__label">fotografia da Marta</span>
+          <div class="arch arch--photo arch--img">
+            <Image src={fotoMarta3} alt="Marta Brito, fundadora da Hipnose Resolve" widths={[480, 800]} sizes="(max-width: 940px) 92vw, 38vw" />
           </div>
         </div>
         <div class="team__bio reveal" data-d="2">
-          <h3>Marta</h3>
+          <h3>Marta Brito</h3>
           <p class="role">Hipnoterapeuta · Fundadora da Hipnose Resolve</p>
           <p>
-            A Marta acredita que ninguém “é assim” para sempre — apenas aprendeu a ser. Há anos que ajuda
-            pessoas a desaprender a ansiedade, os medos e os hábitos que as prendem, com uma abordagem
-            calorosa, prática e profundamente humana. Nas consultas dela não há julgamento: há escuta,
-            método e a convicção tranquila de que a mudança é possível.
+            Foi modelo profissional dos 16 aos 40 anos sem nunca fazer dieta — e é dessa "Mente Magra"
+            que nasce a sua especialidade. Apaixonada pela mente humana desde 2000, a Marta ajuda
+            pessoas a desaprender a fome emocional, o tabaco e os hábitos que as prendem, com uma
+            abordagem calorosa, prática e profundamente humana. Sem julgamento: escuta, método e a
+            convicção tranquila de que a mudança é possível.
           </p>
           <div class="team__chips">
             <span>Emagrecimento</span>
             <span>Cessação Tabágica</span>
+            <span>Fertilidade e Hipnoparto</span>
             <span>Mudança de Hábitos</span>
-            <span>Ansiedade</span>
             <span>Atende Portugal & Brasil</span>
           </div>
           <p class="team__note">
@@ -239,16 +292,16 @@ const schema = [
       </div>
       <div class="quotes__grid">
         <blockquote class="quote reveal" data-d="1">
-          <p>Cheguei a pensar que ia viver sempre com aquele aperto no peito. Hoje durmo, respiro e sou eu outra vez.</p>
-          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>C.</b> · Consultas de Ansiedade</footer>
+          <p>Três anos de dietas sem resultado. Com a Marta perdi 20 kg — mudei por dentro, e o resto seguiu.</p>
+          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>Maria Ferreira</b> · Programa MagraMente</footer>
         </blockquote>
         <blockquote class="quote reveal" data-d="2">
-          <p>Não foi mais uma dieta. Foi a primeira vez que mudei por dentro — e o resto seguiu.</p>
-          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>R.</b> · Programa MagraMente</footer>
+          <p>Fumei durante 30 anos. Numa sessão de 90 minutos, saí de lá não fumador — e assim fiquei.</p>
+          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>J. Paulo Guerreiro</b> · Set You Free</footer>
         </blockquote>
         <blockquote class="quote reveal" data-d="3">
-          <p>Fiz tudo online, do Brasil. Senti-me acompanhada como se estivesse na sala ao lado.</p>
-          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>A.</b> · Consultas online, do Brasil</footer>
+          <p>Perdi 10 kg em dois meses, inteiramente online. Senti-me acompanhada como se estivesse na sala ao lado.</p>
+          <footer><span class="stars" aria-hidden="true">★★★★★</span><b>Carine</b> · MagraMente online</footer>
         </blockquote>
       </div>
     </div>

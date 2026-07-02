@@ -1,13 +1,26 @@
 [
   {
     "id": "marta",
-    "nome": "Marta",
+    "nome": "Marta Brito",
     "papel": "Hipnoterapeuta · Fundadora",
     "estado": "ativa",
-    "frase": "Ninguém \"é assim\" para sempre — apenas aprendeu a ser.",
-    "bio": "A Marta acredita que ninguém \"é assim\" para sempre — apenas aprendeu a ser. Há anos que ajuda pessoas a desaprender a ansiedade, os medos e os hábitos que as prendem, com uma abordagem calorosa, prática e profundamente humana. Nas consultas dela não há julgamento: há escuta, método e a convicção tranquila de que a mudança é possível. Fundou a Hipnose Resolve com uma missão simples — que ninguém fique preso a uma versão de si que já não escolhe.",
-    "especialidades": ["Emagrecimento", "Cessação Tabágica", "Mudança de Hábitos", "Ansiedade e Pânico", "Autoestima"],
-    "linguas": ["Português (PT e BR)"]
+    "frase": "O sonho comanda a vida.",
+    "bio": "Apaixonada por terapias naturais e pela mente humana desde sempre, a Marta estuda o comportamento e a mudança desde 2000. Nasceu, como diz, \"com uma Mente Magra\": foi modelo profissional dos 16 aos 40 anos sem dietas nem restrições — e foi ao perceber que essa liberdade vinha da relação da mente com a comida que fez do emagrecimento a sua grande especialidade. A cessação tabágica é a sua outra missão, com origem numa história familiar marcada por perdas causadas pelo tabaco. Na Hipnose Resolve, ajuda-o a ultrapassar os obstáculos que o desafiam, as crenças que o travam e os hábitos que o sabotam — com método, sem julgamento.",
+    "especialidades": ["Emagrecimento", "Cessação Tabágica", "Fertilidade e Hipnoparto", "Mudança de Hábitos", "Ansiedade"],
+    "linguas": ["Português (PT e BR)"],
+    "formacao": [
+      "Curso Superior de Medicina Tradicional Chinesa (APA-DA / Dr. Pedro Choy)",
+      "Hipnose Clínica, Transpessoal e Regressiva (Transpersonal International)",
+      "Hipnoterapeuta Licenciada — Método ReprogrAme-se (Instituto Griseli Silva)",
+      "Hipnoterapeuta Especialista em Emagrecimento (Instituto Freelife)",
+      "Reprogramação Neurológica para Emagrecimento (Instituto Francisco Kessler)",
+      "Banda Gástrica Hipnótica (Transpersonal International)",
+      "Hipnoterapeuta Especialista em Cessação Tabágica (Instituto Freelife)",
+      "Hipnose na Assistência Obstétrica (Lúcia de Jú)",
+      "Terapia de Casal (Transpersonal International)",
+      "Coaching (ISPC & Eduardo Torgal)",
+      "Reiki e Seven Reiki (Escola Flor da Vida) · Shiatsu I (Centro Funada)"
+    ]
   },
   {
     "id": "catia",

@@ -29,6 +29,7 @@ const terapeutas = defineCollection({
     frase: z.string().optional(),
     especialidades: z.array(z.string()),
     linguas: z.array(z.string()),
+    formacao: z.array(z.string()).optional(),
   }),
 });
 
@@ -45,6 +46,7 @@ const programas = defineCollection({
     metodo: z.array(z.object({ titulo: z.string(), txt: z.string() })),
     conteudo: z.array(z.string()),
     testemunho: z.object({ txt: z.string(), autor: z.string() }),
+    tiers: z.array(z.object({ nome: z.string(), detalhe: z.string(), ideal: z.string() })).optional(),
     preco: z.object({ valor: z.string(), nota: z.string() }),
     faq: z.array(z.object({ q: z.string(), a: z.string() })),
     area: z.string(),           // id da área relacionada (cross-sell)

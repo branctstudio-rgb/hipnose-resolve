@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import fotoOnline from '../assets/img/magramente-1.jpg';
 ---
 <Base
   title="Consultas — Avaliação e Tratamento · Hipnose Resolve"
@@ -74,14 +76,19 @@ import Base from '../layouts/Base.astro';
           </p>
         </div>
       </div>
-      <aside class="sinais reveal" data-d="1">
-        <h3>Perguntas rápidas</h3>
-        <ul>
-          <li>Pagamento por MB WAY, cartão ou Klarna (parcelado)</li>
-          <li>Clientes no Brasil: valores e pagamento em reais</li>
-          <li>Lembretes automáticos antes de cada sessão</li>
-          <li>Remarcações com 24h de antecedência</li>
-        </ul>
+      <aside class="reveal" data-d="1">
+        <div class="photo-frame" style="aspect-ratio: 4 / 3; margin-bottom: 1.4rem;">
+          <Image src={fotoOnline} alt="Marta Brito numa consulta online da Hipnose Resolve" widths={[480, 760]} sizes="(max-width: 940px) 92vw, 38vw" />
+        </div>
+        <div class="sinais">
+          <h3>Perguntas rápidas</h3>
+          <ul>
+            <li>Pagamento por MB WAY, cartão ou Klarna (parcelado)</li>
+            <li>Clientes no Brasil: valores e pagamento em reais</li>
+            <li>Lembretes automáticos antes de cada sessão</li>
+            <li>Remarcações com 24h de antecedência</li>
+          </ul>
+        </div>
       </aside>
     </div>
   </section>

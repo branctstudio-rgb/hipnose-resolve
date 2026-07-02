@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import fotoMarta3 from '../../assets/img/marta-3.png';
 
 export async function getStaticPaths() {
   const terapeutas = await getCollection('terapeutas');
@@ -40,8 +42,8 @@ const schema = [
 
   <section class="wrap team__grid" style="margin-top:0; padding-bottom: var(--space-section); align-items:start;">
     <div style="position:relative;">
-      <div class="arch arch--photo" role="img" aria-label={`Retrato de ${t.nome} (a substituir por fotografia real)`}>
-        <span class="arch__label">fotografia · {t.nome}</span>
+      <div class="arch arch--photo arch--img">
+        <Image src={fotoMarta3} alt={`${t.nome} — ${t.papel} da Hipnose Resolve`} widths={[480, 800]} sizes="(max-width: 940px) 92vw, 36vw" />
       </div>
     </div>
     <div class="team__bio">
@@ -65,8 +67,19 @@ const schema = [
         </div>
       )}
 
+      {t.formacao && (
+        <div style="margin-top:2.4rem;">
+          <h3 style="font-size:1.15rem; margin-bottom:.8rem;">Formação e certificações</h3>
+          <ul style="list-style:none; padding:0; display:grid; gap:.5rem; font-size:.92rem; color:var(--ink-soft);">
+            {t.formacao.map((f) => (
+              <li style="display:flex; gap:.7rem;"><span style="color:var(--gold);" aria-hidden="true">✦</span>{f}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div style="margin-top:2.4rem;">
-        <a class="btn btn--primary" href="/consultas">Marcar com {t.nome === 'Marta' ? 'a Marta' : t.nome}</a>
+        <a class="btn btn--primary" href="/consultas">Marcar com {terapeuta.id === 'marta' ? 'a Marta' : t.nome}</a>
       </div>
     </div>
   </section>

@@ -1,5 +1,71 @@
 [
   {
+    "id": "emagrecimento",
+    "nome": "Emagrecimento",
+    "curto": "Mudar a relação com a comida — não mais uma dieta.",
+    "dor": [
+      "Já contou calorias, cortou hidratos, começou mil segundas-feiras. Perde, recupera, e a cada ciclo a confiança encolhe um pouco mais.",
+      "O problema raramente é falta de informação ou de força de vontade — é o padrão emocional que se alimenta em piloto automático."
+    ],
+    "ajuda": [
+      "A hipnose trabalha onde as dietas não chegam: a fome emocional, a recompensa, a imagem de si. Eliminamos a fome emocional e reduzimos a ingestão mantendo a saciedade — mudamos a relação com a comida por dentro, e o comportamento segue naturalmente.",
+      "É a grande especialidade da Marta Brito, e a base do programa MagraMente — com protocolos de 4, 6 ou 12 terapias conforme o objetivo."
+    ],
+    "sinais": [
+      "Comer por emoção — stress, tédio, tristeza",
+      "Ciclos de dieta e compensação",
+      "Relação difícil com o espelho e com a balança",
+      "Sensação de perda de controlo à mesa"
+    ],
+    "terapeuta": "marta",
+    "programa": "magramente",
+    "ordem": 1
+  },
+  {
+    "id": "cessacao-tabagica",
+    "nome": "Cessação Tabágica",
+    "curto": "Deixar de fumar sem sentir que perde algo.",
+    "dor": [
+      "Já sabe tudo o que há para saber sobre os malefícios. Não é informação que falta — é o hábito entranhado no café, nas pausas, no stress.",
+      "Deixar de fumar \"à força\" transforma cada dia numa luta. Há outro caminho: deixar de precisar."
+    ],
+    "ajuda": [
+      "Com hipnose, PNL e coaching, desinstalamos o hábito e reprogramamos a mente como não fumador — desligando as associações automáticas (café–cigarro, stress–cigarro).",
+      "É uma missão pessoal da Marta Brito, e a base do programa Set You Free: pensado para resultados numa única sessão, com acompanhamento de 30 dias."
+    ],
+    "sinais": [
+      "Várias tentativas de parar sem sucesso duradouro",
+      "Cigarro colado a rotinas e emoções",
+      "Medo de engordar ou de \"perder a válvula de escape\"",
+      "Vontade real de parar — à procura do método"
+    ],
+    "terapeuta": "marta",
+    "programa": "set-you-free",
+    "ordem": 2
+  },
+  {
+    "id": "fertilidade-parto-pos-parto",
+    "nome": "Fertilidade · Parto · Pós-parto",
+    "curto": "Acompanhar a maternidade — da pré-conceção ao regresso a casa.",
+    "dor": [
+      "A ansiedade de quem tenta engravidar. O medo do parto que rouba o sono. O pós-parto que ninguém avisou que podia ser tão exigente.",
+      "Cada fase da maternidade tem os seus fantasmas — e nenhum deles tem de ser enfrentado sozinha."
+    ],
+    "ajuda": [
+      "Na pré-conceção, a hipnose reduz a ansiedade e liberta medos e crenças limitantes que interferem com a fertilidade. Na gravidez, trabalha náuseas, sono, ligação ao bebé e confiança no parto.",
+      "O hipnoparto ensina técnicas para gerir a ansiedade e a dor no trabalho de parto; no pós-parto, apoia o equilíbrio emocional, a amamentação e a aceitação do corpo. A Marta tem formação específica em hipnose na assistência obstétrica."
+    ],
+    "sinais": [
+      "Ansiedade no processo de engravidar",
+      "Medo intenso do parto",
+      "Náuseas, insónias e instabilidade emocional na gravidez",
+      "Exaustão e tristeza no pós-parto"
+    ],
+    "terapeuta": "marta",
+    "programa": null,
+    "ordem": 3
+  },
+  {
     "id": "ansiedade-panico",
     "nome": "Ansiedade e Pânico",
     "curto": "Quando a mente não desliga e o corpo vive em alerta.",
@@ -19,7 +85,7 @@
     ],
     "terapeuta": "marta",
     "programa": null,
-    "ordem": 1
+    "ordem": 4
   },
   {
     "id": "medos-fobias",
@@ -40,8 +106,8 @@
       "Saber que \"não faz sentido\" — e mesmo assim sentir"
     ],
     "terapeuta": "marta",
-    "programa": "set-you-free",
-    "ordem": 2
+    "programa": null,
+    "ordem": 5
   },
   {
     "id": "stress-burnout",
@@ -63,7 +129,7 @@
     ],
     "terapeuta": "marta",
     "programa": null,
-    "ordem": 3
+    "ordem": 6
   },
   {
     "id": "depressao",
@@ -85,51 +151,7 @@
     ],
     "terapeuta": "marta",
     "programa": null,
-    "ordem": 4
-  },
-  {
-    "id": "emagrecimento",
-    "nome": "Emagrecimento",
-    "curto": "Mudar a relação com a comida — não mais uma dieta.",
-    "dor": [
-      "Já contou calorias, cortou hidratos, começou mil segundas-feiras. Perde, recupera, e a cada ciclo a confiança encolhe um pouco mais.",
-      "O problema raramente é falta de informação ou de força de vontade — é o padrão emocional que se alimenta em piloto automático."
-    ],
-    "ajuda": [
-      "A hipnose trabalha onde as dietas não chegam: a fome emocional, a recompensa, a imagem de si. Mudamos a relação com a comida por dentro — e o comportamento segue naturalmente.",
-      "É a especialidade da Marta, e a base do programa MagraMente."
-    ],
-    "sinais": [
-      "Comer por emoção — stress, tédio, tristeza",
-      "Ciclos de dieta e compensação",
-      "Relação difícil com o espelho e com a balança",
-      "Sensação de perda de controlo à mesa"
-    ],
-    "terapeuta": "marta",
-    "programa": "magramente",
-    "ordem": 5
-  },
-  {
-    "id": "cessacao-tabagica",
-    "nome": "Cessação Tabágica",
-    "curto": "Deixar de fumar sem sentir que perde algo.",
-    "dor": [
-      "Já sabe tudo o que há para saber sobre os malefícios. Não é informação que falta — é o hábito entranhado no café, nas pausas, no stress.",
-      "Deixar de fumar \"à força\" transforma cada dia numa luta. Há outro caminho: deixar de precisar."
-    ],
-    "ajuda": [
-      "Em hipnose, desligamos as associações automáticas (café–cigarro, stress–cigarro) e reposicionamos a identidade: de \"fumador a tentar parar\" para \"não fumador\".",
-      "Especialidade da Marta, com protocolo focado e objetivo."
-    ],
-    "sinais": [
-      "Várias tentativas de parar sem sucesso duradouro",
-      "Cigarro colado a rotinas e emoções",
-      "Medo de engordar ou de \"perder a válvula de escape\"",
-      "Vontade real de parar — à procura do método"
-    ],
-    "terapeuta": "marta",
-    "programa": null,
-    "ordem": 6
+    "ordem": 7
   },
   {
     "id": "autoestima-empoderamento",
@@ -151,7 +173,7 @@
     ],
     "terapeuta": "marta",
     "programa": "transforma-te",
-    "ordem": 7
+    "ordem": 8
   },
   {
     "id": "mudanca-habitos",
@@ -173,7 +195,7 @@
     ],
     "terapeuta": "marta",
     "programa": "transforma-te",
-    "ordem": 8
+    "ordem": 9
   },
   {
     "id": "relacionamentos-sexualidade",
@@ -185,7 +207,7 @@
     ],
     "ajuda": [
       "Trabalhamos as raízes: vinculação, experiências passadas, crenças sobre merecimento e corpo.",
-      "A hipnoterapia permite abordar temas íntimos com profundidade e delicadeza, ao ritmo de cada pessoa."
+      "A hipnoterapia permite abordar temas íntimos com profundidade e delicadeza, ao ritmo de cada pessoa. A Marta tem formação em terapia de casal."
     ],
     "sinais": [
       "Padrões repetidos nas relações",
@@ -195,7 +217,7 @@
     ],
     "terapeuta": "marta",
     "programa": null,
-    "ordem": 9
+    "ordem": 10
   },
   {
     "id": "trauma",
@@ -216,8 +238,8 @@
       "Evitar tudo o que lembre o acontecimento"
     ],
     "terapeuta": "catia",
-    "programa": "set-you-free",
-    "ordem": 10
+    "programa": null,
+    "ordem": 11
   },
   {
     "id": "vidas-passadas",
@@ -229,7 +251,7 @@
     ],
     "ajuda": [
       "Em estado hipnótico profundo, exploramos as narrativas simbólicas que a mente apresenta e trabalhamos o seu significado emocional no presente.",
-      "Independentemente da interpretação de cada um, o efeito terapêutico está na resolução do padrão. Área da Margarida Ferreira (em breve na equipa)."
+      "Independentemente da interpretação de cada um, o efeito terapêutico está na resolução do padrão. Área da Margarida Ferreira (em breve na equipa); a Marta tem formação em hipnose regressiva."
     ],
     "sinais": [
       "Padrões e medos sem origem identificável",
@@ -239,7 +261,7 @@
     ],
     "terapeuta": "margarida",
     "programa": null,
-    "ordem": 11
+    "ordem": 12
   },
   {
     "id": "vicios",
@@ -260,8 +282,8 @@
       "Tentativas de parar seguidas de recaída"
     ],
     "terapeuta": "catia",
-    "programa": "set-you-free",
-    "ordem": 12
+    "programa": null,
+    "ordem": 13
   },
   {
     "id": "infantil",
@@ -283,7 +305,7 @@
     ],
     "terapeuta": "marlene",
     "programa": null,
-    "ordem": 13
+    "ordem": 14
   },
   {
     "id": "luto",
@@ -305,6 +327,6 @@
     ],
     "terapeuta": "marta",
     "programa": null,
-    "ordem": 14
+    "ordem": 15
   }
 ]

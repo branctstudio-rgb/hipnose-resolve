@@ -37,13 +37,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       <div class="wrap header__in">
         <a class="logo" href="/">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></a>
         <nav class="nav" id="nav" aria-label="Navegação principal">
-          <a href="/areas">Áreas de Intervenção</a>
+          <a href="/areas">Áreas</a>
           <a href="/consultas">Consultas</a>
           <a href="/equipa">Equipa</a>
           <a href="/programas">Programas</a>
           <a href="/blog">Blog</a>
           <a href="/contactos">Contactos</a>
-          <a href="/membros">Área de Membros</a>
+          <a href="/membros" class="nav__extra">Área de Membros</a>
         </nav>
         <a class="btn btn--primary" href="/consultas">Marcar consulta</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
@@ -63,6 +63,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
             <a class="logo" href="/">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></a>
             <p style="margin-top:1.2rem; max-width:34ch;">
               Hipnoterapia clínica, online e presencial. Portugal e Brasil, em português.
+            </p>
+            <p style="margin-top:1rem; font-size:.86rem; line-height:1.8;">
+              Rua Dr. Álvaro Monteiro, 12 R/C dto.<br />3510-014 Viseu · Portugal<br />
+              <a href="tel:+351915574759">+351 915 574 759</a><br />
+              <a href="mailto:info@hipnoseresolve.pt">info@hipnoseresolve.pt</a>
             </p>
           </div>
           <div>
@@ -94,7 +99,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       </div>
     </footer>
 
-    <a class="wa-float" href="https://wa.me/351000000000" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+    <a class="wa-float" href="https://wa.me/351915574759" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.5-1 .1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2.1-.6 3.5.8 1.9 2.3 3.6 4.2 4.7 1.4.8 2.5 1 3.4.8.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.2-.2-.3-.8-.7Z"/></svg>
     </a>
 

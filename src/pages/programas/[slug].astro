@@ -6,6 +6,8 @@
 */
 import Base from '../../layouts/Base.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { fotoDePrograma } from '../../lib/fotos';
 
 export async function getStaticPaths() {
   const programas = await getCollection('programas');
@@ -15,6 +17,7 @@ export async function getStaticPaths() {
 const { programa } = Astro.props;
 const d = programa.data;
 const area = await getEntry('areas', d.area);
+const fotoPrg = fotoDePrograma(programa.id);
 
 const schema = [
   {
@@ -53,6 +56,11 @@ const schema = [
           : <a class="btn btn--primary" href="/consultas">Marcar Consulta de Avaliação</a>}
         <a class="btn btn--ghost" href="#metodo">Como funciona</a>
       </div>
+      {fotoPrg && (
+        <div class="photo-frame" data-rise="5" style="margin-top:3rem; aspect-ratio: 16 / 8.5;">
+          <Image src={fotoPrg} alt={`${d.nome} — Hipnose Resolve, com Marta Brito`} widths={[700, 1100, 1500]} sizes="(max-width: 940px) 94vw, 840px" loading="eager" />
+        </div>
+      )}
     </div>
   </section>
 
@@ -88,6 +96,27 @@ const schema = [
       </div>
     </div>
   </section>
+
+  {d.tiers && (
+    <!-- PROTOCOLOS / TIERS -->
+    <section class="section" style="padding-top:0;">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="eyebrow">Os protocolos</p>
+          <h2>Um caminho <em>à sua medida</em></h2>
+        </div>
+        <div class="cards">
+          {d.tiers.map((t, i) => (
+            <div class="card-l reveal" data-d={String(i)} style="cursor:default;">
+              <span class="kicker">{t.ideal}</span>
+              <h3>{t.nome}</h3>
+              <p>{t.detalhe}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- CONTEÚDO + TESTEMUNHO + PREÇO -->
   <section class="section programs" style="padding-block: clamp(3.5rem, 8vw, 6rem);">
