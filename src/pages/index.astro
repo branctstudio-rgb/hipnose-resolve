@@ -5,10 +5,52 @@ import { getCollection } from 'astro:content';
 const areas = (await getCollection('areas')).sort((a, b) => a.data.ordem - b.data.ordem);
 const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
 const areaNome = (id: string) => areas.find((a) => a.id === id)?.data.nome ?? '';
+
+const faq = [
+  {
+    q: 'A hipnose é segura? Vou perder o controlo?',
+    a: 'Sim, é segura — e não, nunca perde o controlo. Em hipnoterapia clínica está sempre consciente e no comando; a terapeuta apenas guia um estado de foco profundo, semelhante ao de estar absorto num bom livro.',
+  },
+  {
+    q: 'As consultas online funcionam tão bem como as presenciais?',
+    a: 'Sim. A hipnoterapia adapta-se muito bem ao formato online: basta um lugar tranquilo, auscultadores e ligação estável. O link da sessão chega automaticamente com a confirmação.',
+  },
+  {
+    q: 'Qual a diferença entre a Consulta de Avaliação e a de Tratamento?',
+    a: 'A Avaliação (2h) é o ponto de partida: conhecer a sua história e definir o plano. As consultas de Tratamento (1h) são as sessões de acompanhamento contínuo desse plano.',
+  },
+  {
+    q: 'A hipnoterapia substitui o médico ou psicólogo?',
+    a: 'Não. É uma prática complementar de bem-estar e não substitui diagnóstico nem tratamento médico ou psicológico. Sempre que necessário, trabalhamos em articulação com outros profissionais de saúde.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Hipnose Resolve',
+    description: 'Clínica de hipnoterapia — consultas online e presenciais, Portugal e Brasil, em português.',
+    url: 'https://hipnoseresolve.pt',
+    founder: { '@type': 'Person', name: 'Marta', jobTitle: 'Hipnoterapeuta' },
+    areaServed: ['PT', 'BR'],
+    availableLanguage: 'pt',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 <Base
   title="Hipnose Resolve — Clínica de Hipnoterapia · Online e Presencial"
   description="Hipnoterapia clínica para ansiedade, medos, hábitos, emagrecimento e mais. Consultas online e presenciais, em português — Portugal e Brasil. Marque a sua Consulta de Avaliação."
+  schema={schema}
 >
   <!-- HERO -->
   <section class="hero">
@@ -220,22 +262,12 @@ const areaNome = (id: string) => areas.find((a) => a.id === id)?.data.nome ?? ''
         <h2 style="margin-bottom:2.5rem;">Antes de <em>dar o passo</em></h2>
       </div>
       <div class="faq reveal" data-d="1">
-        <details>
-          <summary>A hipnose é segura? Vou perder o controlo?</summary>
-          <p>Sim, é segura — e não, nunca perde o controlo. Em hipnoterapia clínica está sempre consciente e no comando; a terapeuta apenas guia um estado de foco profundo, semelhante ao de estar absorto num bom livro.</p>
-        </details>
-        <details>
-          <summary>As consultas online funcionam tão bem como as presenciais?</summary>
-          <p>Sim. A hipnoterapia adapta-se muito bem ao formato online: basta um lugar tranquilo, auscultadores e ligação estável. O link da sessão chega automaticamente com a confirmação.</p>
-        </details>
-        <details>
-          <summary>Qual a diferença entre a Consulta de Avaliação e a de Tratamento?</summary>
-          <p>A Avaliação (2h) é o ponto de partida: conhecer a sua história e definir o plano. As consultas de Tratamento (1h) são as sessões de acompanhamento contínuo desse plano.</p>
-        </details>
-        <details>
-          <summary>A hipnoterapia substitui o médico ou psicólogo?</summary>
-          <p>Não. É uma prática complementar de bem-estar e não substitui diagnóstico nem tratamento médico ou psicológico. Sempre que necessário, trabalhamos em articulação com outros profissionais de saúde.</p>
-        </details>
+        {faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>

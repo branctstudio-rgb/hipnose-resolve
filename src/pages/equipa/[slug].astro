@@ -15,10 +15,24 @@ const t = terapeuta.data;
 const areas = (await getCollection('areas'))
   .filter((a) => a.data.terapeuta === terapeuta.id)
   .sort((a, b) => a.data.ordem - b.data.ordem);
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: t.nome,
+    jobTitle: 'Hipnoterapeuta',
+    worksFor: { '@type': 'MedicalBusiness', name: 'Hipnose Resolve', url: 'https://hipnoseresolve.pt' },
+    knowsAbout: t.especialidades,
+    knowsLanguage: 'pt',
+    url: `https://hipnoseresolve.pt/equipa/${terapeuta.id}`,
+  },
+];
 ---
 <Base
   title={`${t.nome} — ${t.papel} · Hipnose Resolve`}
   description={`${t.nome}, ${t.papel.toLowerCase()} na Hipnose Resolve. Especialidades: ${t.especialidades.join(', ')}. Marque diretamente a sua consulta.`}
+  schema={schema}
 >
   <section class="wrap page-hero">
     <p class="breadcrumb"><a href="/equipa">Equipa</a> · {t.nome}</p>

@@ -12,10 +12,33 @@ const d = area.data;
 const terapeuta = await getEntry('terapeutas', d.terapeuta);
 const programa = d.programa ? await getEntry('programas', d.programa) : null;
 const t = terapeuta?.data;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Áreas de Intervenção', item: 'https://hipnoseresolve.pt/areas' },
+      { '@type': 'ListItem', position: 2, name: d.nome, item: `https://hipnoseresolve.pt/areas/${area.id}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: `Hipnoterapia para ${d.nome}`,
+    provider: { '@type': 'MedicalBusiness', name: 'Hipnose Resolve', url: 'https://hipnoseresolve.pt' },
+    areaServed: ['PT', 'BR'],
+    availableChannel: [
+      { '@type': 'ServiceChannel', name: 'Online' },
+      { '@type': 'ServiceChannel', name: 'Presencial' },
+    ],
+  },
+];
 ---
 <Base
   title={`${d.nome} — Hipnoterapia · Hipnose Resolve`}
   description={`Hipnoterapia para ${d.nome.toLowerCase()}: ${d.curto} Consultas online e presenciais, em português.`}
+  schema={schema}
 >
   <section class="wrap page-hero">
     <p class="breadcrumb"><a href="/areas">Áreas de Intervenção</a> · {d.nome}</p>

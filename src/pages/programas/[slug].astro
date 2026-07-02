@@ -15,10 +15,31 @@ export async function getStaticPaths() {
 const { programa } = Astro.props;
 const d = programa.data;
 const area = await getEntry('areas', d.area);
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: d.nome,
+    description: d.sub,
+    brand: { '@type': 'Brand', name: 'Hipnose Resolve' },
+    url: `https://hipnoseresolve.pt/programas/${programa.id}`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 <Base
   title={`${d.nome} — ${d.promessa} · Hipnose Resolve`}
   description={d.sub}
+  schema={schema}
 >
   <!-- PROMESSA -->
   <section class="hero" style="padding-bottom: clamp(2.5rem, 6vw, 4.5rem);">

@@ -31,8 +31,12 @@ npm run preview    # http://localhost:4321 — versão limpa de produção
 - ⚠️ **Só para apresentação interna:** testemunhos e artigos são exemplo (nunca publicar sem
   consentimento/revisão); visuais em arco são placeholders para fotografia real; preços "sob
   consulta"; WhatsApp/email/redes são placeholders; legais precisam de validação jurídica
+- ✅ SEO técnico: sitemap (@astrojs/sitemap) + robots.txt, schema.org (MedicalBusiness+FAQPage
+  na home, Service+Breadcrumb nas áreas, Person na equipa, Product+FAQPage nos programas,
+  BlogPosting no blog), canonical + OG completo, favicon, página 404.
+  Peso: home 19KB HTML, 0KB de JS bundle — budget Lighthouse folgado.
 - ⏳ Próximo: booking real (API BRANCT CRM), auth membros (Supabase), checkout (dev CRM),
-  i18n EN, schema.org, consent banner RGPD, performance pass final
+  i18n EN, consent banner RGPD (quando houver pixel/analytics), fotos reais + performance pass final
 
 ## Conteúdo editável pela cliente (sem tocar em código)
 

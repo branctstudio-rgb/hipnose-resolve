@@ -6,8 +6,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  schema?: Record<string, unknown>[];
 }
-const { title, description } = Astro.props;
+const { title, description, schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 <!doctype html>
 <html lang="pt-PT">
@@ -16,9 +18,19 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#FAF6EF" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Hipnose Resolve" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta name="twitter:card" content="summary" />
+    {schema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body>
     <header class="header">

@@ -11,8 +11,22 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const area = post.data.areaRelacionada ? await getEntry('areas', post.data.areaRelacionada) : null;
 const fmt = new Date(post.data.data).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.titulo,
+    description: post.data.resumo,
+    datePublished: post.data.data,
+    inLanguage: 'pt-PT',
+    author: { '@type': 'Organization', name: 'Hipnose Resolve' },
+    publisher: { '@type': 'Organization', name: 'Hipnose Resolve', url: 'https://hipnoseresolve.pt' },
+    mainEntityOfPage: `https://hipnoseresolve.pt/blog/${post.id}`,
+  },
+];
 ---
-<Base title={`${post.data.titulo} — Blog · Hipnose Resolve`} description={post.data.resumo}>
+<Base title={`${post.data.titulo} — Blog · Hipnose Resolve`} description={post.data.resumo} schema={schema}>
   <article>
     <section class="wrap page-hero" style="max-width: 860px;">
       <p class="breadcrumb"><a href="/blog">Blog</a> · {post.data.categoria}</p>
