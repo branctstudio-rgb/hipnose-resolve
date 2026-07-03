@@ -120,6 +120,29 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         { threshold: 0.14 }
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Tilt 3D — cards seguem o rato (só ponteiro fino, sem reduced-motion)
+      const podeTilt =
+        matchMedia('(pointer: fine)').matches &&
+        !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (podeTilt) {
+        document.querySelectorAll<HTMLElement>('.spec-card, .card-l, .program').forEach((el) => {
+          el.classList.add('tilt3d');
+          el.addEventListener('pointermove', (e) => {
+            const r = el.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            el.style.setProperty('--ry', (px * 5).toFixed(2) + 'deg');
+            el.style.setProperty('--rx', (-py * 5).toFixed(2) + 'deg');
+            el.style.setProperty('--mx', ((px + 0.5) * 100).toFixed(1) + '%');
+            el.style.setProperty('--my', ((py + 0.5) * 100).toFixed(1) + '%');
+          });
+          el.addEventListener('pointerleave', () => {
+            el.style.setProperty('--rx', '0deg');
+            el.style.setProperty('--ry', '0deg');
+          });
+        });
+      }
     </script>
   </body>
 </html>

@@ -128,10 +128,22 @@ em, .accent-i {
 .btn:hover svg { transform: translateX(4px); }
 
 .btn--primary {
-  background: var(--sage-deep); color: #FBF9F4;
-  box-shadow: 0 18px 38px -18px rgba(69, 82, 59, .55);
+  position: relative; overflow: hidden;
+  background: linear-gradient(180deg, #52614661 0%, transparent 40%), var(--sage-deep);
+  color: #FBF9F4;
+  box-shadow:
+    0 18px 38px -18px rgba(69, 82, 59, .55),
+    inset 0 1px 0 rgba(255, 255, 255, .18),   /* topo iluminado */
+    inset 0 -2px 0 rgba(20, 26, 15, .35);      /* aresta 3D inferior */
 }
-.btn--primary:hover { background: var(--sage-ink); transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+.btn--primary::after { /* brilho varrido */
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 32%, rgba(255, 255, 255, .2) 48%, transparent 62%);
+  transform: translateX(-130%);
+}
+.btn--primary:hover::after { transform: translateX(130%); transition: transform .9s var(--ease-calm); }
+.btn--primary:hover { background: linear-gradient(180deg, #4a573f 0%, var(--sage-ink) 100%); transform: translateY(-2px); box-shadow: var(--shadow-lift), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -2px 0 rgba(20,26,15,.35); }
+.btn:active { transform: translateY(1px) !important; }
 
 .btn--ghost {
   border-color: var(--hair); color: var(--ink);
@@ -292,12 +304,11 @@ em, .accent-i {
   transition: opacity .35s, transform .45s var(--ease-calm);
 }
 .area:hover::after { opacity: 1; transform: none; }
-.area--cta { grid-column: span 2; background: var(--sage-ink); }
+.area--cta { background: var(--sage-ink); } /* 15 áreas + esta célula = grelha 4×4 exata */
 .area--cta h3 { color: #F5F2E9; font-style: italic; font-weight: 440; }
 .area--cta p { color: #C2CBAF; }
 .area--cta:hover { background: var(--sage-deep); }
 .area--cta::after { color: var(--gold); }
-@media (max-width: 520px) { .area--cta { grid-column: auto; } }
 
 /* ---------- Como funciona / booking ---------- */
 .steps { counter-reset: passo; margin-top: 3.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.6rem; }
@@ -452,6 +463,61 @@ em, .accent-i {
 }
 .wa-float:hover { transform: translateY(-4px) scale(1.05); }
 
+/* ============================================================
+   CAMADA 3D PREMIUM (padrão AAA+ 2026)
+   Tilt segue o rato via CSS vars escritas em pointermove;
+   suavização por transição CSS. Só rato fino + sem reduced-motion.
+   ============================================================ */
+.tilt3d {
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0));
+  transition: transform .55s var(--ease-calm), box-shadow .55s var(--ease-calm);
+  transform-style: preserve-3d;
+}
+.tilt3d::before { /* reflexo que segue o cursor */
+  content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 253, 245, .16), transparent 62%);
+  opacity: 0; transition: opacity .5s;
+}
+.tilt3d:hover::before { opacity: 1; }
+.spec-card.tilt3d:hover, .card-l.tilt3d:hover, .program.tilt3d:hover { --ty: -6px; }
+.card-l.tilt3d:hover { transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0)); }
+.program.tilt3d:hover { transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0)); }
+
+/* vidro premium nos cards claros: highlight interno + sombra dupla */
+.card-l, .sinais, .offer, .quote, .login-card, .flow {
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, .85),
+    inset 0 0 0 1px rgba(255, 255, 255, .35);
+}
+.spec-card {
+  box-shadow:
+    0 20px 50px -18px rgba(35, 42, 28, .45),  /* sombra ambiente */
+    0 6px 16px -8px rgba(35, 42, 28, .35);    /* sombra direta */
+}
+
+/* chips do hero flutuam devagar */
+.chip-float { animation: floaty 7s ease-in-out infinite alternate; }
+.chip-float + .chip-float { animation-delay: 3.2s; }
+@keyframes floaty { from { translate: 0 0; } to { translate: 0 -9px; } }
+
+/* barra de progresso de leitura (scroll-driven, com fallback) */
+@supports (animation-timeline: scroll()) {
+  body::before {
+    content: ''; position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 90;
+    background: linear-gradient(90deg, var(--sage-deep), var(--gold), var(--terra));
+    transform-origin: 0 50%; transform: scaleX(0);
+    animation: leitura linear both;
+    animation-timeline: scroll();
+  }
+  @keyframes leitura { to { transform: scaleX(1); } }
+}
+
+/* profundidade no arco do hero */
+.hero__grid > div:last-child { perspective: 1200px; }
+.hero .arch { transform: rotateY(-4deg) rotateX(1.5deg); transform-style: preserve-3d; }
+
 /* ---------- Reveals (movimento que acalma) ---------- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity var(--t-reveal) var(--ease-calm), transform var(--t-reveal) var(--ease-calm); }
 .reveal.in { opacity: 1; transform: none; }
@@ -598,10 +664,19 @@ em, .accent-i {
 .spec-card:hover img { transform: scale(1.045); }
 .spec-card::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(190deg, transparent 34%, rgba(28, 33, 22, .82) 78%);
+  background: linear-gradient(190deg, rgba(28, 33, 22, .08) 0%, rgba(28, 33, 22, .38) 42%, rgba(24, 29, 19, .94) 82%);
 }
-.spec-card__body { position: relative; z-index: 2; padding: 2.3rem; color: #FBF9F2; }
-.spec-card__body .kicker { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.spec-card__body { position: relative; z-index: 2; padding: 2.3rem; color: #FBF9F2; text-shadow: 0 1px 18px rgba(15, 19, 12, .5); }
+.spec-card__body .kicker {
+  display: inline-block;
+  font-size: .74rem; letter-spacing: .18em; text-transform: uppercase;
+  color: #F0D9A0; font-weight: 700;
+  background: rgba(24, 29, 19, .55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(240, 217, 160, .35);
+  border-radius: 999px; padding: .42rem 1rem;
+  text-shadow: none;
+}
 .spec-card__body h3 { font-size: clamp(1.7rem, 2.6vw, 2.3rem); margin: .7rem 0 .5rem; color: #FBF9F2; }
 .spec-card__body p { font-size: .96rem; color: #D9D5C8; max-width: 44ch; }
 .spec-card__body .mais { display: inline-block; margin-top: 1.1rem; font-weight: 600; font-size: .92rem; color: #EFE9DA; }
