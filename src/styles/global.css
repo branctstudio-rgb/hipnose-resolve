@@ -106,10 +106,10 @@ em, .accent-i {
 .eyebrow {
   display: inline-flex; align-items: center; gap: .6rem;
   font-size: var(--fs-small);
-  font-weight: 600;
-  letter-spacing: .16em;
+  font-weight: 700;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--sage-deep);
+  color: #8A6E37;               /* dourado-tinta (pedido da cliente) */
   margin-bottom: 1.4rem;
 }
 .eyebrow::before {
@@ -159,6 +159,36 @@ em, .accent-i {
 .btn--paper { background: var(--paper); color: var(--sage-ink); }
 .btn--paper:hover { background: #fff; transform: translateY(-2px); }
 
+.btn--gold {
+  position: relative; overflow: hidden;
+  background: linear-gradient(180deg, #D8BC80 0%, var(--gold) 55%, #A88A48 100%);
+  color: #2A2416;
+  box-shadow:
+    0 14px 30px -14px rgba(138, 110, 55, .6),
+    inset 0 1px 0 rgba(255, 255, 255, .45),
+    inset 0 -2px 0 rgba(90, 70, 30, .35);
+}
+.btn--gold:hover { transform: translateY(-2px); box-shadow: 0 20px 44px -16px rgba(138, 110, 55, .7), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -2px 0 rgba(90,70,30,.35); }
+
+/* selo circular (CTA final — frase da cliente) */
+.selo {
+  width: clamp(150px, 17vw, 190px); aspect-ratio: 1; flex: none;
+  border-radius: 50%;
+  display: grid; place-items: center; text-align: center;
+  padding: 1.4rem;
+  background: var(--card);
+  border: 1px solid var(--gold-light);
+  box-shadow: var(--shadow-soft), inset 0 0 0 6px var(--paper), inset 0 0 0 7px var(--gold-light);
+  font-family: var(--serif); font-style: italic;
+  font-size: .92rem; line-height: 1.45; color: var(--sage-ink);
+  rotate: 3deg;
+  animation: floaty 8s ease-in-out infinite alternate;
+}
+.cta-final__grid {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(2rem, 5vw, 4rem); flex-wrap: wrap;
+}
+
 /* ---------- Header ---------- */
 .header {
   position: sticky; top: 0; z-index: 50;
@@ -189,6 +219,8 @@ em, .accent-i {
 .nav .nav__extra { display: none; }              /* membros: só no drawer mobile e no footer */
 .header .btn { padding: .72rem 1.4rem; font-size: .92rem; white-space: nowrap; }
 @media (max-width: 1024px) { .nav { display: none; } }
+.header .btn--gold { padding: .72rem 1.4rem; font-size: .92rem; white-space: nowrap; }
+@media (max-width: 640px) { .header .btn--gold { display: none; } }
 
 /* ---------- Hero ---------- */
 .hero {
