@@ -38,15 +38,6 @@ const ico = {
 };
 const Icon = (d: string) => `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}" stroke="currentColor"/></svg>`;
 
-const terapias = [
-  { nome: 'Ansiedade e Stress', txt: 'Recupere a calma, o equilíbrio emocional e a leveza de viver sem sobrecarga mental.', href: '/areas/ansiedade-panico', img: fotoAnsiedade, icone: ico.mente },
-  { nome: 'Autoestima e Confiança', txt: 'Transforme a forma como se vê e fortaleça o que a sua voz interior lhe diz.', href: '/areas/autoestima-empoderamento', img: fotoRelacoes, icone: ico.coracao },
-  { nome: 'Hábitos e Comportamentos', txt: 'Elimine padrões limitantes e crie novos hábitos que impulsionam a sua melhor versão.', href: '/areas/mudanca-habitos', img: fotoStress, icone: ico.spark },
-  { nome: 'Emagrecimento Consciente', txt: 'Reprograme a sua mente para alcançar o peso ideal de forma saudável e definitiva.', href: '/areas/emagrecimento', img: fotoMagra, icone: ico.balanca },
-  { nome: 'Parar de Fumar', txt: 'Liberte-se do tabaco com apoio especializado e hipnose clínica — numa única sessão.', href: '/areas/cessacao-tabagica', img: fotoTabaco, icone: ico.escudo },
-  { nome: 'E muito mais…', txt: 'Fobias, luto, fertilidade, trauma e outros desafios que pode superar connosco.', href: '/areas', img: fotoMedos, icone: ico.chave },
-];
-
 const pilares = [
   { txt: 'Abordagem clínica e personalizada', icone: ico.pessoa },
   { txt: 'Confidencialidade e ética profissional', icone: ico.escudo },
@@ -111,9 +102,26 @@ const schema = [
         ))
       )}
     </div>
+    <div class="ui-card ui-card--ok" aria-hidden="true">
+      <span class="dot"></span> Sessão confirmada — link Meet enviado
+    </div>
+    <div class="ui-card ui-card--chat" aria-hidden="true">
+      <div class="balao balao--in">Quero deixar de fumar… é mesmo possível numa sessão?</div>
+      <div class="balao balao--out">É — e está no sítio certo. Prefere online ou presencial?</div>
+      <small>Assistente Hipnose Resolve · responde a qualquer hora</small>
+    </div>
     <div class="wrap">
       <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
-      <h1 data-rise="2">Reprogramamos mentes e comportamentos. <em>Transformamos vidas.</em></h1>
+      <div class="hero-meta" data-rise="2">
+        <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <a href="#testemunhos">Histórias reais de transformação</a>
+      </div>
+      <h1 data-rise="2">Reprogramamos mentes e comportamentos.
+        <em class="u-gold">Transformamos vidas.
+          <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
+        </em>
+      </h1>
       <p class="hero-full__sub" data-rise="3">
         Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
       </p>
@@ -160,29 +168,55 @@ const schema = [
     </div>
   </section>
 
-  <!-- TERAPIAS -->
+  <!-- MANIFESTO (storytelling) -->
+  <section class="manifesto" aria-label="A nossa missão">
+    <div class="wrap">
+      <p class="manifesto__txt">
+        {'A mudança não devia ter de esperar pela segunda-feira certa. Juntámos hipnose clínica, método e acompanhamento humano para reescrever consigo a sua história —'.split(' ').map((w) => <span class="w">{w} </span>)}
+        <em><span class="w">ao</span> <span class="w">seu</span> <span class="w">ritmo,</span> <span class="w">sem</span> <span class="w">julgamento.</span></em>
+      </p>
+    </div>
+  </section>
+
+  <!-- TERAPIAS (mosaico) -->
   <section class="section" id="terapias">
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
-        <p class="eyebrow" style="justify-content:center; display:flex;">Áreas em que podemos ajudar</p>
+        <p class="eyebrow">Áreas em que podemos ajudar</p>
         <h2>Terapias que <em>transformam vidas</em></h2>
       </div>
-      <div class="thera">
-        {terapias.map((t, i) => (
-          <a class="thera-card reveal" data-d={String(i % 3)} href={t.href}>
-            <div class="thera-card__img">
-              <Image src={t.img} alt={t.nome} widths={[420, 700]} sizes="(max-width: 980px) 92vw, 30vw" />
-            </div>
-            <div class="thera-card__ico"><Fragment set:html={Icon(t.icone)} /></div>
-            <div class="thera-card__body">
-              <h3>{t.nome}</h3>
-              <p>{t.txt}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="reveal" style="text-align:center; margin-top:2.8rem;">
-        <a class="btn btn--primary" href="/areas">Ver todas as terapias</a>
+      <div class="mosaic reveal" data-d="1">
+        <a class="mosaic-tile" href="/areas/ansiedade-panico">
+          <Image src={fotoAnsiedade} alt="Hipnoterapia para Ansiedade e Stress" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
+          <span class="mosaic-tile__tag">Ansiedade e Stress</span>
+        </a>
+        <a class="mosaic-tile" href="/areas/autoestima-empoderamento">
+          <Image src={fotoRelacoes} alt="Hipnoterapia para Autoestima e Confiança" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
+          <span class="mosaic-tile__tag">Autoestima e Confiança</span>
+        </a>
+        <div class="mosaic-cta">
+          <span class="monogram" aria-hidden="true">HR</span>
+          <h3>O primeiro passo é uma conversa.</h3>
+          <p>Avaliação de 2 horas, online ou presencial — e um plano claro no fim.</p>
+          <a class="btn btn--primary" href="/consultas">Marcar sessão</a>
+          <a href="/areas" style="font-size:.85rem; font-weight:600; color:#7A6435;">Ver todas as terapias →</a>
+        </div>
+        <a class="mosaic-tile" href="/areas/emagrecimento">
+          <Image src={fotoMagra} alt="Emagrecimento Consciente com hipnose" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
+          <span class="mosaic-tile__tag">Emagrecimento Consciente</span>
+        </a>
+        <a class="mosaic-tile" href="/areas/cessacao-tabagica">
+          <Image src={fotoTabaco} alt="Parar de fumar com hipnose clínica" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
+          <span class="mosaic-tile__tag">Parar de Fumar</span>
+        </a>
+        <a class="mosaic-tile mosaic-tile--w1" href="/areas/mudanca-habitos">
+          <Image src={fotoStress} alt="Mudança de hábitos e comportamentos" widths={[700, 1000]} sizes="(max-width: 980px) 46vw, 40vw" />
+          <span class="mosaic-tile__tag">Hábitos e Comportamentos</span>
+        </a>
+        <a class="mosaic-tile mosaic-tile--w2" href="/areas">
+          <Image src={fotoMedos} alt="Fobias, luto, fertilidade, trauma e mais" widths={[700, 1000]} sizes="(max-width: 980px) 46vw, 40vw" />
+          <span class="mosaic-tile__tag">E muito mais — fobias, luto, fertilidade…</span>
+        </a>
       </div>
     </div>
   </section>
@@ -238,10 +272,10 @@ const schema = [
   <!-- NÚMEROS (reais) -->
   <section class="stats" aria-label="Resultados">
     <div class="wrap stats__grid">
-      <div class="stat reveal"><Fragment set:html={Icon(ico.balanca)} /><b>−20 kg</b><span>a maior transformação MagraMente</span></div>
-      <div class="stat reveal" data-d="1"><Fragment set:html={Icon(ico.escudo)} /><b>90 min</b><span>para apagar 30 anos de tabaco</span></div>
-      <div class="stat reveal" data-d="2"><Fragment set:html={Icon(ico.mente)} /><b>Desde 2000</b><span>a estudar a mente humana</span></div>
-      <div class="stat reveal" data-d="3"><Fragment set:html={Icon(ico.globo)} /><b>PT · BR</b><span>consultas online nos dois fusos</span></div>
+      <div class="stat reveal"><b>−20<em> kg</em></b><span>a maior transformação do programa MagraMente</span></div>
+      <div class="stat reveal" data-d="1"><b>90<em> min</em></b><span>para apagar 30 anos de hábito de fumar</span></div>
+      <div class="stat reveal" data-d="2"><b>2000</b><span>o ano em que a Marta começou a estudar a mente</span></div>
+      <div class="stat reveal" data-d="3"><b>PT<em>·</em>BR</b><span>consultas online nos dois fusos, em português</span></div>
     </div>
   </section>
 
@@ -266,13 +300,17 @@ const schema = [
   </section>
 
   <!-- TESTEMUNHOS -->
-  <section class="section" style="padding-top:0;">
+  <section class="section" id="testemunhos" style="padding-top:0;">
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
-        <p class="eyebrow" style="justify-content:center; display:flex;">Histórias reais, resultados reais</p>
+        <p class="eyebrow">Histórias reais, resultados reais</p>
         <h2>O que dizem <em>sobre nós</em></h2>
       </div>
       <div class="quotes__grid">
+        <div class="quote quote--metric reveal">
+          <b>−20 kg</b>
+          <span>o resultado que começou numa Consulta de Avaliação igual à que pode marcar hoje</span>
+        </div>
         <blockquote class="quote reveal" data-d="1">
           <p>Três anos de dietas sem resultado. Com a Marta perdi 20 kg — mudei por dentro, e o resto seguiu.</p>
           <footer><span class="quote__avatar" aria-hidden="true">MF</span><span><b>Maria Ferreira</b><br /><span style="font-size:.82rem;">Programa MagraMente</span></span></footer>
