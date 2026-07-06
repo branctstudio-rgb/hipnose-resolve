@@ -312,18 +312,29 @@ em, .accent-i {
 .hero-full__slide {
   position: absolute; inset: 0;
   opacity: 0;
-  animation: hero-slide 21s linear infinite;
+  animation: hero-slide 16s linear infinite;
 }
-.hero-full__slide img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
-.hero-full__slide:nth-child(2) { animation-delay: 7s; }
-.hero-full__slide:nth-child(3) { animation-delay: 14s; }
-@keyframes hero-slide {  /* 3 slides · ciclo 21s · zoom lento tipo filme */
+.hero-full__slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-full__slide:nth-child(2) { animation-delay: 8s; }
+@keyframes hero-slide {  /* 2 slides · ciclo 16s · zoom lento tipo filme */
   0%   { opacity: 0; transform: scale(1.02); }
   6%   { opacity: 1; }
-  33.3%{ opacity: 1; transform: scale(1.1); }
-  40%  { opacity: 0; transform: scale(1.12); }
+  50%  { opacity: 1; transform: scale(1.09); }
+  58%  { opacity: 0; transform: scale(1.1); }
   100% { opacity: 0; }
 }
+
+/* halo dourado que respira — assinatura Hipnose Resolve sobre a paisagem */
+.hero-full__halo {
+  position: absolute; z-index: 1; pointer-events: none;
+  right: 6%; top: 14%;
+  width: clamp(280px, 34vw, 560px); aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%, rgba(227, 205, 156, .38) 0%, rgba(196, 161, 92, .14) 45%, transparent 68%);
+  mix-blend-mode: screen;
+  animation: breathe 9s var(--ease-calm) infinite;
+}
+@media (max-width: 940px) { .hero-full__halo { right: -12%; top: 6%; } }
 .hero-full::after { /* overlay para legibilidade — verde-tinta à esquerda */
   content: ''; position: absolute; inset: 0; z-index: 1;
   background:
