@@ -36,17 +36,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
   <body>
     <header class="header">
       <div class="wrap header__in">
-        <a class="logo" href="/">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></a>
+        <a class="logo" href="/">
+          <span class="monogram" aria-hidden="true">HR</span>
+          <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></span>
+        </a>
         <nav class="nav" id="nav" aria-label="Navegação principal">
-          <a href="/areas">Áreas</a>
-          <a href="/consultas">Consultas</a>
-          <a href="/equipa">Equipa</a>
+          <a href="/areas">Terapias</a>
           <a href="/programas">Programas</a>
+          <a href="/consultas">Como Funciona</a>
+          <a href="/equipa">Sobre Nós</a>
           <a href="/blog">Blog</a>
           <a href="/contactos">Contactos</a>
           <a href="/membros" class="nav__extra">Área de Membros</a>
         </nav>
-        <a class="btn btn--primary" href="/consultas">Marcar consulta</a>
+        <a class="btn btn--primary" href="/consultas">Marcar sessão</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         </button>
@@ -61,9 +64,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       <div class="wrap">
         <div class="footer__grid">
           <div>
-            <a class="logo" href="/">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></a>
+            <a class="logo" href="/">
+              <span class="monogram" aria-hidden="true">HR</span>
+              <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></span>
+            </a>
             <p style="margin-top:1.2rem; max-width:34ch;">
-              Hipnoterapia clínica, online e presencial. Portugal e Brasil, em português.
+              Clínica de hipnoterapia — reprogramamos mentes e comportamentos, online e presencial. Portugal e Brasil.
             </p>
             <p style="margin-top:1rem; font-size:.86rem; line-height:1.8;">
               Rua Dr. Álvaro Monteiro, 12 R/C dto.<br />3510-014 Viseu · Portugal<br />
@@ -74,10 +80,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
           <div>
             <h4>Navegar</h4>
             <ul>
-              <li><a href="/areas">Áreas de intervenção</a></li>
-              <li><a href="/consultas">Consultas</a></li>
-              <li><a href="/equipa">Equipa</a></li>
+              <li><a href="/areas">Terapias</a></li>
               <li><a href="/programas">Programas</a></li>
+              <li><a href="/consultas">Como funciona</a></li>
+              <li><a href="/equipa">Sobre nós</a></li>
               <li><a href="/blog">Blog</a></li>
               <li><a href="/membros">Área de Membros</a></li>
             </ul>
@@ -89,6 +95,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
               <li><a href="https://www.livroreclamacoes.pt" rel="noopener" target="_blank">Livro de Reclamações Eletrónico</a></li>
               <li><a href="/termos">Termos dos Programas</a></li>
             </ul>
+          </div>
+          <div>
+            <h4>Newsletter</h4>
+            <p style="font-size:.88rem;">Receba dicas e conteúdos exclusivos para o seu bem-estar.</p>
+            <form class="news" onsubmit="return false;" aria-label="Subscrever newsletter">
+              <input type="email" placeholder="O seu melhor email" aria-label="Email" />
+              <button type="submit" title="Disponível brevemente">→</button>
+            </form>
+            <p style="margin-top:1.2rem; font-size:.86rem;">
+              <a href="https://www.instagram.com/hipnoseresolve/" target="_blank" rel="noopener">Instagram</a> ·
+              <a href="https://www.facebook.com/profile.php?id=61555999870032" target="_blank" rel="noopener">Facebook</a> ·
+              <a href="https://wa.me/351915574759" target="_blank" rel="noopener">WhatsApp</a>
+            </p>
           </div>
         </div>
         <p class="footer__legal">

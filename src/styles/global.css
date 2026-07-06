@@ -6,31 +6,36 @@
    ============================================================ */
 
 :root {
+  /* === IDENTIDADE v2 · "Clínica Online Premium" ===
+     Do logo dourado + blueprint da cliente: marfim, verde-floresta, dourado.
+     (Paleta oficial da arte final chega no fim do mês — trocar aqui.) */
+
   /* --- Cor · papel e tinta --- */
-  --paper: #FAF6EF;          /* fundo base off-white quente */
-  --paper-deep: #F2EBDF;     /* superfícies suaves */
+  --paper: #FBF8F1;          /* marfim quente */
+  --paper-deep: #F4EEE1;     /* superfícies suaves */
   --card: #FFFFFF;
-  --ink: #2E2A23;            /* quase-preto quente */
-  --ink-soft: #6E655A;       /* texto secundário */
-  --hair: #E7DFD1;           /* hairlines */
+  --ink: #22302A;            /* verde-tinta profundo */
+  --ink-soft: #64705F;       /* texto secundário */
+  --hair: #E7E0CF;           /* hairlines */
 
-  /* --- Cor · calma (verde-salva) --- */
-  --sage: #6E7D5F;
-  --sage-deep: #45523B;      /* interativo primário */
-  --sage-ink: #333F2C;       /* hover / secção escura */
-  --sage-mist: #E9EDE0;      /* fundos suaves */
+  /* --- Cor · calma (verde-floresta) --- */
+  --sage: #3E6152;
+  --sage-deep: #24473A;      /* interativo primário */
+  --sage-ink: #16302A;       /* hover / secção escura */
+  --sage-mist: #E9EEE4;      /* fundos suaves */
 
-  /* --- Cor · transformação (terracota + dourado) --- */
-  --terra: #BC6C41;
-  --terra-soft: #F5E2D4;
-  --gold: #B08D4F;
+  /* --- Cor · transformação (DOURADO do logo) --- */
+  --terra: #B08D4F;          /* dourado assume o acento (nome mantido p/ compat.) */
+  --terra-soft: #F3E8D2;
+  --gold: #C4A15C;
+  --gold-light: #E3CD9C;
 
   /* --- Tipografia --- */
   --serif: 'Fraunces Variable', Georgia, serif;
   --sans: 'Figtree Variable', 'Segoe UI', sans-serif;
 
   /* --- Escala (generosa, ar de revista) --- */
-  --fs-hero: clamp(2.6rem, 6.2vw, 5.2rem);
+  --fs-hero: clamp(2.3rem, 4.8vw, 4.1rem);
   --fs-h2: clamp(2rem, 4vw, 3.2rem);
   --fs-h3: clamp(1.3rem, 2vw, 1.65rem);
   --fs-lead: clamp(1.08rem, 1.5vw, 1.3rem);
@@ -186,7 +191,13 @@ em, .accent-i {
 @media (max-width: 1024px) { .nav { display: none; } }
 
 /* ---------- Hero ---------- */
-.hero { padding-block: clamp(3.5rem, 8vw, 6.5rem) var(--space-section); overflow: hidden; }
+.hero {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem) var(--space-section);
+  overflow: hidden;
+  background:
+    radial-gradient(55% 75% at 88% 8%, rgba(196, 161, 92, .16) 0%, transparent 60%),
+    radial-gradient(40% 60% at 5% 95%, rgba(62, 97, 82, .08) 0%, transparent 60%);
+}
 .hero__grid {
   display: grid; grid-template-columns: 1.08fr .92fr;
   gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
@@ -441,8 +452,9 @@ em, .accent-i {
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--hair); margin-top: var(--space-section); padding-block: 3.5rem 2.5rem; font-size: .9rem; color: var(--ink-soft); }
-.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem; }
-@media (max-width: 880px) { .footer__grid { grid-template-columns: 1fr; } }
+.footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 2.5rem; }
+@media (max-width: 980px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }
 .footer h4 { font-family: var(--sans); font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-bottom: 1rem; }
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--sage-deep); }
@@ -462,6 +474,98 @@ em, .accent-i {
   transition: transform .45s var(--ease-calm);
 }
 .wa-float:hover { transform: translateY(-4px) scale(1.05); }
+
+/* ============================================================
+   COMPONENTES v2 · blueprint "Clínica Online Premium"
+   ============================================================ */
+
+/* monograma dourado (interino até chegar o ficheiro do logo) */
+.monogram {
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  display: grid; place-items: center; flex: none;
+  border: 1.5px solid var(--gold);
+  background: radial-gradient(circle at 32% 28%, #F6EDD8 0%, #EBDDBC 100%);
+  font-family: var(--serif); font-weight: 560; font-size: 1.05rem;
+  color: #8A6E37; letter-spacing: .02em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 4px 12px -6px rgba(138,110,55,.45);
+}
+.logo { display: flex; align-items: center; gap: .8rem; }
+.logo__txt small { color: #8A6E37; }
+
+/* faixa de confiança (5 pilares) */
+.trust { border-block: 1px solid var(--hair); background: var(--paper-deep); }
+.trust__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; padding-block: 2.1rem; }
+@media (max-width: 980px) { .trust__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .trust__grid { grid-template-columns: 1fr; } }
+.trust__item { display: flex; flex-direction: column; align-items: center; gap: .65rem; text-align: center; }
+.trust__item svg { width: 30px; height: 30px; stroke: var(--gold); }
+.trust__item span { font-size: .82rem; font-weight: 600; color: var(--ink); line-height: 1.4; max-width: 20ch; }
+
+/* cards de terapias (foto + ícone circular) */
+.thera { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3.2rem; }
+@media (max-width: 980px) { .thera { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .thera { grid-template-columns: 1fr; } }
+.thera-card {
+  position: relative; background: var(--card);
+  border: 1px solid var(--hair); border-radius: var(--radius);
+  text-decoration: none; overflow: visible;
+  transition: transform .5s var(--ease-calm), box-shadow .5s var(--ease-calm);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.85);
+}
+.thera-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.thera-card__img { border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; aspect-ratio: 16 / 10.5; }
+.thera-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-calm); }
+.thera-card:hover .thera-card__img img { transform: scale(1.05); }
+.thera-card__ico {
+  width: 3.1rem; height: 3.1rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--card); border: 1px solid var(--gold-light);
+  margin: -1.55rem 0 0 1.6rem; position: relative; z-index: 2;
+  box-shadow: 0 8px 18px -8px rgba(138,110,55,.4);
+}
+.thera-card__ico svg { width: 22px; height: 22px; stroke: var(--gold); }
+.thera-card__body { padding: 1rem 1.6rem 1.7rem; }
+.thera-card__body h3 { font-size: 1.28rem; margin-bottom: .45rem; }
+.thera-card__body p { font-size: .92rem; color: var(--ink-soft); line-height: 1.55; }
+
+/* faixa de números (verde-floresta + dourado) */
+.stats { background: linear-gradient(180deg, var(--sage-ink) 0%, #1B382E 100%); color: #EFE9DA; }
+.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-block: 3.6rem; }
+@media (max-width: 880px) { .stats__grid { grid-template-columns: repeat(2, 1fr); } }
+.stat { text-align: center; }
+.stat svg { width: 30px; height: 30px; stroke: var(--gold); margin-bottom: .8rem; }
+.stat b { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 3.4vw, 2.7rem); color: #F7F2E6; line-height: 1.1; }
+.stat span { font-size: .86rem; color: #B9C4AE; }
+
+/* testemunhos com avatar-inicial */
+.quote__avatar {
+  width: 2.6rem; height: 2.6rem; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background: var(--sage-mist); color: var(--sage-deep);
+  font-weight: 700; font-size: .95rem;
+  border: 1px solid var(--hair);
+}
+.quote footer { display: flex; align-items: center; gap: .8rem; }
+
+/* newsletter (footer) */
+.news { display: flex; gap: .5rem; margin-top: 1rem; }
+.news input {
+  flex: 1; min-width: 0; padding: .72rem .95rem;
+  border-radius: 10px; border: 1px solid rgba(247,242,230,.25);
+  background: rgba(247,242,230,.08); color: #F7F2E6; font: inherit; font-size: .88rem;
+}
+.news input::placeholder { color: #93A08B; }
+.news button {
+  border: 0; border-radius: 10px; padding: .72rem 1rem; cursor: pointer;
+  background: var(--gold); color: #22302A; font-weight: 700; font-size: .88rem;
+}
+
+/* footer v2 — verde-floresta escuro */
+.footer { background: var(--sage-ink); border-top: 3px solid var(--gold); color: #A9B5A0; margin-top: var(--space-section); }
+.footer .logo, .footer h4 { color: #F7F2E6; }
+.footer .logo small { color: var(--gold-light); }
+.footer a:hover { color: var(--gold-light); }
+.footer__legal { border-top: 1px solid rgba(247,242,230,.14); color: #86937D; }
 
 /* ============================================================
    CAMADA 3D PREMIUM (padrão AAA+ 2026)
