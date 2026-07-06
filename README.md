@@ -38,6 +38,13 @@ npm run preview    # http://localhost:4321 — versão limpa de produção
 - ⏳ Próximo: booking real (API BRANCT CRM), auth membros (Supabase), checkout (dev CRM),
   i18n EN, consent banner RGPD (quando houver pixel/analytics), fotos reais + performance pass final
 
+## Vídeo-tour no hero
+
+O hero da Home é um slideshow cinematográfico (Ken Burns) com as fotos reais.
+Quando o vídeo-tour da clínica existir, basta guardá-lo em
+`src/assets/video/hero-tour.mp4` (H.264, ~10-20s, sem som, <8MB) e fazer build —
+o hero passa a vídeo automaticamente, sem tocar em código.
+
 ## Conteúdo editável pela cliente (sem tocar em código)
 
 - Áreas: `src/data/areas.json` · Equipa: `src/data/terapeutas.json`

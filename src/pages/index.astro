@@ -15,6 +15,11 @@ const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem
 const areas = await getCollection('areas');
 const areaNome = (id: string) => areas.find((a) => a.id === id)?.data.nome ?? '';
 
+/* Vídeo-tour: quando existir src/assets/video/hero-tour.mp4, o hero usa-o sozinho */
+const videos = import.meta.glob('../assets/video/hero-tour.mp4', { eager: true, query: '?url', import: 'default' });
+const heroVideo = (Object.values(videos)[0] as string | undefined) ?? null;
+const heroSlides = [fotoMarta3, fotoMagra, fotoTabaco];
+
 /* ícones linha (traço dourado) */
 const ico = {
   pessoa: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5',
@@ -89,45 +94,54 @@ const schema = [
   description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
   schema={schema}
 >
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div>
-        <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
-        <h1 data-rise="2">Reprogramamos mentes e comportamentos.<br /><em>Transformamos vidas.</em></h1>
-        <p data-rise="3" style="margin-top:1.6rem; font-weight:600; font-size:1.12rem; max-width:44ch;">
-          Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
-        </p>
-        <p class="lead" data-rise="3" style="margin-top:.8rem; font-size:1.02rem;">
-          Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
-          a conquistar a vida que deseja.
-        </p>
-        <div class="hero__cta" data-rise="4">
-          <a class="btn btn--primary" href="/consultas">
-            Quero transformar a minha vida
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="btn btn--ghost" href="/consultas">Ver como funciona</a>
-        </div>
-        <div class="hero__proof" data-rise="5">
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <span>Sessões online com link automático</span>
-          <span aria-hidden="true">·</span>
-          <span>Portugal e Brasil, em português</span>
-        </div>
+  <!-- HERO IMERSIVO (ecrã inteiro) -->
+  <section class="hero-full">
+    <div class="hero-full__media" aria-hidden="true">
+      {heroVideo ? (
+        <video autoplay muted loop playsinline preload="metadata" src={heroVideo}></video>
+      ) : (
+        heroSlides.map((img, i) => (
+          <div class="hero-full__slide">
+            <Image src={img} alt="" widths={[900, 1400, 1900]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} />
+          </div>
+        ))
+      )}
+    </div>
+    <div class="wrap">
+      <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
+      <h1 data-rise="2">Reprogramamos mentes e comportamentos. <em>Transformamos vidas.</em></h1>
+      <p class="hero-full__sub" data-rise="3">
+        Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
+      </p>
+      <p class="hero-full__txt" data-rise="3">
+        Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
+        a conquistar a vida que deseja.
+      </p>
+      <div class="hero__cta" data-rise="4">
+        <a class="btn btn--gold" href="/consultas">
+          Quero transformar a minha vida
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--paper" href="/consultas">Ver como funciona</a>
       </div>
-      <div style="position:relative;" data-rise="3">
-        <div class="arch arch--img">
-          <Image src={fotoMarta} alt="Marta Brito, hipnoterapeuta e fundadora da Hipnose Resolve" widths={[480, 800, 1100]} sizes="(max-width: 940px) 92vw, 44vw" loading="eager" />
-        </div>
-        <div class="chip-float" style="top:9%; left:-4%;">
-          <span class="dot"></span> Sessão confirmada — link enviado
-        </div>
-        <div class="chip-float" style="bottom:14%; right:-3%;">
-          Online e presencial
-        </div>
+      <div class="acessos" data-rise="5">
+        <a class="acesso" href="/consultas">
+          <Fragment set:html={Icon(ico.globo)} />
+          <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
+        </a>
+        <a class="acesso" href="/contactos">
+          <Fragment set:html={Icon(ico.pessoa)} />
+          <span><b>Clínica de Viseu</b><span>consultas presenciais</span></span>
+        </a>
+        <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
+          <Fragment set:html={Icon(ico.coracao)} />
+          <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
+        </a>
       </div>
     </div>
+    <a class="scroll-cue" href="#terapias" aria-label="Descer para as terapias">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </section>
 
   <!-- FAIXA DE CONFIANÇA -->
