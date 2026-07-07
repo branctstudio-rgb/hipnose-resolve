@@ -359,6 +359,49 @@ em, .accent-i {
 .hero-full .hero__cta { margin-top: 1.8rem; }
 .acessos { margin-top: 2rem; }
 
+/* ---------- HERO CLARO (clean, marfim + dourado) ---------- */
+.hero-light {
+  position: relative;
+  min-height: 92svh;
+  display: grid; align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(52% 70% at 88% 6%, rgba(196, 161, 92, .18) 0%, transparent 58%),
+    radial-gradient(42% 60% at 4% 96%, rgba(62, 97, 82, .1) 0%, transparent 60%),
+    var(--paper);
+  padding-block: clamp(3rem, 6vw, 5rem) clamp(3.5rem, 7vw, 5.5rem);
+}
+.hero-light__grid {
+  display: grid; grid-template-columns: 1.06fr .94fr;
+  gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
+}
+@media (max-width: 940px) { .hero-light__grid { grid-template-columns: 1fr; } }
+.hero-light h1 { font-size: clamp(2.3rem, 4.6vw, 4rem); color: var(--ink); max-width: 17ch; }
+.hero-light h1 em { color: #8A6E37; }
+.hero-light__sub { margin-top: 1.2rem; font-weight: 600; font-size: 1.08rem; max-width: 46ch; color: var(--ink); }
+.hero-light__txt { margin-top: .7rem; font-size: .98rem; line-height: 1.6; max-width: 52ch; color: var(--ink-soft); }
+.hero-light .hero__cta { margin-top: 1.9rem; }
+.hero-light .hero-meta a { color: var(--ink-soft); border-bottom-color: var(--gold); }
+.hero-light .hero-meta .stars { color: var(--gold); }
+.hero-light .hero-meta__avatars span { border-color: #fff; }
+.hero-light .acessos { margin-top: 2.1rem; }
+.hero-light .acesso { border: 1px solid var(--hair); box-shadow: var(--shadow-soft); background: var(--card); }
+
+.hero-light__visual { position: relative; }
+.hero-light__visual .arch { aspect-ratio: 4 / 5; }
+.hero-light__halo { /* halo dourado atrás do arco */
+  position: absolute; inset: -8% -12% auto auto;
+  width: 78%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(227, 205, 156, .5) 0%, rgba(196, 161, 92, .18) 48%, transparent 70%);
+  animation: breathe 9s var(--ease-calm) infinite;
+  pointer-events: none;
+}
+.hero-light .ui-card { position: absolute; }
+.hero-light .ui-card--ok { top: 6%; left: -8%; right: auto; }
+.hero-light .ui-card--chat { bottom: 4%; right: -5%; }
+@media (max-width: 1100px) { .hero-light .ui-card { display: none; } }
+.scroll-cue--dark { border-color: var(--hair); color: var(--sage-ink); background: var(--card); box-shadow: var(--shadow-soft); }
+
 /* linha de reviews (avatares + estrelas) */
 .hero-meta { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.3rem; }
 .hero-meta__avatars { display: flex; }

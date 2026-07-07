@@ -10,18 +10,13 @@ import fotoAnsiedade from '../assets/img/ansiedade.png';
 import fotoRelacoes from '../assets/img/relacionamentos.jpg';
 import fotoStress from '../assets/img/stress.webp';
 import fotoMedos from '../assets/img/medos.jpg';
-import heroFloresta from '../assets/img/hero/hero-floresta.jpg';
-import heroAmanhecer from '../assets/img/hero/hero-amanhecer.jpg';
+import heroArvore from '../assets/img/hero/hero-arvore.jpg';
 
 const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
 const areas = await getCollection('areas');
 const areaNome = (id: string) => areas.find((a) => a.id === id)?.data.nome ?? '';
 
-/* Vídeo-tour: quando existir src/assets/video/hero-tour.mp4, o hero usa-o sozinho */
-const videos = import.meta.glob('../assets/video/hero-tour.mp4', { eager: true, query: '?url', import: 'default' });
-const heroVideo = (Object.values(videos)[0] as string | undefined) ?? null;
-/* Capa sem fotos da equipa (decisão 07/07): natureza calma, licença Unsplash */
-const heroSlides = [heroFloresta, heroAmanhecer];
+/* Capa clara e clean (decisão Felipe 07/07): marfim + árvore com luz dourada no arco */
 
 /* ícones linha (traço dourado) */
 const ico = {
@@ -88,70 +83,66 @@ const schema = [
   description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
   schema={schema}
 >
-  <!-- HERO IMERSIVO (ecrã inteiro) -->
-  <section class="hero-full">
-    <div class="hero-full__halo" aria-hidden="true"></div>
-    <div class="hero-full__media" aria-hidden="true">
-      {heroVideo ? (
-        <video autoplay muted loop playsinline preload="metadata" src={heroVideo}></video>
-      ) : (
-        heroSlides.map((img, i) => (
-          <div class="hero-full__slide">
-            <Image src={img} alt="" widths={[900, 1400, 1900]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} />
-          </div>
-        ))
-      )}
-    </div>
-    <div class="ui-card ui-card--ok" aria-hidden="true">
-      <span class="dot"></span> Sessão confirmada — link Meet enviado
-    </div>
-    <div class="ui-card ui-card--chat" aria-hidden="true">
-      <div class="balao balao--in">Quero deixar de fumar… é mesmo possível numa sessão?</div>
-      <div class="balao balao--out">É — e está no sítio certo. Prefere online ou presencial?</div>
-      <small>Assistente Hipnose Resolve · responde a qualquer hora</small>
-    </div>
-    <div class="wrap">
-      <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
-      <div class="hero-meta" data-rise="2">
-        <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <a href="#testemunhos">Histórias reais de transformação</a>
+  <!-- HERO CLARO -->
+  <section class="hero-light">
+    <div class="wrap hero-light__grid">
+      <div>
+        <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
+        <div class="hero-meta" data-rise="2">
+          <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <a href="#testemunhos">Histórias reais de transformação</a>
+        </div>
+        <h1 data-rise="2">Reprogramamos mentes e comportamentos.
+          <em class="u-gold">Transformamos vidas.
+            <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
+          </em>
+        </h1>
+        <p class="hero-light__sub" data-rise="3">
+          Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
+        </p>
+        <p class="hero-light__txt" data-rise="3">
+          Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
+          a conquistar a vida que deseja.
+        </p>
+        <div class="hero__cta" data-rise="4">
+          <a class="btn btn--gold" href="/consultas">
+            Quero transformar a minha vida
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="/consultas">Ver como funciona</a>
+        </div>
+        <div class="acessos" data-rise="5">
+          <a class="acesso" href="/consultas">
+            <Fragment set:html={Icon(ico.globo)} />
+            <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
+          </a>
+          <a class="acesso" href="/contactos">
+            <Fragment set:html={Icon(ico.pessoa)} />
+            <span><b>Clínica de Viseu</b><span>consultas presenciais</span></span>
+          </a>
+          <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
+            <Fragment set:html={Icon(ico.coracao)} />
+            <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
+          </a>
+        </div>
       </div>
-      <h1 data-rise="2">Reprogramamos mentes e comportamentos.
-        <em class="u-gold">Transformamos vidas.
-          <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
-        </em>
-      </h1>
-      <p class="hero-full__sub" data-rise="3">
-        Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
-      </p>
-      <p class="hero-full__txt" data-rise="3">
-        Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
-        a conquistar a vida que deseja.
-      </p>
-      <div class="hero__cta" data-rise="4">
-        <a class="btn btn--gold" href="/consultas">
-          Quero transformar a minha vida
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="btn btn--paper" href="/consultas">Ver como funciona</a>
-      </div>
-      <div class="acessos" data-rise="5">
-        <a class="acesso" href="/consultas">
-          <Fragment set:html={Icon(ico.globo)} />
-          <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
-        </a>
-        <a class="acesso" href="/contactos">
-          <Fragment set:html={Icon(ico.pessoa)} />
-          <span><b>Clínica de Viseu</b><span>consultas presenciais</span></span>
-        </a>
-        <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
-          <Fragment set:html={Icon(ico.coracao)} />
-          <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
-        </a>
+      <div class="hero-light__visual" data-rise="3">
+        <div class="hero-light__halo" aria-hidden="true"></div>
+        <div class="arch arch--img">
+          <Image src={heroArvore} alt="Luz do sol a atravessar uma árvore serena" widths={[520, 860, 1200]} sizes="(max-width: 940px) 92vw, 42vw" loading="eager" />
+        </div>
+        <div class="ui-card ui-card--ok" aria-hidden="true">
+          <span class="dot"></span> Sessão confirmada — link Meet enviado
+        </div>
+        <div class="ui-card ui-card--chat" aria-hidden="true">
+          <div class="balao balao--in">Quero deixar de fumar… é mesmo possível numa sessão?</div>
+          <div class="balao balao--out">É — e está no sítio certo. Prefere online ou presencial?</div>
+          <small>Assistente Hipnose Resolve · responde a qualquer hora</small>
+        </div>
       </div>
     </div>
-    <a class="scroll-cue" href="#terapias" aria-label="Descer para as terapias">
+    <a class="scroll-cue scroll-cue--dark" href="#terapias" aria-label="Descer para as terapias">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </section>
