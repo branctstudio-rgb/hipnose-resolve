@@ -83,36 +83,48 @@ const schema = [
   description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
   schema={schema}
 >
-  <!-- HERO CLARO -->
-  <section class="hero-light">
+  <!-- HERO ABERTURA (ecrã inteiro, ultra-clean) -->
+  <section class="hero-open">
+    <div class="hero-open__halo" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
+      <h1 data-rise="2">Reprogramamos mentes e comportamentos.
+        <em class="u-gold">Transformamos vidas.
+          <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
+        </em>
+      </h1>
+      <p class="hero-open__sub" data-rise="3">
+        Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
+      </p>
+      <div class="hero__cta" data-rise="4">
+        <a class="btn btn--gold" href="/consultas">
+          Quero transformar a minha vida
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="/consultas">Ver como funciona</a>
+      </div>
+    </div>
+    <a class="scroll-cue scroll-cue--dark" href="#bemvindo" aria-label="Descer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- BOAS-VINDAS (árvore + acessos) -->
+  <section class="hero-light" id="bemvindo">
     <div class="wrap hero-light__grid">
       <div>
-        <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
-        <div class="hero-meta" data-rise="2">
+        <p class="eyebrow">Bem-vindo à Hipnose Resolve</p>
+        <div class="hero-meta">
           <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
           <span class="stars" aria-hidden="true">★★★★★</span>
           <a href="#testemunhos">Histórias reais de transformação</a>
         </div>
-        <h1 data-rise="2">Reprogramamos mentes e comportamentos.
-          <em class="u-gold">Transformamos vidas.
-            <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
-          </em>
-        </h1>
-        <p class="hero-light__sub" data-rise="3">
-          Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
+        <h2>Está sempre a tempo de <em>ser feliz</em>.</h2>
+        <p class="hero-light__txt">
+          Um espaço seguro, método clínico e acompanhamento humano para conquistar a vida
+          que deseja — online ou presencial, em Portugal e no Brasil.
         </p>
-        <p class="hero-light__txt" data-rise="3">
-          Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
-          a conquistar a vida que deseja.
-        </p>
-        <div class="hero__cta" data-rise="4">
-          <a class="btn btn--gold" href="/consultas">
-            Quero transformar a minha vida
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="btn btn--ghost" href="/consultas">Ver como funciona</a>
-        </div>
-        <div class="acessos" data-rise="5">
+        <div class="acessos">
           <a class="acesso" href="/consultas">
             <Fragment set:html={Icon(ico.globo)} />
             <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
@@ -142,9 +154,6 @@ const schema = [
         </div>
       </div>
     </div>
-    <a class="scroll-cue scroll-cue--dark" href="#terapias" aria-label="Descer para as terapias">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
   </section>
 
   <!-- FAIXA DE CONFIANÇA -->

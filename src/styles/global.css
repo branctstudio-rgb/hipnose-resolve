@@ -359,10 +359,50 @@ em, .accent-i {
 .hero-full .hero__cta { margin-top: 1.8rem; }
 .acessos { margin-top: 2rem; }
 
-/* ---------- HERO CLARO (clean, marfim + dourado) ---------- */
+/* ---------- HERO ABERTURA (ecrã inteiro, ultra-clean) ---------- */
+.hero-open {
+  position: relative;
+  min-height: 100svh;
+  display: grid; place-items: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(55% 60% at 50% 0%, rgba(196, 161, 92, .14) 0%, transparent 60%),
+    var(--paper);
+  padding-block: 6rem 5rem;
+}
+.hero-open::before { /* anéis concêntricos — hipnose em fundo, quase invisível */
+  content: ''; position: absolute; inset: -20%;
+  background: repeating-radial-gradient(circle at 50% 44%,
+    transparent 0 88px,
+    rgba(176, 141, 79, .07) 88px 89.5px);
+  pointer-events: none;
+}
+.hero-open__halo {
+  position: absolute; left: 50%; top: 42%;
+  translate: -50% -50%;
+  width: clamp(340px, 46vw, 720px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, rgba(255, 253, 246, .9) 0%, rgba(227, 205, 156, .32) 46%, transparent 70%);
+  animation: breathe 9s var(--ease-calm) infinite;
+  pointer-events: none;
+}
+.hero-open .wrap { position: relative; z-index: 1; }
+.hero-open .eyebrow { margin-bottom: 1.6rem; }
+.hero-open h1 {
+  font-size: clamp(2.6rem, 5.6vw, 5rem);
+  color: var(--ink);
+  max-width: 16ch; margin-inline: auto;
+}
+.hero-open h1 em { color: #8A6E37; }
+.hero-open__sub {
+  margin: 1.6rem auto 0; max-width: 52ch;
+  font-size: clamp(1rem, 1.4vw, 1.15rem); color: var(--ink-soft); line-height: 1.65;
+}
+.hero-open .hero__cta { margin-top: 2.4rem; justify-content: center; }
+
+/* ---------- HERO CLARO (agora 2ª secção — boas-vindas) ---------- */
 .hero-light {
   position: relative;
-  min-height: 92svh;
   display: grid; align-items: center;
   overflow: hidden;
   background:
@@ -376,8 +416,8 @@ em, .accent-i {
   gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
 }
 @media (max-width: 940px) { .hero-light__grid { grid-template-columns: 1fr; } }
-.hero-light h1 { font-size: clamp(2.3rem, 4.6vw, 4rem); color: var(--ink); max-width: 17ch; }
-.hero-light h1 em { color: #8A6E37; }
+.hero-light h1, .hero-light h2 { font-size: clamp(2rem, 3.8vw, 3.2rem); color: var(--ink); max-width: 18ch; }
+.hero-light h1 em, .hero-light h2 em { color: #8A6E37; }
 .hero-light__sub { margin-top: 1.2rem; font-weight: 600; font-size: 1.08rem; max-width: 46ch; color: var(--ink); }
 .hero-light__txt { margin-top: .7rem; font-size: .98rem; line-height: 1.6; max-width: 52ch; color: var(--ink-soft); }
 .hero-light .hero__cta { margin-top: 1.9rem; }
@@ -924,11 +964,11 @@ em, .accent-i {
 
 /* carga do hero (stagger suave) */
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-.hero [data-rise] { opacity: 0; animation: rise 1s var(--ease-calm) forwards; }
-.hero [data-rise="2"] { animation-delay: .15s; }
-.hero [data-rise="3"] { animation-delay: .3s; }
-.hero [data-rise="4"] { animation-delay: .45s; }
-.hero [data-rise="5"] { animation-delay: .6s; }
+.hero [data-rise], .hero-open [data-rise] { opacity: 0; animation: rise 1s var(--ease-calm) forwards; }
+.hero [data-rise="2"], .hero-open [data-rise="2"] { animation-delay: .15s; }
+.hero [data-rise="3"], .hero-open [data-rise="3"] { animation-delay: .3s; }
+.hero [data-rise="4"], .hero-open [data-rise="4"] { animation-delay: .45s; }
+.hero [data-rise="5"], .hero-open [data-rise="5"] { animation-delay: .6s; }
 
 /* ============================================================
    PÁGINAS INTERIORES
@@ -1111,7 +1151,7 @@ em, .accent-i {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal, .hero [data-rise], .hero-full [data-rise] { opacity: 1; transform: none; }
+  .reveal, .hero [data-rise], .hero-full [data-rise], .hero-open [data-rise] { opacity: 1; transform: none; }
   .hero-full__slide { opacity: 0 !important; }
   .hero-full__slide:first-child { opacity: 1 !important; transform: none; }
   html { scroll-behavior: auto; }
