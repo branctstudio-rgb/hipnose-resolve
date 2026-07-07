@@ -10,8 +10,8 @@ if (!BASE) {
 }
 
 const escaped = BASE.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-// href="/x" ou src="/x" que ainda não comecem pelo base nem sejam "//"
-const re = new RegExp(`(href|src)="/(?!/)(?!${escaped.slice(1)}[/"])`, 'g');
+// href="/x", src="/x" ou poster="/x" que ainda não comecem pelo base nem sejam "//"
+const re = new RegExp(`(href|src|poster)="/(?!/)(?!${escaped.slice(1)}[/"])`, 'g');
 
 let tocados = 0;
 function walk(dir) {

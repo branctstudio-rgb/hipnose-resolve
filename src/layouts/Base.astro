@@ -76,6 +76,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
               <a href="tel:+351915574759">+351 915 574 759</a><br />
               <a href="mailto:info@hipnoseresolve.pt">info@hipnoseresolve.pt</a>
             </p>
+            <div class="footer__selos" aria-label="Garantias">
+              <span>RGPD</span>
+              <span>Pagamentos seguros</span>
+              <span>Livro de Reclamações</span>
+              <span>PT &amp; BR</span>
+            </div>
           </div>
           <div>
             <h4>Navegar</h4>
@@ -140,6 +146,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         { threshold: 0.14 }
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Sombra do header ao rolar
+      const header = document.querySelector('.header');
+      const onHeaderScroll = () => header?.classList.toggle('header--scrolled', scrollY > 24);
+      addEventListener('scroll', onHeaderScroll, { passive: true });
+      onHeaderScroll();
+
+      // Vídeo ambiente respeita reduced-motion (fica no poster)
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll<HTMLVideoElement>('video[data-ambiente]').forEach((v) => {
+          v.removeAttribute('autoplay');
+          v.pause();
+        });
+      }
 
       // Manifesto — revelação palavra a palavra ao ritmo do scroll
       const manifesto = document.querySelector('.manifesto');

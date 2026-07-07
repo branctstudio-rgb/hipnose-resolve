@@ -83,8 +83,14 @@ const schema = [
   description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
   schema={schema}
 >
-  <!-- HERO ABERTURA (ecrã inteiro, ultra-clean) -->
+  <!-- HERO ABERTURA (ecrã inteiro, vídeo ambiente + véu marfim) -->
   <section class="hero-open">
+    <div class="hero-open__video" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-ambiente-poster.jpg" data-ambiente>
+        <source src="/media/hero-ambiente.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-open__veil" aria-hidden="true"></div>
     <div class="hero-open__halo" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
