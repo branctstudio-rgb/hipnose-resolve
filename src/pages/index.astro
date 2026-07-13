@@ -85,13 +85,14 @@ const schema = [
   <!-- HERO ABERTURA (ecrã inteiro, vídeo ambiente + véu marfim) -->
   <section class="hero-open">
     <div class="hero-open__video" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-ambiente-poster.jpg" data-ambiente>
-        <source src="/media/hero-ambiente.mp4" type="video/mp4" />
+      <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-pessoa-poster.jpg" data-ambiente>
+        <source src="/media/hero-pessoa.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="hero-open__veil" aria-hidden="true"></div>
     <div class="hero-open__halo" aria-hidden="true"></div>
     <div class="wrap">
+      <div class="hero-open__conteudo">
       <p class="eyebrow" data-rise="1">Clínica de Reprogramação Mental · Online e Presencial</p>
       <h1 data-rise="2">Reprogramamos mentes e comportamentos.
         <em class="u-gold">Transformamos vidas.
@@ -101,7 +102,11 @@ const schema = [
       <p class="hero-open__sub" data-rise="3">
         Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
       </p>
-      <div class="hero__cta" data-rise="4" style="justify-content:center;">
+      <p class="hero-open__txt" data-rise="3">
+        Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
+        a conquistar a vida que deseja.
+      </p>
+      <div class="hero__cta" data-rise="4">
         <a class="btn btn--gold" href="/consultas">
           Marcar Consulta
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -121,6 +126,7 @@ const schema = [
           <Fragment set:html={Icon(ico.coracao)} />
           <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
         </a>
+      </div>
       </div>
     </div>
     <a class="scroll-cue scroll-cue--dark" href="#bemvindo" aria-label="Descer">

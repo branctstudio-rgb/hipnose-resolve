@@ -3,6 +3,7 @@ import '@fontsource-variable/fraunces';
 import '@fontsource-variable/figtree';
 import '../styles/global.css';
 import { Image } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
 import logoOficial from '../assets/img/logo.png';
 
 interface Props {
@@ -34,6 +35,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     {schema.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
+    <ClientRouter />
   </head>
   <body>
     <header class="header">
@@ -132,85 +134,118 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     </a>
 
     <script>
-      // Menu mobile
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('nav');
-      toggle?.addEventListener('click', () => {
-        const open = nav!.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
+      /* Setup por página, compatível com View Transitions:
+         corre em astro:page-load e limpa listeners antigos via AbortController. */
+      let ctrl: AbortController | undefined;
 
-      // Reveals suaves — movimento que acalma, não que distrai
-      const io = new IntersectionObserver(
-        (entries) => entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        }),
-        { threshold: 0.14 }
-      );
-      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      const init = () => {
+        ctrl?.abort();
+        ctrl = new AbortController();
+        const { signal } = ctrl;
+        const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Carrossel de terapias
-      document.querySelectorAll<HTMLElement>('[data-caro]').forEach((c) => {
-        const track = c.querySelector<HTMLElement>('.caro__track');
-        const passo = () => (track?.firstElementChild?.clientWidth ?? 320) + 19;
-        c.querySelector('[data-caro-prev]')?.addEventListener('click', () => track?.scrollBy({ left: -passo(), behavior: 'smooth' }));
-        c.querySelector('[data-caro-next]')?.addEventListener('click', () => track?.scrollBy({ left: passo(), behavior: 'smooth' }));
-      });
+        // Menu mobile
+        const toggle = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('nav');
+        toggle?.addEventListener('click', () => {
+          const open = nav!.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(open));
+        }, { signal });
 
-      // Sombra do header ao rolar
-      const header = document.querySelector('.header');
-      const onHeaderScroll = () => header?.classList.toggle('header--scrolled', scrollY > 24);
-      addEventListener('scroll', onHeaderScroll, { passive: true });
-      onHeaderScroll();
+        // Reveals suaves — movimento que acalma, não que distrai
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          }),
+          { threshold: 0.14 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+        signal.addEventListener('abort', () => io.disconnect());
 
-      // Vídeo ambiente respeita reduced-motion (fica no poster)
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Carrossel de terapias
+        document.querySelectorAll<HTMLElement>('[data-caro]').forEach((c) => {
+          const track = c.querySelector<HTMLElement>('.caro__track');
+          const passo = () => (track?.firstElementChild?.clientWidth ?? 320) + 19;
+          c.querySelector('[data-caro-prev]')?.addEventListener('click', () => track?.scrollBy({ left: -passo(), behavior: 'smooth' }), { signal });
+          c.querySelector('[data-caro-next]')?.addEventListener('click', () => track?.scrollBy({ left: passo(), behavior: 'smooth' }), { signal });
+        });
+
+        // Sombra do header ao rolar
+        const header = document.querySelector('.header');
+        const onHeaderScroll = () => header?.classList.toggle('header--scrolled', scrollY > 24);
+        addEventListener('scroll', onHeaderScroll, { passive: true, signal });
+        onHeaderScroll();
+
+        // Vídeo ambiente: retoma após view transitions; respeita reduced-motion
         document.querySelectorAll<HTMLVideoElement>('video[data-ambiente]').forEach((v) => {
-          v.removeAttribute('autoplay');
-          v.pause();
+          if (reduz) {
+            v.removeAttribute('autoplay');
+            v.pause();
+          } else {
+            v.muted = true; // após view transition a propriedade perde-se e o autoplay é bloqueado
+            v.play().catch(() => {});
+          }
         });
-      }
 
-      // Manifesto — revelação palavra a palavra ao ritmo do scroll
-      const manifesto = document.querySelector('.manifesto');
-      if (manifesto) {
-        const words = manifesto.querySelectorAll<HTMLElement>('.w');
-        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          words.forEach((w) => w.classList.add('on'));
-        } else {
-          const onScroll = () => {
-            const r = manifesto.getBoundingClientRect();
-            const done = Math.min(Math.max((innerHeight * 0.82 - r.top) / (r.height + innerHeight * 0.4), 0), 1);
-            const n = Math.round(done * words.length);
-            words.forEach((w, i) => w.classList.toggle('on', i < n));
-          };
-          addEventListener('scroll', onScroll, { passive: true });
-          onScroll();
+        // Contadores da banda de eficácia (sobem quando entram no ecrã)
+        document.querySelectorAll<HTMLElement>('.compare__cell b').forEach((b) => {
+          const alvo = parseInt(b.textContent ?? '', 10);
+          if (!alvo || reduz) return;
+          const ioNum = new IntersectionObserver((ents) => {
+            if (!ents[0].isIntersecting) return;
+            ioNum.disconnect();
+            const t0 = performance.now();
+            const tick = (t: number) => {
+              const p = Math.min((t - t0) / 1300, 1);
+              b.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3))) + '%';
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }, { threshold: 0.6 });
+          ioNum.observe(b);
+          signal.addEventListener('abort', () => ioNum.disconnect());
+        });
+
+        // Manifesto — revelação palavra a palavra ao ritmo do scroll
+        const manifesto = document.querySelector('.manifesto');
+        if (manifesto) {
+          const words = manifesto.querySelectorAll<HTMLElement>('.w');
+          if (reduz) {
+            words.forEach((w) => w.classList.add('on'));
+          } else {
+            const onScroll = () => {
+              const r = manifesto.getBoundingClientRect();
+              const done = Math.min(Math.max((innerHeight * 0.82 - r.top) / (r.height + innerHeight * 0.4), 0), 1);
+              const n = Math.round(done * words.length);
+              words.forEach((w, i) => w.classList.toggle('on', i < n));
+            };
+            addEventListener('scroll', onScroll, { passive: true, signal });
+            onScroll();
+          }
         }
-      }
 
-      // Tilt 3D — cards seguem o rato (só ponteiro fino, sem reduced-motion)
-      const podeTilt =
-        matchMedia('(pointer: fine)').matches &&
-        !matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (podeTilt) {
-        document.querySelectorAll<HTMLElement>('.spec-card, .card-l, .program').forEach((el) => {
-          el.classList.add('tilt3d');
-          el.addEventListener('pointermove', (e) => {
-            const r = el.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width - 0.5;
-            const py = (e.clientY - r.top) / r.height - 0.5;
-            el.style.setProperty('--ry', (px * 5).toFixed(2) + 'deg');
-            el.style.setProperty('--rx', (-py * 5).toFixed(2) + 'deg');
-            el.style.setProperty('--mx', ((px + 0.5) * 100).toFixed(1) + '%');
-            el.style.setProperty('--my', ((py + 0.5) * 100).toFixed(1) + '%');
+        // Tilt 3D — cards seguem o rato (só ponteiro fino, sem reduced-motion)
+        if (matchMedia('(pointer: fine)').matches && !reduz) {
+          document.querySelectorAll<HTMLElement>('.spec-card, .card-l, .program').forEach((el) => {
+            el.classList.add('tilt3d');
+            el.addEventListener('pointermove', (e) => {
+              const r = el.getBoundingClientRect();
+              const px = (e.clientX - r.left) / r.width - 0.5;
+              const py = (e.clientY - r.top) / r.height - 0.5;
+              el.style.setProperty('--ry', (px * 5).toFixed(2) + 'deg');
+              el.style.setProperty('--rx', (-py * 5).toFixed(2) + 'deg');
+              el.style.setProperty('--mx', ((px + 0.5) * 100).toFixed(1) + '%');
+              el.style.setProperty('--my', ((py + 0.5) * 100).toFixed(1) + '%');
+            }, { signal });
+            el.addEventListener('pointerleave', () => {
+              el.style.setProperty('--rx', '0deg');
+              el.style.setProperty('--ry', '0deg');
+            }, { signal });
           });
-          el.addEventListener('pointerleave', () => {
-            el.style.setProperty('--rx', '0deg');
-            el.style.setProperty('--ry', '0deg');
-          });
-        });
-      }
+        }
+      };
+
+      document.addEventListener('astro:page-load', init);
     </script>
   </body>
 </html>
