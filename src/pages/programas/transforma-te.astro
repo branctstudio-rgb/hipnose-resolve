@@ -1,0 +1,256 @@
+---
+/* LANDING DE VENDAS — TRANSFORMA-TE
+   Fórmula "vende-se sozinha" (ref. da cliente) × identidade dourada Hipnose Resolve.
+   Tratamento por "tu", como o material oficial do programa. */
+import Base from '../../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import fotoMartaNova from '../../assets/img/marta-nova.jpg';
+import fotoMagra from '../../assets/img/magramente-1.jpg';
+import fotoMarta from '../../assets/img/marta.jpeg';
+
+const seta = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor"/><path d="M9.5 12h5m0 0-2-2m2 2-2 2" stroke="currentColor"/></svg>';
+const check = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+const dores = [
+  ['Olhas para o espelho e', 'sentes que perdeste a mulher que um dia foste…'],
+  ['Começas uma dieta e,', 'antes de veres resultados, já estás a pensar em desistir…'],
+  ['Sabes o que devias fazer,', 'mas sentes que te autossabotas — e sozinha não consegues mudar…'],
+  ['Comes para aliviar o stress', 'e depois vem a culpa…'],
+  ['Vives ocupada,', 'e cada tentativa "rígida" cai por terra à primeira semana difícil…'],
+];
+
+const beneficios = [
+  { t: 'Dizer adeus às dietas desequilibradas', p: 'e descobrir um caminho de leveza que trabalha a raiz — a tua mente — em vez de te impor mais uma lista de proibições.', destaque: true },
+  { t: 'Reprogramar a fome emocional', p: 'e os impulsos compulsivos, para fazeres escolhas que te deixam em paz contigo mesma.' },
+  { t: 'Treinar o corpo ao teu ritmo', p: 'com 8 semanas de treinos orientados para o teu objetivo — sem ginásios intimidantes nem horas perdidas.' },
+  { t: 'Criar hábitos que ficam', p: 'porque quando a mente muda primeiro, o corpo segue naturalmente — sem força de vontade infinita.' },
+];
+
+const faq = [
+  { q: 'Preciso de ter experiência com hipnose ou com treino?', a: 'Não. As auto-hipnoses são guiadas passo a passo e os treinos partem de uma avaliação física individual — o programa adapta-se a ti, não o contrário.' },
+  { q: 'Quanto tempo preciso por dia?', a: 'O programa foi desenhado para mulheres ocupadas: áudios de auto-hipnose curtos e treinos flexíveis que encaixam na tua semana, com o grupo de apoio sempre disponível.' },
+  { q: 'E se eu já tentei de tudo?', a: 'É exatamente para ti. As dietas trabalham o comportamento; o TRANSFORMA-TE trabalha a mente onde o hábito vive — com o corpo a acompanhar. É essa a diferença do Protocolo 360º.' },
+  { q: 'Como recebo acesso?', a: 'Após a inscrição recebes tudo na área de membros e és adicionada ao grupo de apoio no WhatsApp. A mentoria online é agendada contigo.' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'TRANSFORMA-TE — Programa de Treino Físico e Mental',
+    description: 'Protocolo 360º Mente e Corpo: 8 semanas com auto-hipnoses de reprogramação mental, treinos orientados, plano alimentar e acompanhamento.',
+    brand: { '@type': 'Brand', name: 'Hipnose Resolve' },
+    url: 'https://hipnoseresolve.pt/programas/transforma-te',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base
+  title="TRANSFORMA-TE — Programa de Treino Físico e Mental · 8 Semanas | Hipnose Resolve"
+  description="O Protocolo 360º Mente e Corpo: auto-hipnoses de reprogramação mental + 8 semanas de treino orientado + plano alimentar + acompanhamento. Transforma o teu corpo e a tua mente."
+  schema={schema}
+>
+  <span class="sales-band">Programa <em>Transforma-te</em> · 8 semanas · Mente e Corpo</span>
+
+  <!-- PROMESSA -->
+  <section class="section" style="padding-block: clamp(3.5rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem); text-align:center;">
+    <div class="wrap" style="max-width: 820px;">
+      <h1 style="font-size: clamp(2rem, 4.6vw, 3.6rem);">
+        Transforma o teu corpo e a tua mente — <em class="u-gold">sem dietas desequilibradas<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg></em> que não trazem resultados.
+      </h1>
+      <div class="divisor" aria-hidden="true">✦</div>
+      <p class="lead" style="margin-inline:auto;">
+        Sente-te bem no teu corpo, recupera a tua autoestima e transforma não apenas o teu
+        peso, mas toda a tua vida.
+      </p>
+      <p style="margin-top:1rem; max-width:56ch; margin-inline:auto; color:var(--ink-soft);">
+        Volta a olhar para o espelho com orgulho, veste aquela roupa especial que guardaste
+        no fundo do armário e diz <em style="font-weight:600;">"sim"</em> aos momentos que te fazem feliz.
+      </p>
+      <a class="cta-mega" href="#oferta">Quero transformar a minha vida!</a>
+    </div>
+  </section>
+
+  <!-- DOR -->
+  <section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
+    <div class="wrap" style="text-align:center;">
+      <h2 style="max-width:22ch; margin-inline:auto;">Quantas vezes <span class="marca-txt">já desististe de ti mesma?</span></h2>
+      <div class="divisor" aria-hidden="true">✦</div>
+      <div class="dor-lista">
+        {dores.map(([a, b], i) => (
+          <div class="dor-card reveal" data-d={String(i % 3)}>
+            <Fragment set:html={seta} />
+            <span>{a} <em>{b}</em></span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AGITAÇÃO -->
+  <section class="agita">
+    <div class="wrap">
+      <h2>E sabes <span class="marca-txt">o que dói mais?</span></h2>
+      <div class="divisor" aria-hidden="true" style="color:var(--gold-light);">✦</div>
+      <p>Talvez tenhas desistido mais vezes do que gostas de contar. <em>Talvez já tenhas pensado: "não vale a pena".</em></p>
+      <p><span class="estrela">✦</span> <em>Porque não é fraqueza sentires-te perdida.</em> É humano.</p>
+      <p><span class="estrela">✦</span> <em>O erro nunca esteve em ti</em> — esteve nas soluções temporárias que tentaram impor-te.</p>
+      <p style="margin-top:2rem;"><b>O TRANSFORMA-TE não é apenas sobre emagrecer.</b><br />
+      É sobre olhares para ti com amor, reencontrares a tua força e perceberes que ainda há
+      muito por viver — leve, feliz e sem culpa.</p>
+      <a class="cta-mega" href="#oferta">Este programa é para mim!</a>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="section">
+    <div class="wrap" style="text-align:center;">
+      <p class="eyebrow">Porque é que o Transforma-te é diferente de tudo o que já viste?</p>
+      <h2>Vais finalmente <em>conseguir:</em></h2>
+      <div class="check-lista">
+        {beneficios.map((b, i) => (
+          <div class={`check-card reveal ${b.destaque ? 'check-card--destaque' : ''}`} data-d={String(i % 3)}>
+            <span class="ck"><Fragment set:html={check} /></span>
+            <h3>{b.t}</h3>
+            <p>{b.p}</p>
+          </div>
+        ))}
+      </div>
+      <p style="margin:2.4rem auto 0; max-width:52ch; font-size:1.08rem;">
+        Este programa vai ajudar-te a alcançar uma nova forma de viver — com mais saúde,
+        confiança e energia para o que realmente importa.
+      </p>
+      <a class="cta-mega" href="#oferta">Eu quero transformar a minha vida!</a>
+    </div>
+  </section>
+
+  <!-- O QUE TERÁS -->
+  <section class="section" style="background: var(--sage-mist); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap" style="text-align:center;">
+      <p class="eyebrow">Protocolo 360º · Mente e Corpo</p>
+      <h2>O que terás <em>no programa</em></h2>
+      <div class="divisor" aria-hidden="true">✦</div>
+      <div class="inclui-grid">
+        <figure class="inclui-card reveal">
+          <Image src={fotoMartaNova} alt="Mentoria online com a Dra. Marta Brito" widths={[520, 800]} sizes="(max-width: 880px) 94vw, 46vw" />
+          <figcaption>1 Mentoria online com expert em Emagrecimento Saudável e Hipnose</figcaption>
+        </figure>
+        <figure class="inclui-card inclui-card--grad reveal" data-d="1">
+          <svg class="inclui-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 2 .9 3.8 2.2 5.2L8 21l4-1.2 4 1.2.8-5.8C18.1 13.8 19 12 19 10a7 7 0 0 0-7-7Z"/><path d="M12 7a3 3 0 1 1-3 3" stroke-linecap="round"/></svg>
+          <figcaption>5 Auto-hipnoses de Reprogramação Mental — os Pilares do Emagrecimento</figcaption>
+        </figure>
+        <figure class="inclui-card inclui-card--grad reveal">
+          <svg class="inclui-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M6.5 6.5v11m11-11v11M3 9v6m18-6v6M6.5 12h11"/></svg>
+          <figcaption>1 Avaliação Física + 8 semanas de treinos orientados para o teu objetivo</figcaption>
+        </figure>
+        <figure class="inclui-card reveal" data-d="1">
+          <Image src={fotoMagra} alt="Plano alimentar e acompanhamento" widths={[520, 800]} sizes="(max-width: 880px) 94vw, 46vw" />
+          <figcaption>Plano Detox e Receitas, Estratégias Alimentares + Ebook de Suplementação</figcaption>
+        </figure>
+        <figure class="inclui-card reveal" style="grid-column: 1 / -1; min-height: 300px;">
+          <Image src={fotoMarta} alt="Grupo de apoio no WhatsApp" widths={[700, 1200]} sizes="94vw" />
+          <figcaption>Grupo de WhatsApp para dúvidas e apoio — fazes o caminho de forma leve, facilitada e acompanhada</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES -->
+  <section class="section">
+    <div class="wrap" style="text-align:center;">
+      <h2>Mente e corpo, <em>lado a lado</em></h2>
+      <div class="pilares" style="text-align:left;">
+        <div class="pilar pilar--mente reveal">
+          <h3>Auto-Hipnose</h3>
+          <p class="sub">Pilares do Emagrecimento</p>
+          <ul>
+            <li><span><b>Anular a fome emocional</b> e os impulsos compulsivos;</span></li>
+            <li><span><b>Ingestão ajustada às necessidades reais</b> — com a Técnica do Balão Gástrico Hipnótico;</span></li>
+            <li><span><b>Alimentação saudável</b> e toma de água;</span></li>
+            <li><span><b>Motivação para a prática de exercício.</b></span></li>
+          </ul>
+          <p style="margin-top:1.4rem; font-family:var(--serif); font-style:italic; color:#8A6E37;">Naturalmente, a tua mente reprograma bons hábitos — e mais leveza.</p>
+        </div>
+        <div class="pilar pilar--corpo reveal" data-d="1">
+          <h3>8 Semanas de Treino</h3>
+          <p class="sub">4 Pilares de Exercício</p>
+          <ul>
+            <li><span><b>Mobilidade</b> — liberta o corpo, diminui a rigidez e melhora a postura;</span></li>
+            <li><span><b>Pilates</b> — controlo, alinhamento e consciência corporal;</span></li>
+            <li><span><b>Core</b> — fortalece o teu centro;</span></li>
+            <li><span><b>Cardio</b> — queima gordura e aumenta a tua energia.</span></li>
+          </ul>
+          <p style="margin-top:1.4rem; font-family:var(--serif); font-style:italic; color:var(--sage-deep);">O teu corpo desperta: bem-estar, energia e saúde enquanto emagreces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM TE LEVA -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap" style="text-align:center;">
+      <p class="eyebrow">Levamos-te à transformação</p>
+      <h2>Duas especialistas, <em>um protocolo</em></h2>
+      <div class="duo-prof">
+        <figure class="prof-card reveal">
+          <Image src={fotoMartaNova} alt="Dra. Marta Brito, hipnoterapeuta" widths={[520, 800]} sizes="(max-width: 880px) 94vw, 46vw" />
+          <figcaption>
+            <span class="papel">Hipnoterapeuta · Mente</span>
+            <p class="nome">Dra. Marta Brito</p>
+          </figcaption>
+        </figure>
+        <figure class="prof-card reveal" data-d="1">
+          <figcaption>
+            <span class="papel">Personal Trainer · Corpo</span>
+            <p class="nome">Mª João</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section class="section" id="oferta" style="padding-top:0;">
+    <div class="wrap">
+      <div class="oferta reveal">
+        <span class="rotulo">Programa Transforma-te · 8 semanas</span>
+        <h3>Garante a tua vaga na <em style="color:#8A6E37;">próxima turma</em></h3>
+        <ul>
+          <li>1 Mentoria online com expert em Emagrecimento Saudável e Hipnose</li>
+          <li>5 Auto-hipnoses de Reprogramação Mental</li>
+          <li>1 Avaliação Física + 8 semanas de treinos orientados</li>
+          <li>Plano Detox, Receitas e Estratégias Alimentares + Ebook de Suplementação</li>
+          <li>Grupo de WhatsApp para dúvidas e apoio</li>
+          <li>Acesso aos materiais na área de membros</li>
+        </ul>
+        <a class="cta-mega" href="https://wa.me/351915574759?text=Quero%20garantir%20a%20minha%20vaga%20no%20TRANSFORMA-TE!" target="_blank" rel="noopener" style="margin-top:1.4rem;">Quero a minha vaga!</a>
+        <p class="nota">Vagas limitadas — o acompanhamento é próximo e por turma. Pagamento por MB WAY, cartão ou parcelado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;">
+        <p class="eyebrow">Perguntas frequentes</p>
+        <h2 style="margin-bottom:2.5rem;">Antes de <em>começares</em></h2>
+      </div>
+      <div class="faq reveal" data-d="1">
+        {faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+      <div style="text-align:center;">
+        <a class="cta-mega" href="#oferta">Estou pronta. Quero transformar-me!</a>
+      </div>
+    </div>
+  </section>
+</Base>

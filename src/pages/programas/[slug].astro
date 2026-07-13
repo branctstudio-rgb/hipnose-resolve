@@ -11,7 +11,10 @@ import { fotoDePrograma } from '../../lib/fotos';
 
 export async function getStaticPaths() {
   const programas = await getCollection('programas');
-  return programas.map((p) => ({ params: { slug: p.id }, props: { programa: p } }));
+  // transforma-te tem landing de vendas dedicada (transforma-te.astro)
+  return programas
+    .filter((p) => p.id !== 'transforma-te')
+    .map((p) => ({ params: { slug: p.id }, props: { programa: p } }));
 }
 
 const { programa } = Astro.props;

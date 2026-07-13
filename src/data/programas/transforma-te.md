@@ -1,8 +1,8 @@
 ---
 nome: "TRANSFORMA-TE"
-kicker: "Programa digital · Auto-hipnose"
-promessa: "O poder da hipnose, nas suas mãos. Todos os dias."
-sub: "O método de auto-hipnose da Hipnose Resolve em formato digital: áudios, guias e prática diária para transformar hábitos, autoestima e estado de espírito — comece hoje, ao seu ritmo."
+kicker: "Programa · 8 Semanas · Mente e Corpo"
+promessa: "Levamos-te à transformação."
+sub: "O Protocolo 360º Mente e Corpo: auto-hipnoses de reprogramação mental + 8 semanas de treino orientado + plano alimentar + acompanhamento próximo. Com a Dra. Marta Brito e a PT Mª João."
 dor:
   - "Sabe que precisa de mudar algo, mas a agenda (ou a distância) não dá espaço para um acompanhamento semanal."
   - "Já tentou meditação e apps genéricas — faltou profundidade e um método com princípio, meio e fim."
