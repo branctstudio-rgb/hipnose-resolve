@@ -26,6 +26,12 @@ function resolve(nome: string | undefined): ImageMetadata | null {
   return ficheiros[`../assets/img/${nome}`]?.default ?? null;
 }
 
+export const fotoPorTerapeuta: Record<string, string> = {
+  'marta': 'marta-nova.jpg',
+  'catia': 'catia.jpg',
+};
+
 export const fotoDeArea = (id: string) => resolve(fotoPorArea[id]);
 export const fotoDePrograma = (id: string) => resolve(fotoPorPrograma[id]);
+export const fotoDeTerapeuta = (id: string) => resolve(fotoPorTerapeuta[id]);
 export const foto = (nome: string) => resolve(nome);

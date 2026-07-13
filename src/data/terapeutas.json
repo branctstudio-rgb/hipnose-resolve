@@ -1,7 +1,7 @@
 [
   {
     "id": "marta",
-    "nome": "Marta Brito",
+    "nome": "Dra. Marta Brito",
     "papel": "Hipnoterapeuta · Fundadora",
     "estado": "ativa",
     "frase": "O sonho comanda a vida.",
@@ -24,10 +24,10 @@
   },
   {
     "id": "catia",
-    "nome": "Cátia Fena",
+    "nome": "Dra. Cátia Fena",
     "papel": "Hipnoterapeuta · Trauma e Vícios",
-    "estado": "breve",
-    "bio": "Especialista nas áreas de Trauma e Vícios, a Cátia junta-se em breve à equipa da Hipnose Resolve.",
+    "estado": "ativa",
+    "bio": "Especialista nas áreas de Trauma e Vícios, a Dra. Cátia Fena acompanha com profundidade e sem julgamento quem carrega memórias difíceis ou padrões que ganharam demasiado poder. Acredita que cada pessoa merece fazer as pazes com a sua história — ao seu ritmo, num espaço seguro.",
     "especialidades": ["Trauma", "Vícios"],
     "linguas": ["Português"]
   },

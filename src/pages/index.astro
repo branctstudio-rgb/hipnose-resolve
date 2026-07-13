@@ -2,8 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import fotoMarta from '../assets/img/marta.jpeg';
-import fotoMarta3 from '../assets/img/marta-3.png';
+import fotoMartaNova from '../assets/img/marta-nova.jpg';
 import fotoMagra from '../assets/img/magramente-1.jpg';
 import fotoTabaco from '../assets/img/tabaco.jpeg';
 import fotoAnsiedade from '../assets/img/ansiedade.png';
@@ -79,8 +78,8 @@ const schema = [
 ];
 ---
 <Base
-  title="Hipnose Resolve — Clínica de Hipnoterapia · Online e Presencial"
-  description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
+  title="Hipnose Resolve — Clínica de Reprogramação Mental · Online e Presencial"
+  description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica e reprogramação mental para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
   schema={schema}
 >
   <!-- HERO ABERTURA (ecrã inteiro, vídeo ambiente + véu marfim) -->
@@ -93,7 +92,7 @@ const schema = [
     <div class="hero-open__veil" aria-hidden="true"></div>
     <div class="hero-open__halo" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow" data-rise="1">Clínica de Hipnoterapia · Online e Presencial</p>
+      <p class="eyebrow" data-rise="1">Clínica de Reprogramação Mental · Online e Presencial</p>
       <h1 data-rise="2">Reprogramamos mentes e comportamentos.
         <em class="u-gold">Transformamos vidas.
           <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
@@ -102,12 +101,26 @@ const schema = [
       <p class="hero-open__sub" data-rise="3">
         Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
       </p>
-      <div class="hero__cta" data-rise="4">
+      <div class="hero__cta" data-rise="4" style="justify-content:center;">
         <a class="btn btn--gold" href="/consultas">
-          Quero transformar a minha vida
+          Marcar Consulta
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a class="btn btn--ghost" href="/consultas">Ver como funciona</a>
+      </div>
+      <div class="acessos" data-rise="5">
+        <a class="acesso" href="/consultas">
+          <Fragment set:html={Icon(ico.globo)} />
+          <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
+        </a>
+        <a class="acesso" href="/contactos">
+          <Fragment set:html={Icon(ico.pessoa)} />
+          <span><b>Gabinete de Viseu</b><span>localização · horário · contactos</span></span>
+        </a>
+        <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
+          <Fragment set:html={Icon(ico.coracao)} />
+          <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
+        </a>
       </div>
     </div>
     <a class="scroll-cue scroll-cue--dark" href="#bemvindo" aria-label="Descer">
@@ -127,22 +140,12 @@ const schema = [
         </div>
         <h2>Está sempre a tempo de <em>ser feliz</em>.</h2>
         <p class="hero-light__txt">
-          Um espaço seguro, método clínico e acompanhamento humano para conquistar a vida
-          que deseja — online ou presencial, em Portugal e no Brasil.
+          Ao atuar na mente, promovemos mudanças profundas e a transformação da forma como
+          pensa, sente e vive. Sabemos que cada pessoa é única — e olhamo-la como um todo,
+          respeitando a sua história, as suas necessidades e os seus objetivos.
         </p>
-        <div class="acessos">
-          <a class="acesso" href="/consultas">
-            <Fragment set:html={Icon(ico.globo)} />
-            <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
-          </a>
-          <a class="acesso" href="/contactos">
-            <Fragment set:html={Icon(ico.pessoa)} />
-            <span><b>Clínica de Viseu</b><span>consultas presenciais</span></span>
-          </a>
-          <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
-            <Fragment set:html={Icon(ico.coracao)} />
-            <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
-          </a>
+        <div style="margin-top:1.8rem;">
+          <a class="btn btn--ghost" href="/equipa">Conhecer a clínica</a>
         </div>
       </div>
       <div class="hero-light__visual" data-rise="3">
@@ -191,38 +194,35 @@ const schema = [
         <p class="eyebrow">Áreas em que podemos ajudar</p>
         <h2>Terapias que <em>transformam vidas</em></h2>
       </div>
-      <div class="mosaic reveal" data-d="1">
-        <a class="mosaic-tile" href="/areas/ansiedade-panico">
-          <Image src={fotoAnsiedade} alt="Hipnoterapia para Ansiedade e Stress" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
-          <span class="mosaic-tile__tag">Ansiedade e Stress</span>
-        </a>
-        <a class="mosaic-tile" href="/areas/autoestima-empoderamento">
-          <Image src={fotoRelacoes} alt="Hipnoterapia para Autoestima e Confiança" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
-          <span class="mosaic-tile__tag">Autoestima e Confiança</span>
-        </a>
-        <div class="mosaic-cta">
-          <span class="monogram" aria-hidden="true">HR</span>
-          <h3>O primeiro passo é uma conversa.</h3>
-          <p>Avaliação de 2 horas, online ou presencial — e um plano claro no fim.</p>
-          <a class="btn btn--primary" href="/consultas">Marcar sessão</a>
-          <a href="/areas" style="font-size:.85rem; font-weight:600; color:#7A6435;">Ver todas as terapias →</a>
+      <div class="caro reveal" data-d="1" data-caro>
+        <div class="caro__nav">
+          <button type="button" data-caro-prev aria-label="Anterior"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" data-caro-next aria-label="Seguinte"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <a class="mosaic-tile" href="/areas/emagrecimento">
-          <Image src={fotoMagra} alt="Emagrecimento Consciente com hipnose" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
-          <span class="mosaic-tile__tag">Emagrecimento Consciente</span>
-        </a>
-        <a class="mosaic-tile" href="/areas/cessacao-tabagica">
-          <Image src={fotoTabaco} alt="Parar de fumar com hipnose clínica" widths={[420, 700]} sizes="(max-width: 980px) 46vw, 20vw" />
-          <span class="mosaic-tile__tag">Parar de Fumar</span>
-        </a>
-        <a class="mosaic-tile mosaic-tile--w1" href="/areas/mudanca-habitos">
-          <Image src={fotoStress} alt="Mudança de hábitos e comportamentos" widths={[700, 1000]} sizes="(max-width: 980px) 46vw, 40vw" />
-          <span class="mosaic-tile__tag">Hábitos e Comportamentos</span>
-        </a>
-        <a class="mosaic-tile mosaic-tile--w2" href="/areas">
-          <Image src={fotoMedos} alt="Fobias, luto, fertilidade, trauma e mais" widths={[700, 1000]} sizes="(max-width: 980px) 46vw, 40vw" />
-          <span class="mosaic-tile__tag">E muito mais — fobias, luto, fertilidade…</span>
-        </a>
+        <div class="caro__track">
+          {[
+            { nome: 'Ansiedade e Stress', txt: 'Recupere a calma, o equilíbrio emocional e a leveza de viver sem sobrecarga mental.', href: '/areas/ansiedade-panico', img: fotoAnsiedade, icone: ico.mente },
+            { nome: 'Autoestima e Confiança', txt: 'Transforme a forma como se vê e fortaleça o que a sua voz interior lhe diz.', href: '/areas/autoestima-empoderamento', img: fotoRelacoes, icone: ico.coracao },
+            { nome: 'Hábitos e Comportamentos', txt: 'Elimine padrões limitantes e crie novos hábitos que impulsionam a sua melhor versão.', href: '/areas/mudanca-habitos', img: fotoStress, icone: ico.spark },
+            { nome: 'Emagrecimento Consciente', txt: 'Reprograme a sua mente para alcançar o peso ideal de forma saudável e definitiva.', href: '/areas/emagrecimento', img: fotoMagra, icone: ico.balanca },
+            { nome: 'Parar de Fumar', txt: 'Liberte-se do vício do tabaco com apoio especializado e hipnose clínica.', href: '/areas/cessacao-tabagica', img: fotoTabaco, icone: ico.escudo },
+            { nome: 'E muito mais…', txt: 'Fobias, insónias, dores emocionais, traumas e outros desafios que pode superar.', href: '/areas', img: fotoMedos, icone: ico.chave },
+          ].map((t) => (
+            <a class="thera-card" href={t.href}>
+              <div class="thera-card__img">
+                <Image src={t.img} alt={t.nome} widths={[420, 700]} sizes="320px" />
+              </div>
+              <div class="thera-card__ico"><Fragment set:html={Icon(t.icone)} /></div>
+              <div class="thera-card__body">
+                <h3>{t.nome}</h3>
+                <p>{t.txt}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center; margin-top:1.4rem;">
+        <a class="btn btn--primary" href="/areas">Ver todas as terapias</a>
       </div>
     </div>
   </section>
@@ -232,12 +232,12 @@ const schema = [
     <div class="wrap team__grid" style="margin-top:0;">
       <div class="reveal" style="position:relative;">
         <div class="arch arch--photo arch--img">
-          <Image src={fotoMarta3} alt="Marta Brito, fundadora da Hipnose Resolve" widths={[480, 800]} sizes="(max-width: 940px) 92vw, 38vw" />
+          <Image src={fotoMartaNova} alt="Dra. Marta Brito, fundadora da Hipnose Resolve" widths={[480, 800]} sizes="(max-width: 940px) 92vw, 38vw" />
         </div>
       </div>
       <div class="team__bio reveal" data-d="1">
         <p class="eyebrow">Conheça a fundadora</p>
-        <h2 style="font-size: clamp(1.9rem, 3.4vw, 2.8rem);">Olá, sou a <em>Marta Brito</em>.</h2>
+        <h2 style="font-size: clamp(1.9rem, 3.4vw, 2.8rem);">Olá, sou a <em>Dra. Marta Brito</em>.</h2>
         <p style="margin-top:1.2rem;">
           A Hipnose Resolve nasceu da minha vontade de ajudar pessoas a reescreverem a sua história.
           Acredito profundamente que todas merecem a oportunidade de transformarem a sua vida —
@@ -262,7 +262,8 @@ const schema = [
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
         <p class="eyebrow" style="justify-content:center; display:flex;">Porquê a Hipnose Resolve?</p>
-        <h2 style="max-width:24ch; margin-inline:auto;">Mais do que terapia, uma <em>experiência de transformação</em>.</h2>
+        <h2 style="max-width:26ch; margin-inline:auto;">Somos especialistas em <em>Reprogramação Mental</em>.</h2>
+        <p class="lead" style="margin:1.2rem auto 0; text-align:center;">Mais do que terapia, uma experiência de transformação.</p>
       </div>
       <div class="trust__grid reveal" data-d="1" style="padding-top:3rem;">
         {porque.map((p) => (
@@ -275,13 +276,28 @@ const schema = [
     </div>
   </section>
 
-  <!-- NÚMEROS (reais) -->
-  <section class="stats" aria-label="Resultados">
-    <div class="wrap stats__grid">
-      <div class="stat reveal"><b>−20<em> kg</em></b><span>a maior transformação do programa MagraMente</span></div>
-      <div class="stat reveal" data-d="1"><b>90<em> min</em></b><span>para apagar 30 anos de hábito de fumar</span></div>
-      <div class="stat reveal" data-d="2"><b>2000</b><span>o ano em que a Marta começou a estudar a mente</span></div>
-      <div class="stat reveal" data-d="3"><b>PT<em>·</em>BR</b><span>consultas online nos dois fusos, em português</span></div>
+  <!-- EFICÁCIA COMPARADA (faixa dupla — pedido da cliente) -->
+  <section class="compare" aria-label="Eficácia comparada">
+    <div class="wrap compare__grid">
+      <div class="compare__cell reveal">
+        <h3>Psicanálise</h3>
+        <b>38%</b>
+        <span>taxa de recuperação, após aproximadamente 600 sessões</span>
+      </div>
+      <div class="compare__cell reveal" data-d="1">
+        <h3>Terapia Comportamental</h3>
+        <b>72%</b>
+        <span>taxa de recuperação, após uma média de 22 sessões</span>
+      </div>
+      <div class="compare__cell compare__cell--hr reveal" data-d="2">
+        <h3>Hipnose Clínica</h3>
+        <b>93%</b>
+        <span>taxa de recuperação, após uma média de 6 sessões</span>
+      </div>
+    </div>
+    <div class="wrap compare__rodape reveal">
+      Eficácia comprovada, resultados rápidos e duradouros.
+      <span class="compare__fonte">Estudo comparativo de A. Barrios, publicado na American Health Magazine.</span>
     </div>
   </section>
 

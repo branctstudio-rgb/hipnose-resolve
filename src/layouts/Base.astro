@@ -2,6 +2,8 @@
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/figtree';
 import '../styles/global.css';
+import { Image } from 'astro:assets';
+import logoOficial from '../assets/img/logo.png';
 
 interface Props {
   title: string;
@@ -37,14 +39,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <header class="header">
       <div class="wrap header__in">
         <a class="logo" href="/">
-          <span class="monogram" aria-hidden="true">HR</span>
-          <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></span>
+          <Image src={logoOficial} alt="Hipnose Resolve" widths={[96, 160]} sizes="52px" class="logo__img" />
+          <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Reprogramação Mental</small></span>
         </a>
         <nav class="nav" id="nav" aria-label="Navegação principal">
           <a href="/areas">Terapias</a>
           <a href="/programas">Programas</a>
           <a href="/consultas">Como Funciona</a>
-          <a href="/equipa">Sobre Nós</a>
+          <a href="/equipa">Quem Somos</a>
           <a href="/blog">Blog</a>
           <a href="/contactos">Contactos</a>
           <a href="/membros" class="nav__extra">Área de Membros</a>
@@ -65,11 +67,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         <div class="footer__grid">
           <div>
             <a class="logo" href="/">
-              <span class="monogram" aria-hidden="true">HR</span>
-              <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Hipnoterapia</small></span>
+              <Image src={logoOficial} alt="Hipnose Resolve" widths={[96, 160]} sizes="52px" class="logo__img" />
+              <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Reprogramação Mental</small></span>
             </a>
             <p style="margin-top:1.2rem; max-width:34ch;">
-              Clínica de hipnoterapia — reprogramamos mentes e comportamentos, online e presencial. Portugal e Brasil.
+              Clínica de Reprogramação Mental — reprogramamos mentes e comportamentos, online e presencial. Portugal e Brasil.
             </p>
             <p style="margin-top:1rem; font-size:.86rem; line-height:1.8;">
               Rua Dr. Álvaro Monteiro, 12 R/C dto.<br />3510-014 Viseu · Portugal<br />
@@ -146,6 +148,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         { threshold: 0.14 }
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Carrossel de terapias
+      document.querySelectorAll<HTMLElement>('[data-caro]').forEach((c) => {
+        const track = c.querySelector<HTMLElement>('.caro__track');
+        const passo = () => (track?.firstElementChild?.clientWidth ?? 320) + 19;
+        c.querySelector('[data-caro-prev]')?.addEventListener('click', () => track?.scrollBy({ left: -passo(), behavior: 'smooth' }));
+        c.querySelector('[data-caro-next]')?.addEventListener('click', () => track?.scrollBy({ left: passo(), behavior: 'smooth' }));
+      });
 
       // Sombra do header ao rolar
       const header = document.querySelector('.header');

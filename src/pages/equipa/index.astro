@@ -2,36 +2,91 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import fotoMarta from '../../assets/img/marta.jpeg';
+import { fotoDeTerapeuta } from '../../lib/fotos';
+import fotoMartaNova from '../../assets/img/marta-nova.jpg';
 
 const terapeutas = await getCollection('terapeutas');
-const ativas = terapeutas.filter((t) => t.data.estado === 'ativa');
+const equipa = terapeutas.filter((t) => t.id !== 'marta' && t.data.estado === 'ativa');
 const breve = terapeutas.filter((t) => t.data.estado === 'breve');
 ---
 <Base
-  title="Equipa — Corpo Clínico · Hipnose Resolve"
-  description="Conheça a equipa de hipnoterapeutas da Hipnose Resolve: especialidades, línguas de atendimento e como marcar diretamente com cada terapeuta."
+  title="Quem Somos — Hipnose Resolve · Clínica de Reprogramação Mental"
+  description="Na Hipnose Resolve somos especialistas em Reprogramação Mental. Conheça a fundadora, Dra. Marta Brito, e a equipa que o vai acompanhar — com uma abordagem próxima, humana e livre de julgamentos."
 >
   <section class="wrap page-hero">
-    <p class="eyebrow">Equipa</p>
-    <h1>Quem a vai <em>acompanhar</em></h1>
-    <p class="lead">
-      Pessoas antes de credenciais. Conheça quem está do outro lado — e marque diretamente
-      com a terapeuta da sua área.
-    </p>
+    <p class="eyebrow">Quem Somos</p>
+    <h1>Somos especialistas em <em>Reprogramação Mental</em>.</h1>
   </section>
 
-  <section class="wrap" style="padding-bottom: var(--space-section);">
-    <div class="cards" style="margin-top:0;">
-      {ativas.map((t) => (
-        <a class="tcard reveal" href={`/equipa/${t.id}`}>
-          <div class="arch arch--img">
-            <Image src={fotoMarta} alt={`${t.data.nome} — ${t.data.papel}`} widths={[420, 700]} sizes="(max-width: 940px) 92vw, 30vw" />
+  <!-- copy da cliente (verbatim) -->
+  <section class="wrap" style="padding-bottom: clamp(2.5rem, 5vw, 4rem);">
+    <div class="prose reveal">
+      <p>
+        Ao atuar na mente, promovemos mudanças profundas e a transformação da forma como pensa,
+        sente e vive. Só assim é possível criar resultados reais e verdadeiramente duradouros.
+      </p>
+      <p>
+        Sabemos que cada pessoa é única e, por isso, olhamo-la como um todo — respeitando a sua
+        história, as suas necessidades e os seus objetivos.
+      </p>
+      <p>
+        <b>Aqui encontra uma equipa especializada, um acompanhamento de excelência e uma abordagem
+        próxima, humana e livre de julgamentos.</b> Existimos para o acolher, guiar e ajudar a
+        tornar-se na melhor versão de si, porque sabemos que tem dentro de si o potencial para
+        viver uma vida mais plena, equilibrada e feliz.
+      </p>
+      <p><b>Dê hoje o primeiro passo. A vida que deseja começa com essa decisão.</b></p>
+    </div>
+  </section>
+
+  <!-- fundadora -->
+  <section class="section" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap team__grid" style="margin-top:0;">
+      <div class="reveal" style="position:relative;">
+        <div class="arch arch--photo arch--img">
+          <Image src={fotoMartaNova} alt="Dra. Marta Brito, fundadora da Hipnose Resolve, no consultório" widths={[480, 800]} sizes="(max-width: 940px) 92vw, 38vw" />
+        </div>
+      </div>
+      <div class="team__bio reveal" data-d="1">
+        <p class="eyebrow">A fundadora</p>
+        <h2 style="font-size: clamp(1.9rem, 3.2vw, 2.6rem);">Dra. <em>Marta Brito</em></h2>
+        <p class="role">Hipnoterapeuta · Fundadora da Hipnose Resolve</p>
+        <p>
+          Apaixonada por terapias naturais e pela mente humana, estuda o comportamento e a mudança
+          desde 2000. Foi modelo profissional dos 16 aos 40 anos sem dietas nem restrições — e foi
+          ao perceber que essa liberdade nascia da relação da mente com a comida que fez do
+          emagrecimento a sua grande especialidade, a par da cessação tabágica.
+        </p>
+        <p style="margin-top:.8rem; font-family:var(--serif); font-style:italic; font-size:1.15rem; color:#8A6E37;">
+          "Estou aqui para caminhar consigo."
+        </p>
+        <div style="margin-top:1.8rem; display:flex; gap:.9rem; flex-wrap:wrap;">
+          <a class="btn btn--primary" href="/equipa/marta">Conhecer a minha história</a>
+          <a class="btn btn--ghost" href="/consultas">Marcar consulta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- equipa -->
+  <section class="wrap section">
+    <div class="reveal">
+      <p class="eyebrow">A equipa</p>
+      <h2>Quem a vai <em>acompanhar</em></h2>
+    </div>
+    <div class="cards">
+      {equipa.map((t) => {
+        const foto = fotoDeTerapeuta(t.id);
+        return (
+          <div class="tcard reveal">
+            <div class="arch arch--img">
+              {foto && <Image src={foto} alt={`${t.data.nome} — ${t.data.papel}`} widths={[420, 700]} sizes="(max-width: 940px) 92vw, 30vw" />}
+            </div>
+            <h3>{t.data.nome}</h3>
+            <p class="papel">{t.data.papel}</p>
           </div>
-          <h3>{t.data.nome}</h3>
-          <p class="papel">{t.data.papel}</p>
-        </a>
-      ))}
+        );
+      })}
       {breve.map((t, i) => (
         <div class="tcard tcard--breve reveal" data-d={String(i + 1)}>
           <div class="arch" role="img" aria-label={`${t.data.nome} — em breve na equipa`}>
@@ -43,11 +98,8 @@ const breve = terapeutas.filter((t) => t.data.estado === 'breve');
         </div>
       ))}
     </div>
-
-    <div class="team__note reveal" style="margin-top:3rem; max-width:640px;">
-      <b>A equipa está a crescer.</b> A Hipnose Resolve nasceu com a Marta e está a reunir
-      especialistas dedicadas por área — para que cada pessoa seja acompanhada por quem mais
-      percebe do seu tema.
+    <div class="reveal" style="text-align:center; margin-top:3rem;">
+      <a class="btn btn--gold" href="/consultas">Marcar Consulta</a>
     </div>
   </section>
 </Base>
