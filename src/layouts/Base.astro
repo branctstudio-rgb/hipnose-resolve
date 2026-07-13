@@ -162,12 +162,26 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         signal.addEventListener('abort', () => io.disconnect());
 
-        // Carrossel de terapias
+        // Carrossel de terapias — setas + autoplay (pausa ao interagir)
         document.querySelectorAll<HTMLElement>('[data-caro]').forEach((c) => {
           const track = c.querySelector<HTMLElement>('.caro__track');
-          const passo = () => (track?.firstElementChild?.clientWidth ?? 320) + 19;
-          c.querySelector('[data-caro-prev]')?.addEventListener('click', () => track?.scrollBy({ left: -passo(), behavior: 'smooth' }), { signal });
-          c.querySelector('[data-caro-next]')?.addEventListener('click', () => track?.scrollBy({ left: passo(), behavior: 'smooth' }), { signal });
+          if (!track) return;
+          const passo = () => (track.firstElementChild?.clientWidth ?? 320) + 19;
+          const avanca = (dir: number) => {
+            const fim = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+            if (dir > 0 && fim) track.scrollTo({ left: 0, behavior: 'smooth' });
+            else track.scrollBy({ left: dir * passo(), behavior: 'smooth' });
+          };
+          c.querySelector('[data-caro-prev]')?.addEventListener('click', () => avanca(-1), { signal });
+          c.querySelector('[data-caro-next]')?.addEventListener('click', () => avanca(1), { signal });
+          if (!reduz) {
+            let timer = setInterval(() => avanca(1), 3800);
+            const pausa = () => { clearInterval(timer); timer = setInterval(() => avanca(1), 3800); };
+            ['pointerenter', 'pointerdown', 'touchstart'].forEach((ev) =>
+              c.addEventListener(ev, pausa, { passive: true, signal })
+            );
+            signal.addEventListener('abort', () => clearInterval(timer));
+          }
         });
 
         // Sombra do header ao rolar

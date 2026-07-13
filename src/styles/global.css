@@ -958,6 +958,87 @@ em, .accent-i {
 }
 .compare__fonte { display: block; margin-top: .5rem; font-family: var(--sans); font-style: normal; font-size: .72rem; color: var(--ink-soft); }
 
+/* ---------- v3: metade de baixo visual (feedback "criatividade zero") ---------- */
+/* Porquê — 3 cartões ricos com número serif gigante */
+.why-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.8rem; }
+@media (max-width: 880px) { .why-cards { grid-template-columns: 1fr; } }
+.why-card {
+  position: relative; overflow: hidden;
+  border-radius: 24px; padding: 2.6rem 2rem 2.2rem;
+  text-align: left; min-height: 300px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  box-shadow: var(--shadow-soft);
+}
+.why-card .num {
+  position: absolute; top: 1.2rem; right: 1.6rem;
+  font-family: var(--serif); font-style: italic; font-size: 5.5rem; line-height: 1;
+  opacity: .18;
+}
+.why-card svg { width: 34px; height: 34px; margin-bottom: 1rem; }
+.why-card h3 { font-size: 1.45rem; margin-bottom: .5rem; }
+.why-card p { font-size: .95rem; line-height: 1.55; }
+.why-card--gold { background: linear-gradient(165deg, #F6ECD6 0%, #E8D3A2 100%); }
+.why-card--gold .num, .why-card--gold svg { color: #8A6E37; }
+.why-card--gold h3 { color: #52411F; }
+.why-card--gold p { color: #7A6435; }
+.why-card--mist { background: linear-gradient(165deg, #EDF1E5 0%, #D3DCC3 100%); }
+.why-card--mist .num, .why-card--mist svg { color: var(--sage-deep); }
+.why-card--mist h3 { color: #2E3C2F; }
+.why-card--mist p { color: #55624B; }
+.why-card--ink { background: linear-gradient(165deg, #3E5246 0%, var(--sage-ink) 100%); }
+.why-card--ink .num { color: var(--gold-light); opacity: .3; }
+.why-card--ink svg { color: var(--gold-light); }
+.why-card--ink h3 { color: #FBF8F1; }
+.why-card--ink p { color: #C3CDB6; }
+
+/* Programas — cards fotográficos */
+.prog-card {
+  background: var(--card); border: 1px solid var(--hair); border-radius: var(--radius);
+  overflow: hidden; text-decoration: none; display: flex; flex-direction: column;
+  transition: transform .5s var(--ease-calm), box-shadow .5s var(--ease-calm);
+  box-shadow: var(--shadow-soft);
+}
+.prog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.prog-card__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.prog-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--ease-calm); }
+.prog-card:hover .prog-card__img img { transform: scale(1.05); }
+.prog-card__img .kicker {
+  position: absolute; left: .9rem; bottom: .9rem; z-index: 2;
+  background: rgba(22, 48, 42, .74); backdrop-filter: blur(6px);
+  color: #F0D9A0; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  border-radius: 999px; padding: .4rem .85rem;
+  border: 1px solid rgba(240, 217, 160, .3);
+}
+.prog-card__body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; flex: 1; }
+.prog-card__body h3 { font-size: 1.5rem; margin-bottom: .45rem; }
+.prog-card__body p { font-size: .92rem; color: var(--ink-soft); line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prog-card__body .mais { margin-top: 1.1rem; font-weight: 600; font-size: .92rem; color: var(--sage-deep); }
+
+/* Testemunhos — banda escura com cards claros */
+.depo-band {
+  background:
+    radial-gradient(70% 100% at 90% 0%, rgba(196, 161, 92, .18) 0%, transparent 55%),
+    linear-gradient(180deg, #3E5246 0%, var(--sage-ink) 100%);
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+.depo-band .eyebrow { background: rgba(22, 48, 42, .5); border-color: rgba(227, 205, 156, .3); color: var(--gold-light); }
+.depo-band h2 { color: #FBF8F1; }
+.depo-band h2 em { color: var(--gold-light); }
+
+/* FAQ — split com cartão de contacto */
+.faq-split { display: grid; grid-template-columns: .9fr 1.4fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: 3rem; }
+@media (max-width: 940px) { .faq-split { grid-template-columns: 1fr; } }
+.faq-card {
+  background: linear-gradient(170deg, #F6ECD6 0%, #EBD9AE 100%);
+  border: 1px solid var(--gold-light); border-radius: 24px;
+  padding: 2.4rem 2rem; text-align: center;
+  position: sticky; top: 96px;
+  box-shadow: var(--shadow-soft);
+}
+.faq-card h3 { font-size: 1.5rem; color: #52411F; margin: 1rem 0 .5rem; }
+.faq-card p { font-size: .92rem; color: #7A6435; margin-bottom: 1.5rem; }
+.faq-split .faq { margin-inline: 0; max-width: none; }
+
 /* ---------- v2 clean: strips e variantes minimais ---------- */
 .strip-acessos {
   border-block: 1px solid var(--hair);
