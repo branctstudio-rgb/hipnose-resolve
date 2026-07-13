@@ -206,12 +206,14 @@ const schema = [
           <button type="button" data-caro-next aria-label="Seguinte"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <div class="caro__track">
+          {/* Destinos conforme brief da cliente: terapias → como funciona;
+              Emagrecimento e Tabagismo → landings dos programas */}
           {[
-            { nome: 'Ansiedade e Stress', txt: 'Recupere a calma, o equilíbrio emocional e a leveza de viver sem sobrecarga mental.', href: '/areas/ansiedade-panico', img: fotoAnsiedade, icone: ico.mente },
-            { nome: 'Autoestima e Confiança', txt: 'Transforme a forma como se vê e fortaleça o que a sua voz interior lhe diz.', href: '/areas/autoestima-empoderamento', img: fotoRelacoes, icone: ico.coracao },
-            { nome: 'Hábitos e Comportamentos', txt: 'Elimine padrões limitantes e crie novos hábitos que impulsionam a sua melhor versão.', href: '/areas/mudanca-habitos', img: fotoStress, icone: ico.spark },
-            { nome: 'Emagrecimento Consciente', txt: 'Reprograme a sua mente para alcançar o peso ideal de forma saudável e definitiva.', href: '/areas/emagrecimento', img: fotoMagra, icone: ico.balanca },
-            { nome: 'Parar de Fumar', txt: 'Liberte-se do vício do tabaco com apoio especializado e hipnose clínica.', href: '/areas/cessacao-tabagica', img: fotoTabaco, icone: ico.escudo },
+            { nome: 'Ansiedade e Stress', txt: 'Recupere a calma, o equilíbrio emocional e a leveza de viver sem sobrecarga mental.', href: '/consultas', img: fotoAnsiedade, icone: ico.mente },
+            { nome: 'Autoestima e Confiança', txt: 'Transforme a forma como se vê e fortaleça o que a sua voz interior lhe diz.', href: '/consultas', img: fotoRelacoes, icone: ico.coracao },
+            { nome: 'Hábitos e Comportamentos', txt: 'Elimine padrões limitantes e crie novos hábitos que impulsionam a sua melhor versão.', href: '/consultas', img: fotoStress, icone: ico.spark },
+            { nome: 'Emagrecimento Consciente', txt: 'Reprograme a sua mente para alcançar o peso ideal de forma saudável e definitiva.', href: '/programas/magramente', img: fotoMagra, icone: ico.balanca },
+            { nome: 'Parar de Fumar', txt: 'Liberte-se do vício do tabaco com apoio especializado e hipnose clínica.', href: '/programas/set-you-free', img: fotoTabaco, icone: ico.escudo },
             { nome: 'E muito mais…', txt: 'Fobias, insónias, dores emocionais, traumas e outros desafios que pode superar.', href: '/areas', img: fotoMedos, icone: ico.chave },
           ].map((t) => (
             <a class="thera-card" href={t.href}>
