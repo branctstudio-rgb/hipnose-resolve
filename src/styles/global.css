@@ -958,6 +958,23 @@ em, .accent-i {
 }
 .compare__fonte { display: block; margin-top: .5rem; font-family: var(--sans); font-style: normal; font-size: .72rem; color: var(--ink-soft); }
 
+/* ---------- v2 clean: strips e variantes minimais ---------- */
+.strip-acessos {
+  border-block: 1px solid var(--hair);
+  background: var(--card);
+  padding-block: 1.6rem;
+}
+.stats__grid--tres { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 880px) { .stats__grid--tres { grid-template-columns: 1fr; row-gap: 2rem; } .stats__grid--tres .stat { border-left: 0; padding-left: 0; } }
+.stats__fonte { padding-bottom: 2.2rem; font-size: .72rem; color: var(--ink-soft); }
+.trust__grid--tres { grid-template-columns: repeat(3, 1fr); max-width: 860px; margin-inline: auto; }
+@media (max-width: 720px) { .trust__grid--tres { grid-template-columns: 1fr; } }
+.trust__grid--tres .trust__item span { font-size: .95rem; max-width: none; }
+.thera-card--min .thera-card__body { padding: 1.2rem 1.4rem 1.4rem; }
+.thera-card--min .thera-card__body h3 { margin: 0; font-size: 1.2rem; }
+.thera-card--min .thera-card__img { border-radius: var(--radius) var(--radius) 0 0; aspect-ratio: 16 / 12; }
+.card-l--clamp p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
 /* faixa de números — serif gigante + rótulo lateral (estilo editorial) */
 .stats { background: var(--paper); border-block: 1px solid var(--hair); }
 .stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding-block: 3.2rem; }

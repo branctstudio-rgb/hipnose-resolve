@@ -9,50 +9,22 @@ import fotoAnsiedade from '../assets/img/ansiedade.png';
 import fotoRelacoes from '../assets/img/relacionamentos.jpg';
 import fotoStress from '../assets/img/stress.webp';
 import fotoMedos from '../assets/img/medos.jpg';
-import heroArvore from '../assets/img/hero/hero-arvore.jpg';
 
 const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
-const areas = await getCollection('areas');
-const areaNome = (id: string) => areas.find((a) => a.id === id)?.data.nome ?? '';
 
-/* Capa clara e clean (decisão Felipe 07/07): marfim + árvore com luz dourada no arco */
-
-/* ícones linha (traço dourado) */
 const ico = {
   pessoa: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5',
-  escudo: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Zm-2.5 9 2 2 3.5-4',
   estrela: 'M12 3.5l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 9.2l5.4-.8L12 3.5Z',
-  spark: 'M12 3v4m0 10v4m9-9h-4M7 12H3m14.5-6.5-2.8 2.8M9.3 14.7l-2.8 2.8m11 0-2.8-2.8M9.3 9.3 6.5 6.5',
   coracao: 'M12 20s-7-4.5-9-9c-1.2-2.8.5-6 3.6-6 1.9 0 3.4 1 4.4 2.6C12 6 13.5 5 15.4 5c3.1 0 4.8 3.2 3.6 6-2 4.5-7 9-7 9Z',
-  mente: 'M9 4a5 5 0 0 0-5 5c0 1.5.6 2.8 1.5 3.8L5 18l3.5-1c.8.3 1.6.5 2.5.5M9 4c.8-.6 1.9-1 3-1a8 8 0 0 1 8 8c0 4.4-3.6 8-8 8',
-  chave: 'M14 10a4 4 0 1 0-4 4h1v2h2v2h2v2h3v-3l-4-4v-1a4 4 0 0 0 0-2Z',
-  calendario: 'M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm3-3v4m8-4v4M4 11h16',
   globo: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm-9-9h18M12 3c2.5 2.4 4 5.6 4 9s-1.5 6.6-4 9c-2.5-2.4-4-5.6-4-9s1.5-6.6 4-9Z',
-  balanca: 'M12 4v16m-7 0h14M5 8l3.5 6h-7L5 8Zm14 0 3.5 6h-7L19 8ZM7 5.5 17 4',
 };
 const Icon = (d: string) => `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}" stroke="currentColor"/></svg>`;
 
-const pilares = [
-  { txt: 'Abordagem clínica e personalizada', icone: ico.pessoa },
-  { txt: 'Confidencialidade e ética profissional', icone: ico.escudo },
-  { txt: 'Terapeutas especialistas em formação contínua', icone: ico.estrela },
-  { txt: 'Métodos comprovados e tecnologia', icone: ico.spark },
-  { txt: 'Acompanhamento antes, durante e depois', icone: ico.coracao },
-];
-
-const porque = [
-  { txt: 'Planos 100% personalizados, feitos à sua medida', icone: ico.pessoa },
-  { txt: 'Métodos clínicos eficazes e fundamentados', icone: ico.estrela },
-  { txt: 'Estamos consigo antes, durante e depois do processo', icone: ico.calendario },
-  { txt: 'Um espaço seguro, onde pode ser quem realmente é', icone: ico.coracao },
-  { txt: 'Ferramentas avançadas que potenciam a transformação', icone: ico.spark },
-];
-
 const faq = [
   { q: 'A hipnose é segura? Vou perder o controlo?', a: 'Sim, é segura — e não, nunca perde o controlo. Em hipnoterapia clínica está sempre consciente e no comando; a terapeuta apenas guia um estado de foco profundo, semelhante ao de estar absorto num bom livro.' },
-  { q: 'As sessões online funcionam tão bem como as presenciais?', a: 'Sim. A hipnoterapia adapta-se muito bem ao formato online: basta um lugar tranquilo, auscultadores e ligação estável. O link da sessão chega automaticamente com a confirmação.' },
-  { q: 'Qual a diferença entre a Consulta de Avaliação e a de Tratamento?', a: 'A Avaliação (2h) é o ponto de partida: conhecer a sua história e definir o plano. As consultas de Tratamento (1h) são as sessões de acompanhamento contínuo desse plano.' },
-  { q: 'A hipnoterapia substitui o médico ou psicólogo?', a: 'Não. É uma prática complementar de bem-estar e não substitui diagnóstico nem tratamento médico ou psicológico. Sempre que necessário, trabalhamos em articulação com outros profissionais de saúde.' },
+  { q: 'As sessões online funcionam tão bem como as presenciais?', a: 'Sim. Basta um lugar tranquilo, auscultadores e ligação estável. O link da sessão chega automaticamente com a confirmação.' },
+  { q: 'Qual a diferença entre a Consulta de Avaliação e a de Tratamento?', a: 'A Avaliação (2h) é o ponto de partida: conhecer a sua história e definir o plano. As consultas de Tratamento (1h) são o acompanhamento contínuo desse plano.' },
+  { q: 'A hipnoterapia substitui o médico ou psicólogo?', a: 'Não. É uma prática complementar de bem-estar e não substitui diagnóstico nem tratamento médico ou psicológico.' },
 ];
 
 const schema = [
@@ -60,7 +32,7 @@ const schema = [
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     name: 'Hipnose Resolve',
-    description: 'Clínica de hipnoterapia — reprogramamos mentes e comportamentos. Consultas online e presenciais, Portugal e Brasil.',
+    description: 'Clínica de Reprogramação Mental — reprogramamos mentes e comportamentos. Consultas online e presenciais, Portugal e Brasil.',
     url: 'https://hipnoseresolve.pt',
     telephone: '+351915574759',
     email: 'info@hipnoseresolve.pt',
@@ -79,10 +51,10 @@ const schema = [
 ---
 <Base
   title="Hipnose Resolve — Clínica de Reprogramação Mental · Online e Presencial"
-  description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica e reprogramação mental para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
+  description="Reprogramamos mentes e comportamentos. Transformamos vidas. Hipnose clínica para ansiedade, hábitos, emagrecimento e cessação tabágica — online e presencial, Portugal e Brasil."
   schema={schema}
 >
-  <!-- HERO ABERTURA (ecrã inteiro, vídeo ambiente + véu marfim) -->
+  <!-- HERO — minimal, o vídeo fala -->
   <section class="hero-open">
     <div class="hero-open__video" aria-hidden="true">
       <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-pessoa-poster.jpg" data-ambiente>
@@ -90,110 +62,72 @@ const schema = [
       </video>
     </div>
     <div class="hero-open__veil" aria-hidden="true"></div>
-    <div class="hero-open__halo" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-open__conteudo">
-      <p class="eyebrow" data-rise="1">Clínica de Reprogramação Mental · Online e Presencial</p>
-      <h1 data-rise="2">Reprogramamos mentes e comportamentos.
-        <em class="u-gold">Transformamos vidas.
-          <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
-        </em>
-      </h1>
-      <p class="hero-open__sub" data-rise="3">
-        Hipnose clínica, inteligência emocional e método ao serviço da sua transformação.
-      </p>
-      <p class="hero-open__txt" data-rise="3">
-        Acreditamos que está sempre a tempo de ser feliz — e estamos aqui para o ajudar
-        a conquistar a vida que deseja.
-      </p>
-      <div class="hero__cta" data-rise="4">
-        <a class="btn btn--gold" href="/consultas">
-          Marcar Consulta
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="btn btn--ghost" href="/consultas">Ver como funciona</a>
-      </div>
-      <div class="acessos" data-rise="5">
-        <a class="acesso" href="/consultas">
-          <Fragment set:html={Icon(ico.globo)} />
-          <span><b>Clínica Online</b><span>Portugal e Brasil, em português</span></span>
-        </a>
-        <a class="acesso" href="/contactos">
-          <Fragment set:html={Icon(ico.pessoa)} />
-          <span><b>Gabinete de Viseu</b><span>localização · horário · contactos</span></span>
-        </a>
-        <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
-          <Fragment set:html={Icon(ico.coracao)} />
-          <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
-        </a>
-      </div>
+        <p class="eyebrow" data-rise="1">Clínica de Reprogramação Mental</p>
+        <h1 data-rise="2">Reprogramamos mentes.
+          <em class="u-gold">Transformamos vidas.
+            <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
+          </em>
+        </h1>
+        <div class="hero__cta" data-rise="3">
+          <a class="btn btn--gold" href="/consultas">
+            Marcar Consulta
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="/consultas">Como funciona</a>
+        </div>
+        <div class="hero-meta" data-rise="4" style="margin: 1.8rem 0 0;">
+          <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <a href="#testemunhos">Histórias reais</a>
+        </div>
       </div>
     </div>
-    <a class="scroll-cue scroll-cue--dark" href="#bemvindo" aria-label="Descer">
+    <a class="scroll-cue scroll-cue--dark" href="#acessos" aria-label="Descer">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </section>
 
-  <!-- BOAS-VINDAS (árvore + acessos) -->
-  <section class="hero-light" id="bemvindo">
-    <div class="wrap hero-light__grid">
-      <div>
-        <p class="eyebrow">Bem-vindo à Hipnose Resolve</p>
-        <div class="hero-meta">
-          <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <a href="#testemunhos">Histórias reais de transformação</a>
-        </div>
-        <h2>Está sempre a tempo de <em>ser feliz</em>.</h2>
-        <p class="hero-light__txt">
-          Ao atuar na mente, promovemos mudanças profundas e a transformação da forma como
-          pensa, sente e vive. Sabemos que cada pessoa é única — e olhamo-la como um todo,
-          respeitando a sua história, as suas necessidades e os seus objetivos.
-        </p>
-        <div style="margin-top:1.8rem;">
-          <a class="btn btn--ghost" href="/equipa">Conhecer a clínica</a>
-        </div>
-      </div>
-      <div class="hero-light__visual" data-rise="3">
-        <div class="hero-light__halo" aria-hidden="true"></div>
-        <div class="arch arch--img">
-          <Image src={heroArvore} alt="Luz do sol a atravessar uma árvore serena" widths={[520, 860, 1200]} sizes="(max-width: 940px) 92vw, 42vw" loading="eager" />
-        </div>
-        <div class="ui-card ui-card--ok" aria-hidden="true">
-          <span class="dot"></span> Sessão confirmada — link Meet enviado
-        </div>
-        <div class="ui-card ui-card--chat" aria-hidden="true">
-          <div class="balao balao--in">Quero deixar de fumar… é mesmo possível numa sessão?</div>
-          <div class="balao balao--out">É — e está no sítio certo. Prefere online ou presencial?</div>
-          <small>Assistente Hipnose Resolve · responde a qualquer hora</small>
-        </div>
-      </div>
+  <!-- ACESSOS (strip compacta) -->
+  <section class="strip-acessos" id="acessos">
+    <div class="wrap acessos" style="margin:0; justify-content:center;">
+      <a class="acesso" href="/consultas">
+        <Fragment set:html={Icon(ico.globo)} />
+        <span><b>Clínica Online</b><span>Portugal e Brasil</span></span>
+      </a>
+      <a class="acesso" href="/contactos">
+        <Fragment set:html={Icon(ico.pessoa)} />
+        <span><b>Gabinete de Viseu</b><span>localização e horário</span></span>
+      </a>
+      <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
+        <Fragment set:html={Icon(ico.coracao)} />
+        <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
+      </a>
     </div>
   </section>
 
-  <!-- FAIXA DE CONFIANÇA -->
-  <section class="trust" aria-label="Os nossos pilares">
-    <div class="wrap trust__grid">
-      {pilares.map((p) => (
-        <div class="trust__item reveal">
-          <Fragment set:html={Icon(p.icone)} />
-          <span>{p.txt}</span>
-        </div>
-      ))}
+  <!-- NÚMEROS GIGANTES -->
+  <section class="stats" aria-label="Eficácia">
+    <div class="wrap stats__grid stats__grid--tres">
+      <div class="stat reveal"><b>93<em>%</em></b><span>taxa de recuperação com hipnose clínica*</span></div>
+      <div class="stat reveal" data-d="1"><b>6</b><span>sessões, em média, para essa recuperação*</span></div>
+      <div class="stat reveal" data-d="2"><b>2000</b><span>o ano em que a Marta começou a estudar a mente</span></div>
     </div>
+    <p class="wrap stats__fonte">*Estudo comparativo de A. Barrios, American Health Magazine — vs. 38% em ~600 sessões (psicanálise) e 72% em ~22 (terapia comportamental).</p>
   </section>
 
-  <!-- MANIFESTO (storytelling) -->
+  <!-- MANIFESTO (curto) -->
   <section class="manifesto" aria-label="A nossa missão">
     <div class="wrap">
       <p class="manifesto__txt">
-        {'A mudança não devia ter de esperar pela segunda-feira certa. Juntámos hipnose clínica, método e acompanhamento humano para reescrever consigo a sua história —'.split(' ').map((w) => <span class="w">{w} </span>)}
-        <em><span class="w">ao</span> <span class="w">seu</span> <span class="w">ritmo,</span> <span class="w">sem</span> <span class="w">julgamento.</span></em>
+        {'A mudança não devia ter de esperar.'.split(' ').map((w) => <span class="w">{w} </span>)}
+        <em>{'Ao seu ritmo, sem julgamento.'.split(' ').map((w) => <span class="w">{w} </span>)}</em>
       </p>
     </div>
   </section>
 
-  <!-- TERAPIAS (mosaico) -->
+  <!-- TERAPIAS (carrossel visual, sem parágrafos) -->
   <section class="section" id="terapias">
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
@@ -206,37 +140,33 @@ const schema = [
           <button type="button" data-caro-next aria-label="Seguinte"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <div class="caro__track">
-          {/* Destinos conforme brief da cliente: terapias → como funciona;
-              Emagrecimento e Tabagismo → landings dos programas */}
           {[
-            { nome: 'Ansiedade e Stress', txt: 'Recupere a calma, o equilíbrio emocional e a leveza de viver sem sobrecarga mental.', href: '/consultas', img: fotoAnsiedade, icone: ico.mente },
-            { nome: 'Autoestima e Confiança', txt: 'Transforme a forma como se vê e fortaleça o que a sua voz interior lhe diz.', href: '/consultas', img: fotoRelacoes, icone: ico.coracao },
-            { nome: 'Hábitos e Comportamentos', txt: 'Elimine padrões limitantes e crie novos hábitos que impulsionam a sua melhor versão.', href: '/consultas', img: fotoStress, icone: ico.spark },
-            { nome: 'Emagrecimento Consciente', txt: 'Reprograme a sua mente para alcançar o peso ideal de forma saudável e definitiva.', href: '/programas/magramente', img: fotoMagra, icone: ico.balanca },
-            { nome: 'Parar de Fumar', txt: 'Liberte-se do vício do tabaco com apoio especializado e hipnose clínica.', href: '/programas/set-you-free', img: fotoTabaco, icone: ico.escudo },
-            { nome: 'E muito mais…', txt: 'Fobias, insónias, dores emocionais, traumas e outros desafios que pode superar.', href: '/areas', img: fotoMedos, icone: ico.chave },
+            { nome: 'Ansiedade e Stress', href: '/consultas', img: fotoAnsiedade },
+            { nome: 'Autoestima e Confiança', href: '/consultas', img: fotoRelacoes },
+            { nome: 'Hábitos e Comportamentos', href: '/consultas', img: fotoStress },
+            { nome: 'Emagrecimento Consciente', href: '/programas/magramente', img: fotoMagra },
+            { nome: 'Parar de Fumar', href: '/programas/set-you-free', img: fotoTabaco },
+            { nome: 'E muito mais…', href: '/areas', img: fotoMedos },
           ].map((t) => (
-            <a class="thera-card" href={t.href}>
+            <a class="thera-card thera-card--min" href={t.href}>
               <div class="thera-card__img">
                 <Image src={t.img} alt={t.nome} widths={[420, 700]} sizes="320px" />
               </div>
-              <div class="thera-card__ico"><Fragment set:html={Icon(t.icone)} /></div>
               <div class="thera-card__body">
                 <h3>{t.nome}</h3>
-                <p>{t.txt}</p>
               </div>
             </a>
           ))}
         </div>
       </div>
-      <div class="reveal" style="text-align:center; margin-top:1.4rem;">
+      <div class="reveal" style="text-align:center; margin-top:1.2rem;">
         <a class="btn btn--primary" href="/areas">Ver todas as terapias</a>
       </div>
     </div>
   </section>
 
-  <!-- FUNDADORA -->
-  <section class="section" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 8vw, 6rem);">
+  <!-- FUNDADORA (enxuta) -->
+  <section class="section" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
     <div class="wrap team__grid" style="margin-top:0;">
       <div class="reveal" style="position:relative;">
         <div class="arch arch--photo arch--img">
@@ -244,85 +174,49 @@ const schema = [
         </div>
       </div>
       <div class="team__bio reveal" data-d="1">
-        <p class="eyebrow">Conheça a fundadora</p>
-        <h2 style="font-size: clamp(1.9rem, 3.4vw, 2.8rem);">Olá, sou a <em>Dra. Marta Brito</em>.</h2>
-        <p style="margin-top:1.2rem;">
-          A Hipnose Resolve nasceu da minha vontade de ajudar pessoas a reescreverem a sua história.
-          Acredito profundamente que todas merecem a oportunidade de transformarem a sua vida —
-          e de viverem com leveza, liberdade e propósito.
+        <p class="eyebrow">A fundadora</p>
+        <h2 style="font-size: clamp(1.9rem, 3.4vw, 2.8rem);">Dra. <em>Marta Brito</em></h2>
+        <p style="margin-top:1.1rem; max-width:44ch;">
+          Hipnoterapeuta, a estudar a mente humana desde 2000. Especialista em emagrecimento
+          e cessação tabágica.
         </p>
-        <p style="margin-top:.9rem;">
-          Cada protocolo, cada sessão e cada detalhe da nossa clínica foram criados com um único
-          objetivo: fazer realmente a diferença na vida de quem confia em nós.
-        </p>
-        <p style="margin-top:1.4rem; font-family:var(--serif); font-style:italic; font-size:1.25rem; color:#8A6E37;">
-          Estou aqui para caminhar consigo.
+        <p style="margin-top:1.2rem; font-family:var(--serif); font-style:italic; font-size:1.3rem; color:#8A6E37;">
+          "Estou aqui para caminhar consigo."
         </p>
         <div style="margin-top:1.8rem;">
-          <a class="btn btn--ghost" href="/equipa/marta">Conhecer a minha história</a>
+          <a class="btn btn--ghost" href="/equipa">Conhecer a clínica</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PORQUÊ -->
+  <!-- PORQUÊ (3 pilares, uma linha cada) -->
   <section class="section">
-    <div class="wrap">
-      <div class="reveal" style="text-align:center;">
-        <p class="eyebrow" style="justify-content:center; display:flex;">Porquê a Hipnose Resolve?</p>
-        <h2 style="max-width:26ch; margin-inline:auto;">Somos especialistas em <em>Reprogramação Mental</em>.</h2>
-        <p class="lead" style="margin:1.2rem auto 0; text-align:center;">Mais do que terapia, uma experiência de transformação.</p>
+    <div class="wrap" style="text-align:center;">
+      <p class="eyebrow">Porquê a Hipnose Resolve?</p>
+      <h2>Especialistas em <em>Reprogramação Mental</em></h2>
+      <div class="trust__grid trust__grid--tres reveal" data-d="1" style="padding-top:2.6rem;">
+        <div class="trust__item"><Fragment set:html={Icon(ico.pessoa)} /><span>Planos 100% personalizados</span></div>
+        <div class="trust__item"><Fragment set:html={Icon(ico.estrela)} /><span>Método clínico comprovado</span></div>
+        <div class="trust__item"><Fragment set:html={Icon(ico.coracao)} /><span>Consigo antes, durante e depois</span></div>
       </div>
-      <div class="trust__grid reveal" data-d="1" style="padding-top:3rem;">
-        {porque.map((p) => (
-          <div class="trust__item">
-            <Fragment set:html={Icon(p.icone)} />
-            <span>{p.txt}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- EFICÁCIA COMPARADA (faixa dupla — pedido da cliente) -->
-  <section class="compare" aria-label="Eficácia comparada">
-    <div class="wrap compare__grid">
-      <div class="compare__cell reveal">
-        <h3>Psicanálise</h3>
-        <b>38%</b>
-        <span>taxa de recuperação, após aproximadamente 600 sessões</span>
-      </div>
-      <div class="compare__cell reveal" data-d="1">
-        <h3>Terapia Comportamental</h3>
-        <b>72%</b>
-        <span>taxa de recuperação, após uma média de 22 sessões</span>
-      </div>
-      <div class="compare__cell compare__cell--hr reveal" data-d="2">
-        <h3>Hipnose Clínica</h3>
-        <b>93%</b>
-        <span>taxa de recuperação, após uma média de 6 sessões</span>
-      </div>
-    </div>
-    <div class="wrap compare__rodape reveal">
-      Eficácia comprovada, resultados rápidos e duradouros.
-      <span class="compare__fonte">Estudo comparativo de A. Barrios, publicado na American Health Magazine.</span>
     </div>
   </section>
 
   <!-- PROGRAMAS -->
-  <section class="section" id="programas">
+  <section class="section" id="programas" style="padding-top:0;">
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
-        <p class="eyebrow" style="justify-content:center; display:flex;">Programas de transformação</p>
+        <p class="eyebrow">Programas de transformação</p>
         <h2>Um método, <em>três caminhos</em></h2>
       </div>
       <div class="cards">
         {programas.map((p, i) => (
-          <a class="card-l reveal" data-d={String(i)} href={`/programas/${p.id}`}>
+          <a class="card-l card-l--clamp reveal" data-d={String(i)} href={`/programas/${p.id}`}>
             <span class="kicker">{p.data.kicker}</span>
             <h3>{p.data.nome}</h3>
             <p>{p.data.sub}</p>
-            <span class="mais">{p.data.comprarOnline ? 'Comprar online →' : 'Conhecer o programa →'}</span>
+            <span class="mais">{p.data.comprarOnline ? 'Garantir a minha vaga →' : 'Conhecer o programa →'}</span>
           </a>
         ))}
       </div>
@@ -339,7 +233,7 @@ const schema = [
       <div class="quotes__grid">
         <div class="quote quote--metric reveal">
           <b>−20 kg</b>
-          <span>o resultado que começou numa Consulta de Avaliação igual à que pode marcar hoje</span>
+          <span>o resultado que começou numa consulta igual à que pode marcar hoje</span>
         </div>
         <blockquote class="quote reveal" data-d="1">
           <p>Três anos de dietas sem resultado. Com a Marta perdi 20 kg — mudei por dentro, e o resto seguiu.</p>
@@ -361,7 +255,7 @@ const schema = [
   <section class="section" style="padding-top:0;">
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
-        <p class="eyebrow" style="justify-content:center; display:flex;">Perguntas frequentes</p>
+        <p class="eyebrow">Perguntas frequentes</p>
         <h2 style="margin-bottom:2.5rem;">Antes de <em>dar o passo</em></h2>
       </div>
       <div class="faq reveal" data-d="1">
@@ -381,13 +275,9 @@ const schema = [
       <div class="cta-final__grid">
         <div style="text-align:left; max-width: 52ch;">
           <h2 style="margin-inline:0;">A sua nova história <em>começa agora</em>.</h2>
-          <p class="lead" style="margin:1.2rem 0 2rem;">Dê o primeiro passo para transformar a sua vida. Estamos aqui para a ajudar.</p>
-          <div style="display:flex; gap:.9rem; flex-wrap:wrap;">
-            <a class="btn btn--primary" href="/consultas">
-              Marcar Consulta de Avaliação
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a class="btn btn--ghost" href="https://wa.me/351915574759" target="_blank" rel="noopener">Falar com a terapeuta</a>
+          <div style="display:flex; gap:.9rem; flex-wrap:wrap; margin-top:2rem;">
+            <a class="btn btn--gold" href="/consultas">Marcar Consulta</a>
+            <a class="btn btn--ghost" href="https://wa.me/351915574759" target="_blank" rel="noopener">Falar no WhatsApp</a>
           </div>
         </div>
         <div class="selo" aria-hidden="true">Acreditamos em si, mesmo antes de voltar a acreditar em si próprio.</div>
