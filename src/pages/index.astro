@@ -57,19 +57,15 @@ const schema = [
   <!-- HERO — minimal, o vídeo fala -->
   <section class="hero-open">
     <div class="hero-open__video" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-clinica-poster.jpg" data-ambiente>
-        <source src="/media/hero-clinica.mp4" type="video/mp4" />
+      <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-sorriso-poster.jpg" data-ambiente>
+        <source src="/media/hero-sorriso.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="hero-open__veil" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-open__conteudo">
         <p class="eyebrow" data-rise="1">Clínica de Reprogramação Mental</p>
-        <h1 data-rise="2">Reprogramamos mentes.
-          <em class="u-gold">Transformamos vidas.
-            <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 55 3, 145 2, 197 7" /></svg>
-          </em>
-        </h1>
+        <h1 data-rise="2">Reprogramamos mentes.<br /><em>Transformamos vidas.</em></h1>
         <div class="hero__cta" data-rise="3">
           <a class="btn btn--gold" href="/consultas">
             Marcar Consulta
@@ -77,21 +73,9 @@ const schema = [
           </a>
           <a class="btn btn--ghost" href="/consultas">Como funciona</a>
         </div>
-        <div class="hero-meta" data-rise="4" style="margin: 1.8rem 0 0;">
-          <span class="hero-meta__avatars" aria-hidden="true"><span>MF</span><span>JP</span><span>C</span></span>
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <a href="#testemunhos">Histórias reais</a>
-        </div>
       </div>
     </div>
-    <a class="scroll-cue scroll-cue--dark" href="#acessos" aria-label="Descer">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </section>
-
-  <!-- ACESSOS (strip compacta) -->
-  <section class="strip-acessos" id="acessos">
-    <div class="wrap acessos" style="margin-top:0; justify-content:center;">
+    <div class="hero-open__rodape" data-rise="4">
       <a class="acesso" href="/consultas">
         <Fragment set:html={Icon(ico.globo)} />
         <span><b>Clínica Online</b><span>Portugal e Brasil</span></span>
