@@ -1,8 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import { Image } from 'astro:assets';
-import fotoGab1 from '../assets/img/marta.jpeg';
-import fotoGab2 from '../assets/img/tabaco.jpeg';
 ---
 <Base
   title="Contactos — Hipnose Resolve"
@@ -32,11 +29,11 @@ import fotoGab2 from '../assets/img/tabaco.jpeg';
           <p>Para marcações por email. Assuntos gerais e parcerias: <b>info@hipnoseresolve.pt</b>.</p>
           <span class="mais">Escrever email →</span>
         </a>
-        <a class="card-l" href="#viseu">
+        <a class="card-l" href="/viseu">
           <span class="kicker">Consultório · Viseu</span>
           <h3>Rua Dr. Álvaro Monteiro, 12 R/C dto.</h3>
           <p>3510-014 Viseu, Portugal. Consultas presenciais mediante marcação.</p>
-          <span class="mais">Conhecer o gabinete ↓</span>
+          <span class="mais">Conhecer o gabinete →</span>
         </a>
         <div class="card-l">
           <span class="kicker">Redes sociais</span>
@@ -65,58 +62,5 @@ import fotoGab2 from '../assets/img/tabaco.jpeg';
         não presta serviços de urgência.
       </p>
     </aside>
-  </section>
-
-  <!-- GABINETE DE VISEU (apresentação) -->
-  <section class="section gabinete" id="viseu" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
-    <div class="wrap">
-      <div class="reveal" style="text-align:center;">
-        <p class="eyebrow">Consultas presenciais</p>
-        <h2>O Gabinete de <em>Viseu</em></h2>
-        <p class="lead" style="margin:1.2rem auto 0; max-width:52ch;">
-          Um espaço acolhedor e discreto no coração de Viseu — pensado para se sentir
-          em casa desde o primeiro minuto.
-        </p>
-      </div>
-
-      <div class="gabinete__grid">
-        <div class="reveal">
-          <div class="gabinete__mapa">
-            <iframe
-              src="https://www.google.com/maps?q=Rua+Dr.+%C3%81lvaro+Monteiro+12,+3510-014+Viseu,+Portugal&output=embed"
-              width="100%" height="100%" style="border:0;"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa — Gabinete Hipnose Resolve em Viseu"
-            ></iframe>
-          </div>
-        </div>
-
-        <div class="reveal" data-d="1">
-          <div class="gabinete__info">
-            <div class="gabinete__linha">
-              <span class="gabinete__rotulo">Morada</span>
-              <p><b>Rua Dr. Álvaro Monteiro, 12 R/C dto.</b><br />3510-014 Viseu · Portugal</p>
-            </div>
-            <div class="gabinete__linha">
-              <span class="gabinete__rotulo">Atendimento</span>
-              <p>Consultas presenciais <b>mediante marcação</b> — com horários flexíveis, pensados também para quem trabalha.</p>
-            </div>
-            <div class="gabinete__linha">
-              <span class="gabinete__rotulo">Contacto direto</span>
-              <p><a href="tel:+351915574759">+351 915 574 759</a> · <a href="mailto:marcacoes@hipnoseresolve.pt">marcacoes@hipnoseresolve.pt</a></p>
-            </div>
-            <div style="display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.6rem;">
-              <a class="btn btn--gold" href="https://wa.me/351915574759?text=Ol%C3%A1!%20Queria%20marcar%20uma%20consulta%20presencial%20em%20Viseu." target="_blank" rel="noopener">Marcar consulta presencial</a>
-              <a class="btn btn--ghost" href="https://maps.google.com/?q=Rua+Dr.+%C3%81lvaro+Monteiro+12+Viseu" target="_blank" rel="noopener">Como chegar</a>
-            </div>
-          </div>
-
-          <div class="gabinete__fotos">
-            <div class="photo-frame"><Image src={fotoGab1} alt="O gabinete da Hipnose Resolve em Viseu" widths={[420, 700]} sizes="(max-width: 940px) 46vw, 24vw" /></div>
-            <div class="photo-frame"><Image src={fotoGab2} alt="Espaço de consulta do gabinete de Viseu" widths={[420, 700]} sizes="(max-width: 940px) 46vw, 24vw" /></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </Base>
