@@ -1,10 +1,17 @@
 ---
-import '@fontsource-variable/fraunces';
-import '@fontsource-variable/figtree';
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/playfair-display/500.css';
+import '@fontsource/playfair-display/500-italic.css';
+import '@fontsource/playfair-display/600.css';
+import '@fontsource/open-sauce-one/300.css';
+import '@fontsource/open-sauce-one/400.css';
+import '@fontsource/open-sauce-one/600.css';
+import '@fontsource/open-sauce-one/700.css';
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
-import logoOficial from '../assets/img/logo.png';
+import logoSimbolo from '../assets/img/logo-novo-simbolo.png';
 
 interface Props {
   title: string;
@@ -24,7 +31,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     {import.meta.env.PUBLIC_NOINDEX && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#FAF6EF" />
+    <meta name="theme-color" content="#e9e3d5" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -41,7 +48,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <header class="header">
       <div class="wrap header__in">
         <a class="logo" href="/">
-          <Image src={logoOficial} alt="Hipnose Resolve" widths={[96, 160]} sizes="52px" class="logo__img" />
+          <Image src={logoSimbolo} alt="Hipnose Resolve" widths={[112, 190]} sizes="54px" class="logo__img" />
           <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Reprogramação Mental</small></span>
         </a>
         <nav class="nav" id="nav" aria-label="Navegação principal">
@@ -69,7 +76,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         <div class="footer__grid">
           <div>
             <a class="logo" href="/">
-              <Image src={logoOficial} alt="Hipnose Resolve" widths={[96, 160]} sizes="52px" class="logo__img" />
+              <Image src={logoSimbolo} alt="Hipnose Resolve" widths={[112, 190]} sizes="54px" class="logo__img" />
               <span class="logo__txt">Hipnose <em>Resolve</em><small>Clínica de Reprogramação Mental</small></span>
             </a>
             <p style="margin-top:1.2rem; max-width:34ch;">

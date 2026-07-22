@@ -12,6 +12,8 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/figtree": "^5.2.0",
     "@fontsource-variable/fraunces": "^5.2.0",
+    "@fontsource/open-sauce-one": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
     "astro": "^5.10.0"
   }
 }
