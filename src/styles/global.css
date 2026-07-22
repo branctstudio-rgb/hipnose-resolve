@@ -391,7 +391,7 @@ em, .accent-i {
 }
 .hero-open__video { position: absolute; inset: 0; }
 .hero-open__video video { width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; }
-@media (max-width: 940px) { .hero-open__video video { object-position: 62% 24%; } }
+@media (max-width: 940px) { .hero-open__video video { object-position: 79% 30%; } }
 .hero-open__veil { /* composição do mock da cliente: creme à esquerda a fundir para a imagem */
   position: absolute; inset: 0;
   background:
