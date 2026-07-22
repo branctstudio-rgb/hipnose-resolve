@@ -16,6 +16,7 @@ const ico = {
   pessoa: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5',
   estrela: 'M12 3.5l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 9.2l5.4-.8L12 3.5Z',
   coracao: 'M12 20s-7-4.5-9-9c-1.2-2.8.5-6 3.6-6 1.9 0 3.4 1 4.4 2.6C12 6 13.5 5 15.4 5c3.1 0 4.8 3.2 3.6 6-2 4.5-7 9-7 9Z',
+  chave: 'M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 0v9m0-5.5h3.5M12 21h2.5',
   globo: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm-9-9h18M12 3c2.5 2.4 4 5.6 4 9s-1.5 6.6-4 9c-2.5-2.4-4-5.6-4-9s1.5-6.6 4-9Z',
 };
 const Icon = (d: string) => `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}" stroke="currentColor"/></svg>`;
@@ -84,9 +85,9 @@ const schema = [
         <Fragment set:html={Icon(ico.pessoa)} />
         <span><b>Gabinete de Viseu</b><span>localização e horário</span></span>
       </a>
-      <a class="acesso" href="https://wa.me/351915574759" target="_blank" rel="noopener">
-        <Fragment set:html={Icon(ico.coracao)} />
-        <span><b>WhatsApp</b><span>resposta a qualquer hora</span></span>
+      <a class="acesso" href="/membros">
+        <Fragment set:html={Icon(ico.chave)} />
+        <span><b>Área de Membros</b><span>os seus conteúdos exclusivos</span></span>
       </a>
     </div>
   </section>
