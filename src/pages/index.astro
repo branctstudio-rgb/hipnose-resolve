@@ -10,6 +10,8 @@ import areaRespirar from '../assets/img/area-respirar.jpg';
 import martaTransforma from '../assets/img/marta-transforma.jpg';
 import martaRosto from '../assets/img/marta-rosto.jpg';
 import percursoCliente from '../assets/img/percurso-cliente.jpg';
+import martaBlazer from '../assets/img/marta-blazer.jpg';
+import fotoCatia from '../assets/img/catia.jpg';
 import fotoMagra from '../assets/img/magramente-1.jpg';
 import fotoTabaco from '../assets/img/tabaco.jpeg';
 import fotoAnsiedade from '../assets/img/ansiedade.png';
@@ -329,6 +331,59 @@ const schema = [
         </div>
       </div>
     </div>
+    </div>
+  </section>
+
+  <!-- A NOSSA EQUIPA (cards de especialistas) -->
+  <section class="section" id="equipa" style="padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap">
+      <div class="equipa__topo reveal">
+        <div>
+          <p class="eyebrow">Quem a acompanha</p>
+          <h2>A nossa equipa de <em>especialistas</em></h2>
+        </div>
+        <a class="percurso__link" href="/equipa">Conhecer a equipa →</a>
+      </div>
+      <div class="equipa__grid">
+        <a class="equipa-card reveal" href="/equipa">
+          <div class="equipa-card__foto">
+            <Image src={martaBlazer} alt="Dra. Marta Brito" widths={[420, 700]} sizes="(max-width: 700px) 92vw, 24vw" />
+            <span class="equipa-card__seta" aria-hidden="true">↗</span>
+          </div>
+          <div class="equipa-card__info">
+            <h3>Dra. Marta Brito</h3>
+            <span>Hipnoterapeuta · Fundadora</span>
+            <p>Emagrecimento e cessação tabágica — a estudar a mente humana desde 2000.</p>
+          </div>
+        </a>
+        <a class="equipa-card reveal" data-d="1" href="/equipa">
+          <div class="equipa-card__foto">
+            <Image src={fotoCatia} alt="Dra. Cátia Fena" widths={[420, 700]} sizes="(max-width: 700px) 92vw, 24vw" />
+            <span class="equipa-card__seta" aria-hidden="true">↗</span>
+          </div>
+          <div class="equipa-card__info">
+            <h3>Dra. Cátia Fena</h3>
+            <span>Hipnoterapeuta · Trauma e Vícios</span>
+            <p>Profundidade e um espaço seguro para fazer as pazes com a sua história.</p>
+          </div>
+        </a>
+        <a class="equipa-card reveal" data-d="2" href="/equipa">
+          <div class="equipa-card__foto equipa-card__foto--breve"><b aria-hidden="true">M</b></div>
+          <div class="equipa-card__info">
+            <h3>Margarida Ferreira</h3>
+            <span>Hipnoterapeuta · Vidas Passadas</span>
+            <p>Terapia regressiva e de Vidas Passadas. Junta-se em breve à equipa.</p>
+          </div>
+        </a>
+        <a class="equipa-card reveal" data-d="3" href="/equipa">
+          <div class="equipa-card__foto equipa-card__foto--breve"><b aria-hidden="true">M</b></div>
+          <div class="equipa-card__info">
+            <h3>Marlene</h3>
+            <span>Hipnoterapeuta · Infantil</span>
+            <p>Hipnoterapia infantil. Junta-se em breve à equipa.</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
