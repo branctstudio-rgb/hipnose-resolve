@@ -1289,20 +1289,23 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 .bento .mais { margin-top: auto; font-size: .84rem; font-weight: 600; color: var(--sage-deep); }
 
 /* ---- Diferenciais: composição editorial (não 3 cartões iguais) ---- */
-.why-cards { gap: 0; margin-top: 3rem; }
+.why-cards { gap: 0; margin-top: 4.5rem; }
 .why-card, .why-card--gold, .why-card--mist, .why-card--ink {
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0;
-  min-height: 260px;
-  padding: 2.2rem 2.4rem;
+  min-height: 340px;
+  padding: 3rem 2.8rem 2.6rem;
   border-left: 1px solid rgba(182, 131, 64, .35);
 }
+.why-card h3 { font-size: 1.8rem; margin-bottom: .7rem; }
+.why-card p { font-size: 1.08rem; line-height: 1.6; max-width: 30ch; }
+.why-card svg { width: 40px; height: 40px; margin-bottom: 1.2rem; }
 .why-cards .why-card:first-child { border-left: 0; }
 .why-card--ink h3, .why-card--ink p { color: var(--ink); }
 .why-card--ink p { color: var(--ink-soft); }
 .why-card--ink .num, .why-card--ink svg { color: var(--gold-deep); }
-.why-card .num { font-size: 6.5rem; opacity: .1; top: .4rem; right: 1.2rem; }
+.why-card .num { font-size: 8.5rem; opacity: .12; top: .2rem; right: 1.4rem; }
 .why-card:hover .num { opacity: .2; transform: translateY(-4px); }
 .why-card::after { display: none; } /* sem brilho a varrer — editorial */
 .why-card.tilt3d:hover { --ty: 0; box-shadow: none !important; }
