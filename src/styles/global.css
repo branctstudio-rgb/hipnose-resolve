@@ -1250,6 +1250,14 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
   font-size: .72rem; font-weight: 600; background: var(--card);
   border: 1px solid var(--hair); border-radius: 999px; padding: .34rem .7rem;
 }
+.bento__chips--links { margin-top: .7rem; }
+.bento__chips--links a {
+  font-size: .78rem; font-weight: 600; text-decoration: none; color: var(--ink);
+  background: var(--sage-mist); border: 1px solid var(--hair);
+  border-radius: 999px; padding: .42rem .85rem;
+  transition: border-color .35s var(--ease-calm), background .35s var(--ease-calm), transform .35s var(--ease-calm);
+}
+.bento__chips--links a:hover { border-color: var(--gold); background: var(--card); transform: translateY(-2px); }
 .bento__avatars { display: flex; margin-bottom: .2rem; }
 .bento__avatars span { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid #fff; margin-left: -10px; box-shadow: 0 4px 10px -4px rgba(24, 18, 10, .3); }
 .bento__avatars span:first-child { margin-left: 0; }

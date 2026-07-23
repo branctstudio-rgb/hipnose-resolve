@@ -167,16 +167,22 @@ const schema = [
           </div>
           <span class="ghost" aria-hidden="true">Desde 2000</span>
         </div>
-        <a class="bento__card" href="/areas" style="grid-area: avat;">
+        <div class="bento__card" style="grid-area: avat;">
           <div class="bento__avatars" aria-hidden="true">
             <span><Image src={fotoRelacoes} alt="" widths={[96]} sizes="44px" /></span>
             <span><Image src={fotoStress} alt="" widths={[96]} sizes="44px" /></span>
             <span><Image src={fotoMedos} alt="" widths={[96]} sizes="44px" /></span>
           </div>
           <h3>Feito à sua <em>medida</em></h3>
-          <p style="font-size:.88rem; color:var(--ink-soft);">Um plano para cada história — autoestima, hábitos, medos e mais.</p>
-          <span class="mais">ver todas as áreas →</span>
-        </a>
+          <div class="bento__chips bento__chips--links">
+            <a href="/areas">Autoestima e Confiança</a>
+            <a href="/areas">Hábitos e Comportamentos</a>
+            <a href="/areas">Medos e Fobias</a>
+            <a href="/areas">Luto e Traumas</a>
+            <a href="/areas">Fertilidade e Hipnoparto</a>
+            <a href="/areas">Sono e Descanso</a>
+          </div>
+        </div>
         <div class="bento__card bento__depo" style="grid-area: depo;">
           <span class="stars" aria-hidden="true">★★★★★</span>
           <blockquote>
@@ -201,6 +207,9 @@ const schema = [
           <p>Fale connosco — respondemos a qualquer hora.</p>
           <a class="btn btn--gold" href="https://wa.me/351915574759" target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
+      </div>
+      <div class="reveal" style="text-align:center; margin-top:2.2rem;">
+        <a class="btn btn--primary" href="/areas">Ver todas as terapias</a>
       </div>
     </div>
   </section>
