@@ -1325,24 +1325,24 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 #programas .prog-card:nth-child(2) .mais, #programas .prog-card:nth-child(2) a { color: var(--gold-light); }
 #programas .prog-card:nth-child(3) { background: linear-gradient(170deg, #fdfcfe 0%, #e9d5b6 100%); border: 1px solid var(--gold-light); }
 
-/* ---- Fundadora: split full-bleed (foto = metade esquerda inteira) ---- */
+/* ---- Fundadora: foto retangular grande à esquerda, texto à direita ---- */
 .fundadora-split {
   display: grid; grid-template-columns: 1fr 1fr;
-  background: var(--sage-mist); min-height: 640px;
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
 }
-.fundadora-split__foto { position: relative; }
+.fundadora-split__foto {
+  position: relative; aspect-ratio: 3 / 4;
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 26px 60px -34px rgba(24, 18, 10, .45);
+}
 .fundadora-split__foto img {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 18%;
 }
-.fundadora-split__txt {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 5.5rem);
-}
+.fundadora-split__txt { display: flex; flex-direction: column; justify-content: center; }
 .fundadora-split__txt > div { max-width: 560px; }
 @media (max-width: 940px) {
-  .fundadora-split { grid-template-columns: 1fr; min-height: 0; }
-  .fundadora-split__foto { position: relative; aspect-ratio: 4 / 5; }
+  .fundadora-split { grid-template-columns: 1fr; }
 }
 
 /* ---- Coleção de Transformação (vitrine editorial de programas) ---- */
