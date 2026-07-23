@@ -1325,8 +1325,54 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 #programas .prog-card:nth-child(2) .mais, #programas .prog-card:nth-child(2) a { color: var(--gold-light); }
 #programas .prog-card:nth-child(3) { background: linear-gradient(170deg, #fdfcfe 0%, #e9d5b6 100%); border: 1px solid var(--gold-light); }
 
-/* O percurso: 4 etapas numa só linha em desktop */
-@media (min-width: 1000px) { .steps--quatro { grid-template-columns: repeat(4, 1fr); } }
+/* ---- O seu percurso: foto editorial + acordeão acessível ---- */
+.percurso__grid {
+  display: grid; grid-template-columns: 43fr 57fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+  margin-top: 3.2rem;
+}
+.percurso__foto {
+  position: relative; margin: 0; aspect-ratio: 4 / 5;
+  border-radius: 26px; overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .55);
+  box-shadow: 0 24px 56px -36px rgba(24, 18, 10, .4);
+}
+.percurso__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.percurso__foto figcaption {
+  position: absolute; left: .9rem; right: .9rem; bottom: .9rem;
+  background: rgba(253, 252, 254, .85); backdrop-filter: blur(8px);
+  border-radius: 14px; padding: .8rem 1.1rem;
+  font-size: .95rem; font-weight: 600; color: var(--ink); text-align: center;
+}
+.passo {
+  border-bottom: 1px solid var(--hair);
+  border-left: 2px solid var(--hair);
+  padding-left: clamp(1rem, 2vw, 1.6rem);
+  transition: background .35s var(--ease-calm), border-color .35s var(--ease-calm);
+}
+.passo[open] { background: rgba(247, 232, 210, .45); border-left-color: var(--gold-deep); }
+.passo summary {
+  display: flex; align-items: center; gap: .9rem;
+  min-height: 56px; padding-block: 1.05rem; cursor: pointer;
+  list-style: none;
+}
+.passo summary::-webkit-details-marker { display: none; }
+.passo__num { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--ink-soft); min-width: 2ch; transition: color .3s; }
+.passo summary svg { width: 26px; height: 26px; color: var(--ink-soft); flex: none; transition: color .3s; }
+.passo__titulo { font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 2vw, 1.7rem); color: var(--ink); }
+.passo__mais { margin-left: auto; font-size: 1.5rem; color: var(--gold-deep); transition: transform .3s var(--ease-calm); }
+.passo[open] .passo__mais { transform: rotate(45deg); }
+.passo[open] .passo__num, .passo[open] summary svg { color: var(--gold-deep); }
+.passo > p { padding: 0 2.6rem 1.3rem 0; margin-left: calc(2ch + 1.8rem + 26px); font-size: 1.13rem; line-height: 1.65; color: var(--ink-soft); max-width: 52ch; }
+.percurso__cta { margin-top: 2rem; display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+.percurso__link { font-weight: 600; color: var(--sage-deep); text-decoration: underline; text-underline-offset: 4px; }
+.percurso__cta p { width: 100%; font-size: .85rem; color: var(--ink-soft); margin-top: .2rem; }
+@media (max-width: 940px) {
+  .percurso__grid { grid-template-columns: 1fr; }
+  .passo > p { margin-left: 0; font-size: 1.02rem; }
+  .percurso__cta .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .passo, .passo__mais, .passo__num, .passo summary svg { transition: none; } }
 
 /* ---- Fundadora: foto retangular grande à esquerda, texto à direita ---- */
 .fundadora-split {
