@@ -1201,6 +1201,71 @@ h1 em, h2 em, em, .accent-i {
 .tilt3d:hover::before { opacity: 1; }
 .spec-card.tilt3d:hover, .card-l.tilt3d:hover, .program.tilt3d:hover { --ty: -6px; }
 
+/* ---- bento "áreas em que podemos ajudar" (ref. Dermato/Framer) ---- */
+.bento {
+  display: grid; gap: 1.1rem; margin-top: 2.8rem;
+  grid-template-columns: 1.08fr 1fr 1fr;
+  grid-template-areas:
+    'foto exp   nums'
+    'foto avat  depo'
+    'cta  fumar depo';
+}
+@media (max-width: 980px) {
+  .bento { grid-template-columns: 1fr 1fr; grid-template-areas: 'foto exp' 'foto nums' 'avat depo' 'fumar depo' 'cta cta'; }
+}
+@media (max-width: 640px) {
+  .bento { grid-template-columns: 1fr; grid-template-areas: 'foto' 'exp' 'nums' 'avat' 'fumar' 'depo' 'cta'; }
+}
+.bento__card {
+  position: relative; overflow: hidden; border-radius: 22px;
+  background: var(--card); box-shadow: var(--shadow-soft);
+  padding: 1.7rem 1.6rem; text-align: left; text-decoration: none; color: var(--ink);
+  display: flex; flex-direction: column; gap: .6rem;
+  transition: transform .5s var(--ease-calm), box-shadow .5s var(--ease-calm);
+}
+a.bento__card:hover { transform: translateY(-6px); box-shadow: 0 32px 64px -24px rgba(107, 60, 18, .38), inset 0 0 0 1px rgba(182, 131, 64, .32); }
+.bento__foto { padding: 0; min-height: 380px; }
+.bento__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-calm); }
+a.bento__foto:hover img { transform: scale(1.05); }
+.bento__glass {
+  position: absolute; left: .9rem; right: .9rem; bottom: .9rem; z-index: 1;
+  background: rgba(253, 252, 254, .82); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .6); border-radius: 16px; padding: .95rem 1.1rem;
+}
+.bento__glass b { font-family: var(--serif); font-size: 1.18rem; display: block; }
+.bento__glass span { font-size: .78rem; color: var(--ink-soft); }
+.bento__mini h3 { font-size: 1.35rem; }
+.bento__mini .bento__img { border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 7; margin-top: auto; }
+.bento__mini .bento__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-calm); }
+a.bento__mini:hover .bento__img img { transform: scale(1.06); }
+.bento__nums { background: linear-gradient(165deg, #f7e8d2 0%, #e9d5b6 100%); overflow: hidden; }
+.bento__nums .ghost {
+  position: absolute; right: -0.4rem; bottom: -1.6rem; z-index: 0; pointer-events: none;
+  font-family: var(--serif); font-style: italic; font-size: clamp(3.2rem, 5vw, 4.6rem);
+  color: rgba(146, 97, 42, .18); white-space: nowrap;
+}
+.bento__nums b { font-family: var(--serif); font-size: 2rem; line-height: 1.1; }
+.bento__chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .4rem; }
+.bento__chips span {
+  font-size: .72rem; font-weight: 600; background: var(--card);
+  border: 1px solid var(--hair); border-radius: 999px; padding: .34rem .7rem;
+}
+.bento__avatars { display: flex; margin-bottom: .2rem; }
+.bento__avatars span { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid #fff; margin-left: -10px; box-shadow: 0 4px 10px -4px rgba(24, 18, 10, .3); }
+.bento__avatars span:first-child { margin-left: 0; }
+.bento__avatars img { width: 100%; height: 100%; object-fit: cover; }
+.bento__depo { gap: .9rem; }
+.bento__depo .stars { color: var(--gold); letter-spacing: .12em; font-size: .8rem; }
+.bento__depo blockquote { margin: 0; border: 0; padding: .9rem 1rem; background: var(--sage-mist); border-radius: 14px; }
+.bento__depo blockquote p { font-family: var(--serif); font-style: italic; font-size: .92rem; line-height: 1.5; }
+.bento__depo blockquote footer { font-size: .74rem; color: var(--ink-soft); margin-top: .45rem; }
+.bento__depo .metric { font-family: var(--serif); font-size: 1.9rem; color: #6b3c12; line-height: 1; }
+.bento__cta { background: linear-gradient(165deg, #3a2c1a 0%, #101010 100%); color: #f7e8d2; justify-content: center; align-items: flex-start; }
+.bento__cta h3 { color: #fdfcfe; font-size: 1.3rem; }
+.bento__cta p { font-size: .85rem; color: rgba(247, 232, 210, .75); }
+.bento__cta .btn { margin-top: .5rem; }
+.bento .mais { margin-top: auto; font-size: .84rem; font-weight: 600; color: var(--sage-deep); }
+
 /* ---- why-cards & prog-cards: hover última geração ---- */
 .why-card { transition: box-shadow .55s var(--ease-calm); }
 .why-card .num { transition: transform .6s var(--ease-calm), opacity .6s var(--ease-calm); }

@@ -147,33 +147,60 @@ const schema = [
         <p class="eyebrow">Áreas em que podemos ajudar</p>
         <h2>Terapias que <em>transformam vidas</em></h2>
       </div>
-      <div class="caro reveal" data-d="1" data-caro>
-        <div class="caro__nav">
-          <button type="button" data-caro-prev aria-label="Anterior"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button type="button" data-caro-next aria-label="Seguinte"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="bento reveal" data-d="1">
+        <a class="bento__card bento__foto" href="/programas/magramente" style="grid-area: foto;">
+          <Image src={fotoMagra} alt="Emagrecimento Consciente com hipnose clínica" widths={[600, 900]} sizes="(max-width: 640px) 92vw, 36vw" />
+          <div class="bento__glass">
+            <b>Emagrecimento Consciente</b>
+            <span>resultados reais, ao seu ritmo</span>
+          </div>
+        </a>
+        <a class="bento__card bento__mini" href="/consultas" style="grid-area: exp;">
+          <h3>Ansiedade e <em>Stress</em></h3>
+          <div class="bento__img"><Image src={fotoAnsiedade} alt="Sessão de hipnose clínica para ansiedade" widths={[600, 900]} sizes="30vw" /></div>
+        </a>
+        <div class="bento__card bento__nums" style="grid-area: nums;">
+          <b>+ de duas décadas<br />dedicadas à mente</b>
+          <div class="bento__chips">
+            <span>Online · PT &amp; BR</span>
+            <span>Presencial · Viseu</span>
+          </div>
+          <span class="ghost" aria-hidden="true">Desde 2000</span>
         </div>
-        <div class="caro__track">
-          {[
-            { nome: 'Ansiedade e Stress', href: '/consultas', img: fotoAnsiedade },
-            { nome: 'Autoestima e Confiança', href: '/consultas', img: fotoRelacoes },
-            { nome: 'Hábitos e Comportamentos', href: '/consultas', img: fotoStress },
-            { nome: 'Emagrecimento Consciente', href: '/programas/magramente', img: fotoMagra },
-            { nome: 'Parar de Fumar', href: '/programas/set-you-free', img: fotoTabaco },
-            { nome: 'E muito mais…', href: '/areas', img: fotoMedos },
-          ].map((t) => (
-            <a class="thera-card thera-card--min" href={t.href}>
-              <div class="thera-card__img">
-                <Image src={t.img} alt={t.nome} widths={[420, 700]} sizes="320px" />
-              </div>
-              <div class="thera-card__body">
-                <h3>{t.nome}</h3>
-              </div>
-            </a>
-          ))}
+        <a class="bento__card" href="/areas" style="grid-area: avat;">
+          <div class="bento__avatars" aria-hidden="true">
+            <span><Image src={fotoRelacoes} alt="" widths={[96]} sizes="44px" /></span>
+            <span><Image src={fotoStress} alt="" widths={[96]} sizes="44px" /></span>
+            <span><Image src={fotoMedos} alt="" widths={[96]} sizes="44px" /></span>
+          </div>
+          <h3>Feito à sua <em>medida</em></h3>
+          <p style="font-size:.88rem; color:var(--ink-soft);">Um plano para cada história — autoestima, hábitos, medos e mais.</p>
+          <span class="mais">ver todas as áreas →</span>
+        </a>
+        <div class="bento__card bento__depo" style="grid-area: depo;">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <blockquote>
+            <span class="metric">−20 kg</span>
+            <p>“Consegui aquilo que me parecia impossível.”</p>
+            <footer>Maria Ferreira · MagraMente</footer>
+          </blockquote>
+          <blockquote>
+            <p>“Fumei durante 30 anos. Bastaram 90 minutos.”</p>
+            <footer>J. Paulo Guerreiro · Set You Free</footer>
+          </blockquote>
         </div>
-      </div>
-      <div class="reveal" style="text-align:center; margin-top:1.2rem;">
-        <a class="btn btn--primary" href="/areas">Ver todas as terapias</a>
+        <a class="bento__card bento__foto bento__foto--wide" href="/programas/set-you-free" style="grid-area: fumar; min-height: 220px;">
+          <Image src={fotoTabaco} alt="Programa Set You Free — cessação tabágica" widths={[600, 900]} sizes="(max-width: 640px) 92vw, 30vw" />
+          <div class="bento__glass">
+            <b>Parar de Fumar</b>
+            <span>Set You Free · sessão única + 30 dias</span>
+          </div>
+        </a>
+        <div class="bento__card bento__cta" style="grid-area: cta;">
+          <h3>Por onde começar?</h3>
+          <p>Fale connosco — respondemos a qualquer hora.</p>
+          <a class="btn btn--gold" href="https://wa.me/351915574759" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
