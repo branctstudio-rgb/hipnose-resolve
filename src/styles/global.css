@@ -1325,6 +1325,67 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 #programas .prog-card:nth-child(2) .mais, #programas .prog-card:nth-child(2) a { color: var(--gold-light); }
 #programas .prog-card:nth-child(3) { background: linear-gradient(170deg, #fdfcfe 0%, #e9d5b6 100%); border: 1px solid var(--gold-light); }
 
+/* ---- Coleção de Transformação (vitrine editorial de programas) ---- */
+.colecao {
+  display: grid; gap: 1.5rem; margin-top: 3rem;
+  grid-template-columns: 55fr 45fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'magra syf' 'magra tt';
+}
+.colecao__item {
+  position: relative; display: flex; flex-direction: column;
+  border-radius: 22px; overflow: hidden; text-decoration: none; color: var(--ink);
+  background: var(--card);
+  box-shadow: 0 20px 48px -34px rgba(24, 18, 10, .4);
+  transition: transform .4s var(--ease-calm), box-shadow .4s var(--ease-calm);
+}
+.colecao__item:hover, .colecao__item:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 56px -32px rgba(107, 60, 18, .35), inset 0 0 0 1px rgba(182, 131, 64, .4);
+}
+.colecao__magra { grid-area: magra; min-height: 560px; justify-content: flex-end; }
+.colecao__img { position: absolute; inset: 0; }
+.colecao__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: transform .5s var(--ease-calm); }
+.colecao__item:hover .colecao__img img { transform: scale(1.03); }
+.colecao__magra .colecao__body {
+  position: relative; margin-top: auto;
+  background: linear-gradient(0deg, rgba(233, 227, 213, .97) 55%, rgba(233, 227, 213, .82) 80%, transparent 100%);
+  padding: 3rem 2.4rem 2.2rem;
+}
+.colecao__cat {
+  display: block; font-size: .7rem; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--gold-deep); margin-bottom: .7rem;
+}
+.colecao__item h3 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); margin-bottom: .55rem; }
+.colecao__item p { font-size: .96rem; line-height: 1.6; max-width: 44ch; color: var(--ink-soft); }
+.colecao__meta { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+.colecao__meta li { font-size: .78rem; font-weight: 600; color: var(--ink); }
+.colecao__meta li::before { content: '·'; color: var(--gold); margin-right: .45rem; }
+.colecao__cta {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-top: 1.4rem; font-size: .88rem; font-weight: 600; color: var(--sage-deep);
+}
+.colecao__cta i { font-style: normal; transition: transform .35s var(--ease-calm); }
+.colecao__item:hover .colecao__cta i { transform: translateX(4px); }
+.colecao__syf, .colecao__tt { padding: 2.5rem 2.4rem 2.2rem; justify-content: center; }
+.colecao__syf::before, .colecao__tt::before {
+  content: ''; position: absolute; top: 0; left: 2.4rem; right: 2.4rem; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(182, 131, 64, .55), transparent);
+}
+.colecao__syf { grid-area: syf; background: linear-gradient(160deg, #302820 0%, #27211C 100%); color: #f7e8d2; }
+.colecao__syf h3 { color: #fdfcfe; }
+.colecao__syf p { color: rgba(247, 232, 210, .78); }
+.colecao__syf .colecao__cat { color: var(--gold-light); }
+.colecao__syf .colecao__cta { color: var(--gold-light); }
+.colecao__tt { grid-area: tt; background: linear-gradient(160deg, #f7e8d2 0%, #e9d5b6 100%); }
+@media (max-width: 980px) {
+  .colecao { grid-template-columns: 1fr; grid-template-rows: auto; grid-template-areas: 'magra' 'syf' 'tt'; }
+  .colecao__magra { min-height: 440px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .colecao__item, .colecao__img img, .colecao__cta i { transition: none; }
+}
+
 /* ---- Depoimento em destaque ---- */
 .quote--destaque { position: relative; }
 .quote--destaque p { font-size: 1.18rem; line-height: 1.6; }
