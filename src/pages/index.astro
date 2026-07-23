@@ -247,26 +247,31 @@ const schema = [
   </section>
 
 
-  <!-- FUNDADORA (enxuta) -->
-  <section class="section" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
-    <div class="wrap team__grid" style="margin-top:0;">
-      <div class="reveal" style="position:relative;">
-        <div class="arch arch--photo arch--img">
+  <!-- FUNDADORA (layout editorial claro, ref. aprovada) -->
+  <section class="section" style="background: var(--card); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap team__grid" style="margin-top:0; align-items:center;">
+      <div class="reveal">
+        <div class="photo-frame" style="aspect-ratio: 4 / 5; border-radius: 18px;">
           <Image src={martaRosto} alt="Dra. Marta Brito, fundadora da Hipnose Resolve" widths={[480, 800]} sizes="(max-width: 940px) 92vw, 38vw" />
         </div>
       </div>
       <div class="team__bio reveal" data-d="1">
-        <p class="eyebrow">Fundadora da Hipnose Resolve</p>
-        <h2 style="font-size: clamp(1.9rem, 3.4vw, 2.8rem);">Dra. <em>Marta Brito</em></h2>
-        <p style="margin-top:1.1rem; max-width:44ch;">
+        <p style="font-weight:600; color:var(--ink-soft); font-size:.98rem; margin-bottom:.5rem;">Dra. Marta Brito</p>
+        <h2 style="font-size: clamp(1.9rem, 3.2vw, 2.6rem); text-transform:none; letter-spacing:-.01em; color:#92612a;">Fundadora e Hipnoterapeuta</h2>
+        <p style="margin-top:1.2rem; max-width:48ch;">
           Hipnoterapeuta, a estudar a mente humana desde 2000. Especialista em emagrecimento
           e cessação tabágica.
         </p>
-        <p style="margin-top:1.2rem; font-family:var(--serif); font-style:italic; font-size:1.3rem; color:#92612a;">
+        <p style="margin-top:.9rem; max-width:48ch;">
+          Acompanho cada pessoa de forma próxima e personalizada — online, em Portugal
+          e no Brasil, ou presencialmente no gabinete de Viseu.
+        </p>
+        <p style="margin-top:1.2rem; font-family:var(--serif); font-style:italic; font-size:1.25rem; color:#92612a;">
           "Estou aqui para caminhar consigo."
         </p>
-        <div style="margin-top:1.8rem;">
-          <a class="btn btn--ghost" href="/equipa">Conhecer Marta e a equipa</a>
+        <div style="display:flex; gap:.9rem; flex-wrap:wrap; margin-top:1.8rem;">
+          <a class="btn btn--gold" href="/equipa">Sobre a Dra. Marta</a>
+          <a class="btn btn--ghost" href="/consultas">Marcar avaliação</a>
         </div>
       </div>
     </div>
