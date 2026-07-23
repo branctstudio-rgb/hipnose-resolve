@@ -3,6 +3,7 @@
    Fórmula "vende-se sozinha" (ref. da cliente) × identidade dourada Hipnose Resolve.
    Tratamento por "tu", como o material oficial do programa. */
 import Base from '../../layouts/Base.astro';
+import { WA_URL } from '../../config/site';
 import { Image } from 'astro:assets';
 import fotoMartaNova from '../../assets/img/marta-nova.jpg';
 import fotoMagra from '../../assets/img/magramente-1.jpg';
@@ -227,7 +228,7 @@ const schema = [
           <li>Grupo de WhatsApp para dúvidas e apoio</li>
           <li>Acesso aos materiais na área de membros</li>
         </ul>
-        <a class="cta-mega" href="https://wa.me/351915574759?text=Quero%20garantir%20a%20minha%20vaga%20no%20TRANSFORMA-TE!" target="_blank" rel="noopener" style="margin-top:1.4rem;">Quero a minha vaga!</a>
+        <a class="cta-mega" href={WA_URL} target="_blank" rel="noopener" style="margin-top:1.4rem;">Quero a minha vaga!</a>
         <p class="nota">Vagas limitadas — o acompanhamento é próximo e por turma. Pagamento por MB WAY, cartão ou parcelado.</p>
       </div>
     </div>

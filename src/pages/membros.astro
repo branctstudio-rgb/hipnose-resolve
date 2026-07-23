@@ -1,33 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
+import { WA_URL } from '../config/site';
+/* Área de Membros SEM backend: não renderizamos formulário de login nem
+   recolhemos credenciais. Quando featureFlags.membersAreaEnabled = true e
+   houver autenticação real (Supabase/CRM), restaurar o fluxo de login. */
 ---
 <Base
-  title="Área de Membros — Hipnose Resolve"
-  description="Aceda aos materiais dos seus programas: áudios de hipnose, ebooks e receitas. Login reservado a participantes dos programas Hipnose Resolve."
+  title="Área exclusiva em preparação — Hipnose Resolve"
+  description="A área de membros da Hipnose Resolve está em preparação. Em breve, os participantes dos programas poderão aceder aqui aos seus conteúdos exclusivos."
+  noindex={true}
 >
   <section class="login-wrap wrap">
-    <div class="login-card reveal in">
+    <div class="login-card reveal in" style="text-align:center;">
       <p class="eyebrow" style="margin-bottom:.8rem;">Área de Membros</p>
-      <h1>Bem-vinda de <em>volta</em></h1>
-      <p class="lead">
-        Os seus áudios de hipnose, ebooks e materiais — tudo num só lugar,
-        desbloqueado com os seus programas.
+      <h1>Área exclusiva em <em>preparação</em></h1>
+      <p class="lead" style="margin-inline:auto;">
+        Em breve, os participantes dos programas poderão aceder aqui aos seus
+        conteúdos exclusivos — áudios de hipnose, ebooks e materiais de apoio.
       </p>
-      <form onsubmit="return false;">
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="o.seu@email.com" autocomplete="email" />
-        </div>
-        <div class="field">
-          <label for="password">Palavra-passe</label>
-          <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" />
-        </div>
-        <button class="btn btn--primary" type="submit" title="Disponível brevemente">Entrar</button>
-      </form>
-      <p class="login-note">
-        O acesso é criado automaticamente quando adquire um programa.<br />
-        Ainda não tem? <a href="/programas" style="color:var(--sage-deep); font-weight:600;">Conheça os programas</a>.
-      </p>
+      <div style="display:flex; gap:.9rem; flex-wrap:wrap; justify-content:center; margin-top:2rem;">
+        <a class="btn btn--gold" href="/programas">Conhecer os programas</a>
+        <a class="btn btn--ghost" href={WA_URL} target="_blank" rel="noopener noreferrer">Falar com a equipa</a>
+      </div>
     </div>
   </section>
 </Base>

@@ -71,6 +71,16 @@
   --t-reveal: .9s;
 }
 
+/* ---------- Acessibilidade ---------- */
+.skip-link {
+  position: absolute; left: 1rem; top: -100px; z-index: 200;
+  background: var(--ink); color: var(--card); text-decoration: none;
+  padding: .7rem 1.2rem; border-radius: 0 0 12px 12px; font-weight: 600; font-size: .9rem;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 0; }
+:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; border-radius: 4px; }
+
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; }
 

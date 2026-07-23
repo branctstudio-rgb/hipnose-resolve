@@ -1,5 +1,6 @@
 ---
 import '@fontsource/playfair-display/400.css';
+import { WA_URL, siteConfig, contactConfig, featureFlags, brandingConfig } from '../config/site';
 import '@fontsource/playfair-display/400-italic.css';
 import '@fontsource/playfair-display/500.css';
 import '@fontsource/playfair-display/500-italic.css';
@@ -17,9 +18,17 @@ interface Props {
   title: string;
   description: string;
   schema?: Record<string, unknown>[];
+  /* força noindex mesmo em produção (páginas inativas/rascunho) */
+  noindex?: boolean;
 }
-const { title, description, schema = [] } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const { title, description, schema = [], noindex = false } = Astro.props;
+/* SEO por ambiente: em preview (noindex) NÃO afirmamos canonical do domínio
+   oficial — só em produção. */
+const isPreview = Boolean(import.meta.env.PUBLIC_NOINDEX) || !siteConfig.allowIndexing;
+const canonical = new URL(Astro.url.pathname, siteConfig.productionUrl).href;
+const base = import.meta.env.PUBLIC_BASE ?? '';
+const ogImage = isPreview ? `${base}/og-image.jpg` : new URL('/og-image.jpg', siteConfig.productionUrl).href;
+const anoAtual = new Date().getFullYear();
 ---
 <!doctype html>
 <html lang="pt-PT">
@@ -28,23 +37,32 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {import.meta.env.PUBLIC_NOINDEX && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonical} />
+    {(isPreview || noindex) && <meta name="robots" content="noindex, nofollow" />}
+    {!isPreview && !noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#e9e3d5" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="Hipnose Resolve" />
+    <meta property="og:site_name" content={siteConfig.siteName} />
     <meta property="og:locale" content="pt_PT" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hipnose Resolve — Clínica de Reprogramação Mental" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     {schema.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
+    <noscript><style>{`.reveal{opacity:1 !important;transform:none !important}`}</style></noscript>
     <ClientRouter />
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
     <header class="header">
       <div class="wrap header__in">
         <a class="logo" href="/">
@@ -58,16 +76,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
           <a href="/equipa">Quem Somos</a>
           <a href="/blog">Blog</a>
           <a href="/contactos">Contactos</a>
-          <a href="/membros" class="nav__extra">Área de Membros</a>
+          {featureFlags.membersAreaEnabled && <a href="/membros" class="nav__extra">Área de Membros</a>}
         </nav>
-        <a class="btn btn--gold" href="/consultas">Marcar sessão</a>
+        <a class="btn btn--gold" href="/consultas">Marcar consulta</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         </button>
       </div>
     </header>
 
-    <main>
+    <main id="conteudo">
       <slot />
     </main>
 
@@ -83,9 +101,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
               Clínica de Reprogramação Mental — reprogramamos mentes e comportamentos, online e presencial. Portugal e Brasil.
             </p>
             <p style="margin-top:1rem; font-size:.86rem; line-height:1.8;">
-              Rua Dr. Álvaro Monteiro, 12 R/C dto.<br />3510-014 Viseu · Portugal<br />
-              <a href="tel:+351915574759">+351 915 574 759</a><br />
-              <a href="mailto:info@hipnoseresolve.pt">info@hipnoseresolve.pt</a>
+              {contactConfig.address.street}<br />{contactConfig.address.postalCode} {contactConfig.address.city} · {contactConfig.address.country}<br />
+              <a href={`tel:${contactConfig.phone}`}>{contactConfig.phoneDisplay}</a><br />
+              <a href={`mailto:${contactConfig.generalEmail}`}>{contactConfig.generalEmail}</a>
             </p>
             <div class="footer__selos" aria-label="Garantias">
               <span>RGPD</span>
@@ -103,7 +121,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
               <li><a href="/viseu">Gabinete de Viseu</a></li>
               <li><a href="/equipa">Sobre nós</a></li>
               <li><a href="/blog">Blog</a></li>
-              <li><a href="/membros">Área de Membros</a></li>
+              {featureFlags.membersAreaEnabled && <li><a href="/membros">Área de Membros</a></li>}
             </ul>
           </div>
           <div>
@@ -115,16 +133,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
             </ul>
           </div>
           <div>
-            <h4>Newsletter</h4>
-            <p style="font-size:.88rem;">Receba dicas e conteúdos exclusivos para o seu bem-estar.</p>
-            <form class="news" onsubmit="return false;" aria-label="Subscrever newsletter">
-              <input type="email" placeholder="O seu melhor email" aria-label="Email" />
-              <button type="submit" title="Disponível brevemente">→</button>
-            </form>
+            <h4>Siga-nos</h4>
+            <p style="font-size:.88rem;">Conteúdos sobre a mente e a mudança, todas as semanas.</p>
+            {featureFlags.newsletterEnabled && (
+              <form class="news" aria-label="Subscrever newsletter">
+                <input type="email" placeholder="O seu melhor email" aria-label="Email" />
+                <button type="submit">→</button>
+              </form>
+            )}
             <p style="margin-top:1.2rem; font-size:.86rem;">
-              <a href="https://www.instagram.com/hipnoseresolve/" target="_blank" rel="noopener">Instagram</a> ·
-              <a href="https://www.facebook.com/profile.php?id=61555999870032" target="_blank" rel="noopener">Facebook</a> ·
-              <a href="https://wa.me/351915574759" target="_blank" rel="noopener">WhatsApp</a>
+              <a href={contactConfig.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> ·
+              <a href={contactConfig.facebook} target="_blank" rel="noopener noreferrer">Facebook</a> ·
+              <a href={WA_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a>
             </p>
           </div>
         </div>
@@ -132,12 +152,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
           A hipnoterapia é uma prática complementar de bem-estar e não substitui o diagnóstico,
           acompanhamento ou tratamento médico ou psicológico. Os resultados variam de pessoa para pessoa
           e nenhum resultado específico é garantido. Em caso de emergência, contacte o 112 (PT) ou o CVV 188 (BR).
-          <br />© 2026 Hipnose Resolve · Site por BRANCT TECH
+          <br />© {anoAtual} {siteConfig.siteName} · Website desenvolvido pela <a href={brandingConfig.developerUrl} target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">{brandingConfig.developerName}</a>
         </p>
       </div>
     </footer>
 
-    <a class="wa-float" href="https://wa.me/351915574759" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+    <a class="wa-float" href={WA_URL} aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.5-1 .1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2.1-.6 3.5.8 1.9 2.3 3.6 4.2 4.7 1.4.8 2.5 1 3.4.8.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.2-.2-.3-.8-.7Z"/></svg>
     </a>
 

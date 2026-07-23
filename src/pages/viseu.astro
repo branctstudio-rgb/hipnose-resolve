@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { WA_URL } from '../config/site';
 import { Image } from 'astro:assets';
 import fotoGab1 from '../assets/img/gabinete-viseu-1.jpg';
 import fotoGab2 from '../assets/img/gabinete-viseu-2.jpg';
@@ -60,7 +61,7 @@ const schema = [
             <p><a href="tel:+351915574759">+351 915 574 759</a> · <a href="mailto:marcacoes@hipnoseresolve.pt">marcacoes@hipnoseresolve.pt</a></p>
           </div>
           <div style="display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.6rem;">
-            <a class="btn btn--gold" href="https://wa.me/351915574759?text=Ol%C3%A1!%20Queria%20marcar%20uma%20consulta%20presencial%20em%20Viseu." target="_blank" rel="noopener">Marcar consulta presencial</a>
+            <a class="btn btn--gold" href={WA_URL} target="_blank" rel="noopener">Marcar consulta presencial</a>
             <a class="btn btn--ghost" href="https://maps.google.com/?q=Rua+Dr.+%C3%81lvaro+Monteiro+12+Viseu" target="_blank" rel="noopener">Como chegar</a>
           </div>
         </div>
@@ -137,7 +138,7 @@ const schema = [
         <div style="text-align:left; max-width: 52ch;">
           <h2 style="margin-inline:0;">Prefere falar <em>pessoalmente</em>?</h2>
           <div style="display:flex; gap:.9rem; flex-wrap:wrap; margin-top:2rem;">
-            <a class="btn btn--gold" href="https://wa.me/351915574759?text=Ol%C3%A1!%20Queria%20marcar%20uma%20consulta%20presencial%20em%20Viseu." target="_blank" rel="noopener">Marcar em Viseu</a>
+            <a class="btn btn--gold" href={WA_URL} target="_blank" rel="noopener">Marcar em Viseu</a>
             <a class="btn btn--ghost" href="/consultas">Prefiro online</a>
           </div>
         </div>

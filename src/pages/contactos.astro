@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { WA_URL } from '../config/site';
 ---
 <Base
   title="Contactos — Hipnose Resolve"
@@ -17,7 +18,7 @@ import Base from '../layouts/Base.astro';
   <section class="wrap split" style="padding-bottom: var(--space-section);">
     <div class="reveal">
       <div class="cards" style="grid-template-columns: 1fr; margin-top:0; gap:1rem;">
-        <a class="card-l" href="https://wa.me/351915574759" target="_blank" rel="noopener">
+        <a class="card-l" href={WA_URL} target="_blank" rel="noopener">
           <span class="kicker">WhatsApp · +351 915 574 759</span>
           <h3>Falar agora no WhatsApp</h3>
           <p>Tirar dúvidas, marcar ou remarcar consultas, saber mais sobre os programas.</p>

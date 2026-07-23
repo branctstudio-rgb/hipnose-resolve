@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { WA_URL } from '../config/site';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import fotoMartaNova from '../assets/img/marta-nova.jpg';
@@ -70,13 +71,20 @@ const schema = [
       <div class="hero-open__conteudo">
         <p class="eyebrow" data-rise="1">Clínica de Reprogramação Mental</p>
         <h1 data-rise="2">Reprogramamos mentes.<br /><em>Transformamos vidas.</em></h1>
+        <p class="hero-open__sub" data-rise="2" style="max-width: 44ch;">
+          Hipnoterapia personalizada para ansiedade, hábitos, emagrecimento e cessação
+          tabágica — online em Portugal e no Brasil ou presencialmente em Viseu.
+        </p>
         <div class="hero__cta" data-rise="3">
           <a class="btn btn--gold" href="/consultas">
-            Marcar Consulta
+            Marcar consulta de avaliação
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="btn btn--ghost" href="/consultas">Como funciona</a>
+          <a class="btn btn--ghost" href={WA_URL} target="_blank" rel="noopener noreferrer">Falar com a equipa</a>
         </div>
+        <p data-rise="3" style="margin-top: 1.1rem; font-size: .8rem; color: var(--ink-soft); letter-spacing: .02em;">
+          Atendimento personalizado · Ambiente confidencial · Online e presencial
+        </p>
       </div>
     </div>
     <div class="hero-open__rodape" data-rise="4">
@@ -95,14 +103,13 @@ const schema = [
     </div>
   </section>
 
-  <!-- NÚMEROS GIGANTES -->
-  <section class="stats" aria-label="Eficácia">
+  <!-- SINAIS DE CONFIANÇA (sem promessas de resultados) -->
+  <section class="stats" aria-label="Sinais de confiança">
     <div class="wrap stats__grid stats__grid--tres">
-      <div class="stat reveal"><b>93<em>%</em></b><span>taxa de recuperação com hipnose clínica*</span></div>
-      <div class="stat reveal" data-d="1"><b>6</b><span>sessões, em média, para essa recuperação*</span></div>
-      <div class="stat reveal" data-d="2"><b>2000</b><span>o ano em que a Marta começou a estudar a mente</span></div>
+      <div class="stat reveal"><b>Desde 2000</b><span>dedicação ao estudo da mente</span></div>
+      <div class="stat reveal" data-d="1"><b>Online</b><span>Portugal, Brasil e onde estiver</span></div>
+      <div class="stat reveal" data-d="2"><b>Presencial</b><span>gabinete próprio em Viseu</span></div>
     </div>
-    <p class="wrap stats__fonte">*Estudo comparativo de A. Barrios, American Health Magazine — vs. 38% em ~600 sessões (psicanálise) e 72% em ~22 (terapia comportamental).</p>
   </section>
 
   <!-- MANIFESTO (curto) -->
@@ -130,8 +137,8 @@ const schema = [
         <div class="why-card why-card--mist reveal" data-d="1">
           <span class="num" aria-hidden="true">02</span>
           <Fragment set:html={Icon(ico.estrela)} />
-          <h3>Método comprovado</h3>
-          <p>Hipnose clínica com eficácia documentada — rápida e duradoura.</p>
+          <h3>Abordagem especializada</h3>
+          <p>Hipnoterapia orientada para mudanças conscientes e consistentes.</p>
         </div>
         <div class="why-card why-card--ink reveal" data-d="2">
           <span class="num" aria-hidden="true">03</span>
@@ -183,7 +190,7 @@ const schema = [
           <Image src={areaRespirar} alt="Parar de Fumar — voltar a respirar fundo" widths={[600, 900]} sizes="(max-width: 640px) 92vw, 30vw" />
           <div class="bento__glass">
             <b>Parar de Fumar</b>
-            <span>Set You Free · sessão única + 30 dias</span>
+            <span>Set You Free · acompanhamento de 30 dias</span>
           </div>
         </a>
       </div>
@@ -214,6 +221,32 @@ const schema = [
         <div style="margin-top:1.8rem;">
           <a class="btn btn--ghost" href="/equipa">Conhecer a clínica</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA (4 etapas) -->
+  <section class="wrap section" style="padding-block: clamp(3rem, 6vw, 5rem);">
+    <div class="reveal" style="text-align:center;">
+      <p class="eyebrow">Simples de começar</p>
+      <h2>Como <em>funciona</em></h2>
+    </div>
+    <div class="steps" style="max-width: 1060px; margin-inline: auto;">
+      <div class="step reveal">
+        <h3>Escolha a área</h3>
+        <p>Ansiedade, hábitos, emagrecimento, tabaco — ou fale connosco para perceber o melhor caminho.</p>
+      </div>
+      <div class="step reveal" data-d="1">
+        <h3>Marque a avaliação</h3>
+        <p>A consulta de avaliação é o ponto de partida: a sua história define o plano.</p>
+      </div>
+      <div class="step reveal" data-d="2">
+        <h3>Online ou em Viseu</h3>
+        <p>Sessões por videochamada, em Portugal e no Brasil, ou no gabinete em Viseu.</p>
+      </div>
+      <div class="step reveal" data-d="3">
+        <h3>Acompanhamento</h3>
+        <p>Um percurso ao seu ritmo, com apoio próximo entre sessões.</p>
       </div>
     </div>
   </section>
@@ -251,13 +284,13 @@ const schema = [
   <section class="depo-band" id="testemunhos">
     <div class="wrap">
       <div class="reveal" style="text-align:center;">
-        <p class="eyebrow">Histórias reais, resultados reais</p>
+        <p class="eyebrow">Histórias reais</p>
         <h2>O que dizem <em>sobre nós</em></h2>
       </div>
       <div class="quotes__grid">
         <div class="quote quote--metric reveal">
           <b>−20 kg</b>
-          <span>o resultado que começou numa consulta igual à que pode marcar hoje</span>
+          <span>a experiência da Maria no programa MagraMente</span>
         </div>
         <blockquote class="quote reveal" data-d="1">
           <p>Três anos de dietas sem resultado. Com a Marta perdi 20 kg — mudei por dentro, e o resto seguiu.</p>
@@ -272,6 +305,9 @@ const schema = [
           <footer><span class="quote__avatar" aria-hidden="true">C</span><span><b>Carine</b><br /><span style="font-size:.82rem;">MagraMente online</span></span></footer>
         </blockquote>
       </div>
+      <p class="reveal" style="text-align:center; margin-top:1.8rem; font-size:.78rem; color: rgba(247, 232, 210, .65);">
+        Os testemunhos representam experiências individuais. Os resultados podem variar.
+      </p>
     </div>
   </section>
 
@@ -287,7 +323,7 @@ const schema = [
           <span class="monogram" aria-hidden="true" style="margin-inline:auto;">HR</span>
           <h3>Ainda tem dúvidas?</h3>
           <p>A nossa assistente responde no WhatsApp — a qualquer hora, com humanidade.</p>
-          <a class="btn btn--primary" href="https://wa.me/351915574759" target="_blank" rel="noopener" style="width:100%; justify-content:center;">Falar no WhatsApp</a>
+          <a class="btn btn--primary" href={WA_URL} target="_blank" rel="noopener" style="width:100%; justify-content:center;">Falar no WhatsApp</a>
         </div>
         <div class="faq reveal" data-d="1">
           {faq.map((f) => (
@@ -309,7 +345,7 @@ const schema = [
           <h2 style="margin-inline:0;">A sua nova história <em>começa agora</em>.</h2>
           <div style="display:flex; gap:.9rem; flex-wrap:wrap; margin-top:2rem;">
             <a class="btn btn--gold" href="/consultas">Marcar Consulta</a>
-            <a class="btn btn--ghost" href="https://wa.me/351915574759" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="btn btn--ghost" href={WA_URL} target="_blank" rel="noopener">Falar no WhatsApp</a>
           </div>
         </div>
         <div class="selo" aria-hidden="true">Acreditamos em si, mesmo antes de voltar a acreditar em si próprio.</div>
