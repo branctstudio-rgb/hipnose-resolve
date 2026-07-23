@@ -248,7 +248,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
         // Tilt 3D — cards seguem o rato (só ponteiro fino, sem reduced-motion)
         if (matchMedia('(pointer: fine)').matches && !reduz) {
-          document.querySelectorAll<HTMLElement>('.spec-card, .card-l, .program').forEach((el) => {
+          document.querySelectorAll<HTMLElement>('.spec-card, .card-l, .program, .why-card, .prog-card').forEach((el) => {
             el.classList.add('tilt3d');
             el.addEventListener('pointermove', (e) => {
               const r = el.getBoundingClientRect();
