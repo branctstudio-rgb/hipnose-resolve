@@ -200,6 +200,36 @@ const schema = [
     </div>
   </section>
 
+  <!-- PROGRAMAS (cards fotográficos) -->
+  <section class="section" id="programas" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;">
+        <p class="eyebrow">Programas de transformação</p>
+        <h2>Um método, <em>três caminhos</em></h2>
+      </div>
+      <div class="cards">
+        {[
+          { p: programas.find((x) => x.id === 'magramente'), img: fotoMagra },
+          { p: programas.find((x) => x.id === 'set-you-free'), img: fotoTabaco },
+          { p: programas.find((x) => x.id === 'transforma-te'), img: fotoMartaNova },
+        ].map(({ p, img }, i) => p && (
+          <a class="prog-card reveal" data-d={String(i)} href={`/programas/${p.id}`}>
+            <div class="prog-card__img">
+              <Image src={img} alt={p.data.nome} widths={[420, 700]} sizes="(max-width: 940px) 92vw, 30vw" />
+              <span class="kicker">{p.data.kicker}</span>
+            </div>
+            <div class="prog-card__body">
+              <h3>{p.data.nome}</h3>
+              <p>{p.data.sub}</p>
+              <span class="mais">{p.data.comprarOnline ? 'Garantir a minha vaga →' : 'Conhecer o programa →'}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
   <!-- FUNDADORA (enxuta) -->
   <section class="section" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
     <div class="wrap team__grid" style="margin-top:0;">
@@ -251,35 +281,6 @@ const schema = [
     </div>
     <div class="reveal" style="text-align:center; margin-top:2.2rem;">
       <a class="btn btn--gold" href="/consultas">Marcar consulta de avaliação</a>
-    </div>
-  </section>
-
-  <!-- PROGRAMAS (cards fotográficos) -->
-  <section class="section" id="programas" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
-    <div class="wrap">
-      <div class="reveal" style="text-align:center;">
-        <p class="eyebrow">Programas de transformação</p>
-        <h2>Um método, <em>três caminhos</em></h2>
-      </div>
-      <div class="cards">
-        {[
-          { p: programas.find((x) => x.id === 'magramente'), img: fotoMagra },
-          { p: programas.find((x) => x.id === 'set-you-free'), img: fotoTabaco },
-          { p: programas.find((x) => x.id === 'transforma-te'), img: fotoMartaNova },
-        ].map(({ p, img }, i) => p && (
-          <a class="prog-card reveal" data-d={String(i)} href={`/programas/${p.id}`}>
-            <div class="prog-card__img">
-              <Image src={img} alt={p.data.nome} widths={[420, 700]} sizes="(max-width: 940px) 92vw, 30vw" />
-              <span class="kicker">{p.data.kicker}</span>
-            </div>
-            <div class="prog-card__body">
-              <h3>{p.data.nome}</h3>
-              <p>{p.data.sub}</p>
-              <span class="mais">{p.data.comprarOnline ? 'Garantir a minha vaga →' : 'Conhecer o programa →'}</span>
-            </div>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
 
