@@ -247,15 +247,13 @@ const schema = [
   </section>
 
 
-  <!-- FUNDADORA (layout editorial claro, ref. aprovada) -->
-  <section class="section" style="background: var(--card); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
-    <div class="wrap team__grid" style="margin-top:0; align-items:center;">
-      <div class="reveal">
-        <div class="photo-frame" style="aspect-ratio: 4 / 5; border-radius: 18px;">
-          <Image src={martaRosto} alt="Dra. Marta Brito, fundadora da Hipnose Resolve" widths={[480, 800]} sizes="(max-width: 940px) 92vw, 38vw" />
-        </div>
-      </div>
-      <div class="team__bio reveal" data-d="1">
+  <!-- FUNDADORA (split full-bleed: foto ocupa todo o lado esquerdo) -->
+  <section class="fundadora-split">
+    <div class="fundadora-split__foto reveal in">
+      <Image src={martaRosto} alt="Dra. Marta Brito, fundadora da Hipnose Resolve" widths={[700, 1000]} sizes="(max-width: 940px) 100vw, 50vw" />
+    </div>
+    <div class="fundadora-split__txt">
+      <div class="reveal" data-d="1">
         <p style="font-weight:600; color:var(--ink-soft); font-size:.98rem; margin-bottom:.5rem;">Dra. Marta Brito</p>
         <h2 style="font-size: clamp(1.9rem, 3.2vw, 2.6rem); text-transform:none; letter-spacing:-.01em; color:#92612a;">Fundadora e Hipnoterapeuta</h2>
         <p style="margin-top:1.2rem; max-width:48ch;">
