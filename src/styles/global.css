@@ -1283,6 +1283,48 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 .bento__cta .btn { margin-top: .5rem; }
 .bento .mais { margin-top: auto; font-size: .84rem; font-weight: 600; color: var(--sage-deep); }
 
+/* ---- Diferenciais: composição editorial (não 3 cartões iguais) ---- */
+.why-cards { gap: 0; margin-top: 3rem; }
+.why-card, .why-card--gold, .why-card--mist, .why-card--ink {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  min-height: 260px;
+  padding: 2.2rem 2.4rem;
+  border-left: 1px solid rgba(182, 131, 64, .35);
+}
+.why-cards .why-card:first-child { border-left: 0; }
+.why-card--ink h3, .why-card--ink p { color: var(--ink); }
+.why-card--ink p { color: var(--ink-soft); }
+.why-card--ink .num, .why-card--ink svg { color: var(--gold-deep); }
+.why-card .num { font-size: 6.5rem; opacity: .1; top: .4rem; right: 1.2rem; }
+.why-card:hover .num { opacity: .2; transform: translateY(-4px); }
+.why-card::after { display: none; } /* sem brilho a varrer — editorial */
+.why-card.tilt3d:hover { --ty: 0; box-shadow: none !important; }
+.why-card svg { color: var(--gold-deep); }
+.why-card:hover svg { transform: scale(1.08); }
+@media (max-width: 880px) {
+  .why-card, .why-card--gold, .why-card--mist, .why-card--ink {
+    border-left: 0; border-top: 1px solid rgba(182, 131, 64, .35); min-height: 0; padding: 1.8rem .6rem;
+  }
+  .why-cards .why-card:first-child { border-top: 0; }
+}
+
+/* ---- Programas: três experiências distintas (nth-child) ---- */
+#programas .prog-card:nth-child(2) { background: linear-gradient(170deg, #2b2117 0%, #101010 100%); }
+#programas .prog-card:nth-child(2) h3, #programas .prog-card:nth-child(2) p { color: #f7e8d2; }
+#programas .prog-card:nth-child(2) p { color: rgba(247, 232, 210, .75); }
+#programas .prog-card:nth-child(2) .mais, #programas .prog-card:nth-child(2) a { color: var(--gold-light); }
+#programas .prog-card:nth-child(3) { background: linear-gradient(170deg, #fdfcfe 0%, #e9d5b6 100%); border: 1px solid var(--gold-light); }
+
+/* ---- Depoimento em destaque ---- */
+.quote--destaque { position: relative; }
+.quote--destaque p { font-size: 1.18rem; line-height: 1.6; }
+.quote--destaque::before {
+  content: '“'; position: absolute; top: -0.4rem; right: 1.2rem;
+  font-family: var(--serif); font-size: 5rem; line-height: 1; color: rgba(182, 131, 64, .25);
+}
+
 /* ---- why-cards & prog-cards: hover última geração ---- */
 .why-card { transition: box-shadow .55s var(--ease-calm); }
 .why-card .num { transition: transform .6s var(--ease-calm), opacity .6s var(--ease-calm); }
