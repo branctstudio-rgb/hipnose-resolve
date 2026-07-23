@@ -1019,10 +1019,10 @@ h1 em, h2 em, em, .accent-i {
 .why-card--gold .num, .why-card--gold svg { color: #92612a; }
 .why-card--gold h3 { color: #6b3c12; }
 .why-card--gold p { color: #7A6435; }
-.why-card--mist { background: linear-gradient(165deg, #EDF1E5 0%, #D3DCC3 100%); }
+.why-card--mist { background: linear-gradient(165deg, #fdfcfe 0%, #e9d5b6 100%); }
 .why-card--mist .num, .why-card--mist svg { color: var(--sage-deep); }
-.why-card--mist h3 { color: #2E3C2F; }
-.why-card--mist p { color: #55624B; }
+.why-card--mist h3 { color: #6b3c12; }
+.why-card--mist p { color: #6e6152; }
 .why-card--ink { background: linear-gradient(165deg, #3a2c1a 0%, var(--sage-ink) 100%); }
 .why-card--ink .num { color: var(--gold-light); opacity: .3; }
 .why-card--ink svg { color: var(--gold-light); }
