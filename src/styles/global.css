@@ -1455,6 +1455,24 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
   .colecao__item, .colecao__img img, .colecao__cta i { transition: none; }
 }
 
+/* ---- Chat teaser do WhatsApp ---- */
+.wa-teaser {
+  position: fixed; right: 1.4rem; bottom: 6.2rem; z-index: 90;
+  max-width: 270px; background: var(--card); border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 22px 50px -22px rgba(24, 18, 10, .45), inset 0 0 0 1px rgba(182, 131, 64, .25);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .35s var(--ease-calm), transform .35s var(--ease-calm);
+}
+.wa-teaser.in { opacity: 1; transform: none; }
+.wa-teaser > a { display: block; padding: 1rem 1.2rem; text-decoration: none; color: var(--ink); }
+.wa-teaser b { display: block; font-size: .98rem; margin-bottom: .25rem; }
+.wa-teaser span { font-size: .84rem; color: var(--ink-soft); line-height: 1.45; }
+.wa-teaser__fechar {
+  position: absolute; top: .35rem; right: .5rem; border: 0; background: none;
+  font-size: 1.15rem; color: var(--ink-soft); cursor: pointer; padding: .2rem .4rem;
+}
+@media (prefers-reduced-motion: reduce) { .wa-teaser { transition: none; transform: none; } }
+
 /* ---- A nossa equipa (cards de especialistas) ---- */
 .equipa__topo { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
 .equipa__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 2.6rem; }
