@@ -1325,6 +1325,9 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 #programas .prog-card:nth-child(2) .mais, #programas .prog-card:nth-child(2) a { color: var(--gold-light); }
 #programas .prog-card:nth-child(3) { background: linear-gradient(170deg, #fdfcfe 0%, #e9d5b6 100%); border: 1px solid var(--gold-light); }
 
+/* O percurso: 4 etapas numa só linha em desktop */
+@media (min-width: 1000px) { .steps--quatro { grid-template-columns: repeat(4, 1fr); } }
+
 /* ---- Fundadora: foto retangular grande à esquerda, texto à direita ---- */
 .fundadora-split {
   display: grid; grid-template-columns: 1fr 1fr;
