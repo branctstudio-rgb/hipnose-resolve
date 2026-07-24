@@ -1563,20 +1563,37 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
 
 /* ---- Chat teaser do WhatsApp ---- */
 .wa-teaser {
-  position: fixed; right: 1.4rem; bottom: 6.2rem; z-index: 90;
-  max-width: 270px; background: var(--card); border-radius: 18px 18px 4px 18px;
-  box-shadow: 0 22px 50px -22px rgba(24, 18, 10, .45), inset 0 0 0 1px rgba(182, 131, 64, .25);
+  position: fixed; right: 1.2rem; bottom: 1.4rem; z-index: 96;
+  background: linear-gradient(165deg, #3a2f26 0%, #29211B 100%);
+  border-radius: 999px 999px 8px 999px;
+  box-shadow: 0 22px 50px -20px rgba(24, 18, 10, .55), inset 0 0 0 1px rgba(182, 131, 64, .3);
   opacity: 0; transform: translateY(10px);
   transition: opacity .35s var(--ease-calm), transform .35s var(--ease-calm);
 }
 .wa-teaser.in { opacity: 1; transform: none; }
-.wa-teaser > a { display: block; padding: 1rem 1.2rem; text-decoration: none; color: var(--ink); }
-.wa-teaser b { display: block; font-size: .98rem; margin-bottom: .25rem; }
-.wa-teaser span { font-size: .84rem; color: var(--ink-soft); line-height: 1.45; }
-.wa-teaser__fechar {
-  position: absolute; top: .35rem; right: .5rem; border: 0; background: none;
-  font-size: 1.15rem; color: var(--ink-soft); cursor: pointer; padding: .2rem .4rem;
+.wa-teaser > a {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .9rem 2.4rem .9rem 1rem; text-decoration: none;
 }
+.wa-teaser__icone {
+  width: 46px; height: 46px; flex: none; display: grid; place-items: center;
+  background: #3f9350; color: #fff; border-radius: 50%;
+}
+.wa-teaser__txt small {
+  display: block; font-size: .78rem; font-weight: 600; color: var(--gold-light); margin-bottom: .15rem;
+}
+.wa-teaser__txt em {
+  font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .04em;
+  background: rgba(88, 165, 92, .25); color: #a9dcae;
+  border-radius: 999px; padding: .14rem .5rem; margin-left: .3rem; vertical-align: 1px;
+}
+.wa-teaser__txt b { display: block; font-size: .95rem; color: #fdfcfe; line-height: 1.3; max-width: 20ch; }
+.wa-teaser__fechar {
+  position: absolute; top: .45rem; right: .55rem; border: 0; background: none;
+  font-size: 1.1rem; color: rgba(247, 232, 210, .7); cursor: pointer; padding: .2rem .4rem;
+}
+.wa-teaser.in ~ .wa-float { opacity: 0; pointer-events: none; }
+.wa-float { transition: opacity .3s var(--ease-calm); }
 @media (prefers-reduced-motion: reduce) { .wa-teaser { transition: none; transform: none; } }
 
 /* ---- A nossa equipa (cards de especialistas) ---- */
