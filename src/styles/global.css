@@ -1458,6 +1458,29 @@ a.bento__mini:hover .bento__img img { transform: scale(1.06); }
   .colecao__item, .colecao__img img, .colecao__cta i { transition: none; }
 }
 
+/* ---- CTA final: fecho editorial premium ---- */
+.cta-fecho {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 5vw, 4rem) !important;
+}
+.cta-fecho::after, .cta-fecho .selo { display: none; }
+.cta-fecho__simbolo { width: 56px; height: auto; margin-bottom: 1rem; opacity: .95; }
+.cta-fecho__marca {
+  font-size: .72rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 1.6rem;
+}
+.cta-fecho h2 {
+  text-transform: none; letter-spacing: -.01em; font-family: var(--serif); font-weight: 500;
+  font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 1.25; max-width: 24ch; margin-inline: auto;
+}
+.cta-fecho__sub { margin-top: 1.1rem; color: rgba(247, 232, 210, .78); max-width: 48ch; font-size: 1.02rem; }
+.cta-fecho__botoes { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; margin-top: 2.2rem; }
+.cta-fecho__linha {
+  width: min(320px, 60%); height: 1px; margin-top: 2.6rem;
+  background: linear-gradient(90deg, transparent, rgba(182, 131, 64, .6), transparent);
+}
+.cta-fecho__info { margin-top: 1.2rem; font-size: .78rem; letter-spacing: .04em; color: rgba(247, 232, 210, .55); }
+
 /* ---- Chat teaser do WhatsApp ---- */
 .wa-teaser {
   position: fixed; right: 1.4rem; bottom: 6.2rem; z-index: 90;

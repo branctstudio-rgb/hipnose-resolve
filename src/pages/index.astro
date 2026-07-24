@@ -15,6 +15,7 @@ import fotoCatia from '../assets/img/catia.jpg';
 import blogPoltrona from '../assets/img/blog-a.jpg';
 import blogJanela from '../assets/img/blog-b.jpg';
 import blogFruta from '../assets/img/blog-c.jpg';
+import logoFecho from '../assets/img/logo-novo-simbolo.png';
 const fotoDoPost = (titulo: string) =>
   /hipnoterapia/i.test(titulo) ? blogPoltrona : /ansiedade/i.test(titulo) ? blogJanela : blogFruta;
 import fotoMagra from '../assets/img/magramente-1.jpg';
@@ -479,25 +480,19 @@ const schema = [
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- CTA FINAL (fecho editorial premium) -->
   <section class="section" style="padding-top:0;">
-    <div class="cta-final reveal">
-      <div class="cta-final__grid">
-        <div style="text-align:left; max-width: 56ch;">
-          <h2 style="margin-inline:0;">Não precisa de ter tudo resolvido para dar <em>o primeiro passo</em>.</h2>
-          <p style="margin-top:1.1rem; color: rgba(247, 232, 210, .8); max-width: 46ch;">
-            Fale connosco e descubra qual poderá ser o percurso mais adequado para si.
-          </p>
-          <div style="display:flex; gap:.9rem; flex-wrap:wrap; margin-top:2rem;">
-            <a class="btn btn--gold" href="/consultas">Marcar consulta de avaliação</a>
-            <a class="btn btn--ghost" href={WA_URL} target="_blank" rel="noopener noreferrer">Falar com a equipa</a>
-          </div>
-          <p style="margin-top:1.4rem; font-size:.78rem; color: rgba(247, 232, 210, .6); letter-spacing:.02em;">
-            Online em Portugal e Brasil · Presencial em Viseu · Atendimento confidencial
-          </p>
-        </div>
-        <div class="selo" aria-hidden="true">Acreditamos em si, mesmo antes de voltar a acreditar em si próprio.</div>
+    <div class="cta-final cta-fecho reveal">
+      <Image src={logoFecho} alt="" widths={[120]} sizes="56px" class="cta-fecho__simbolo" />
+      <p class="cta-fecho__marca">Hipnose Resolve</p>
+      <h2>Não precisa de ter tudo resolvido<br />para dar <em>o primeiro passo</em>.</h2>
+      <p class="cta-fecho__sub">Fale connosco e descubra qual poderá ser o percurso mais adequado para si.</p>
+      <div class="cta-fecho__botoes">
+        <a class="btn btn--gold" href="/consultas">Marcar consulta de avaliação</a>
+        <a class="btn btn--ghost" href={WA_URL} target="_blank" rel="noopener noreferrer">Falar com a equipa</a>
       </div>
+      <div class="cta-fecho__linha" aria-hidden="true"></div>
+      <p class="cta-fecho__info">Online em Portugal e Brasil · Presencial em Viseu · Atendimento confidencial</p>
     </div>
   </section>
 </Base>
