@@ -156,56 +156,89 @@ const schema = [
     </div>
   </section>
 
-  <!-- TERAPIAS (carrossel visual, sem parágrafos) -->
-  <section class="section" id="terapias">
+  <!-- ÁREAS DE TRANSFORMAÇÃO (5 principais + 10 complementares) -->
+  <section class="section areas-trans" id="terapias">
     <div class="wrap">
-      <div class="reveal" style="text-align:center;">
-        <p class="eyebrow">Áreas em que podemos ajudar</p>
-        <h2>Terapias que <em>transformam vidas</em></h2>
-      </div>
-      <div class="bento reveal" data-d="1">
-        <a class="bento__card bento__foto" href="/programas/magramente" style="grid-area: foto;">
-          <Image src={areaEmagrecimento} alt="Emagrecimento Consciente — leveza e liberdade" widths={[600, 1000]} sizes="(max-width: 640px) 92vw, 36vw" />
-          <div class="bento__glass">
-            <b>Emagrecimento Consciente</b>
-            <span>resultados reais, ao seu ritmo</span>
-          </div>
-        </a>
-        <a class="bento__card bento__mini" href="/consultas" style="grid-area: ansi;">
-          <h3>Ansiedade e <em>Stress</em></h3>
-          <div class="bento__img"><Image src={fotoAnsiedade} alt="Hipnose clínica para ansiedade e stress" widths={[600, 900]} sizes="30vw" /></div>
-        </a>
-        <a class="bento__card bento__foto" href="/areas" style="grid-area: auto; min-height: 230px;">
-          <Image src={areaAutoestima} alt="Autoestima e Confiança — de braços abertos para a vida" widths={[600, 900]} sizes="(max-width: 640px) 92vw, 30vw" />
-          <div class="bento__glass">
-            <b>Autoestima e Confiança</b>
-            <span>voltar a acreditar em si</span>
-          </div>
-        </a>
-        <div class="bento__card" style="grid-area: chips;">
-          <h3>Feito à sua <em>medida</em></h3>
-          <div class="bento__chips bento__chips--links">
-            <a href="/areas">Hábitos e Comportamentos</a>
-            <a href="/areas">Medos e Fobias</a>
-            <a href="/areas">Luto e Traumas</a>
-            <a href="/areas">Fertilidade e Hipnoparto</a>
-            <a href="/areas">Sono e Descanso</a>
-          </div>
+      <div class="areas-trans__linha1">
+        <div class="areas-trans__intro reveal">
+          <p class="eyebrow">Áreas em que podemos ajudar</p>
+          <h2>Um acompanhamento para cada momento da <em>sua vida</em>.</h2>
+          <p>Da ansiedade à mudança de hábitos, cada percurso é pensado para a sua história, os seus objetivos e o momento que está a viver.</p>
+          <p class="areas-trans__conta"><span aria-hidden="true">✦</span> 15 áreas de acompanhamento</p>
+          <a class="btn btn--ghost" href="/areas">Conhecer todas as terapias</a>
         </div>
-        <a class="bento__card bento__foto" href="/programas/set-you-free" style="grid-area: fumar; min-height: 230px;">
-          <Image src={areaRespirar} alt="Parar de Fumar — voltar a respirar fundo" widths={[600, 900]} sizes="(max-width: 640px) 92vw, 30vw" />
-          <div class="bento__glass">
-            <b>Parar de Fumar</b>
-            <span>Set You Free · acompanhamento de 30 dias</span>
+        <a class="area-card reveal" data-d="1" href="/areas/ansiedade-panico">
+          <Image src={blogJanela} alt="" widths={[600, 1000]} sizes="(max-width: 768px) 92vw, 34vw" />
+          <div class="area-card__txt">
+            <span>Ansiedade e Pânico</span>
+            <h3>Ansiedade e Pânico</h3>
+            <p>Quando a mente não desliga e o corpo vive em alerta.</p>
           </div>
+          <i class="area-card__seta" aria-hidden="true">→</i>
+        </a>
+        <a class="area-card reveal" data-d="2" href="/areas/emagrecimento">
+          <Image src={blogFruta} alt="" widths={[600, 1000]} sizes="(max-width: 768px) 92vw, 34vw" />
+          <div class="area-card__txt">
+            <span>Emagrecimento</span>
+            <h3>Emagrecimento</h3>
+            <p>Mudar a relação com a comida — não mais uma dieta.</p>
+          </div>
+          <i class="area-card__seta" aria-hidden="true">→</i>
         </a>
       </div>
-      <div class="reveal" style="text-align:center; margin-top:2.2rem;">
-        <a class="btn btn--primary" href="/areas">Ver todas as terapias</a>
+      <div class="areas-trans__linha2">
+        <a class="area-card reveal" href="/areas/cessacao-tabagica">
+          <Image src={areaRespirar} alt="" widths={[600, 1000]} sizes="(max-width: 768px) 92vw, 30vw" />
+          <div class="area-card__txt">
+            <span>Cessação Tabágica</span>
+            <h3>Cessação Tabágica</h3>
+            <p>Deixar de fumar sem sentir que perde algo.</p>
+          </div>
+          <i class="area-card__seta" aria-hidden="true">→</i>
+        </a>
+        <a class="area-card reveal" data-d="1" href="/areas/stress-burnout">
+          <Image src={blogPoltrona} alt="" widths={[600, 1000]} sizes="(max-width: 768px) 92vw, 30vw" />
+          <div class="area-card__txt">
+            <span>Stress e Burnout</span>
+            <h3>Stress e Burnout</h3>
+            <p>Recuperar energia e limites antes do corpo os exigir.</p>
+          </div>
+          <i class="area-card__seta" aria-hidden="true">→</i>
+        </a>
+        <a class="area-card area-card--espresso reveal" data-d="2" href="/areas/autoestima-empoderamento">
+          <div class="area-card__txt">
+            <span>Autoestima e Empoderamento</span>
+            <h3>Autoestima e Empoderamento</h3>
+            <p>Silenciar o crítico interno e voltar a ocupar o seu lugar.</p>
+          </div>
+          <i class="area-card__seta" aria-hidden="true">→</i>
+        </a>
+      </div>
+      <div class="areas-trans__mais reveal">
+        <h3 class="areas-trans__mais-titulo">Também podemos ajudar</h3>
+        <div class="areas-trans__lista">
+          {[
+            ['Medos e Fobias', 'medos-fobias'],
+            ['Fertilidade, Parto e Pós-parto', 'fertilidade-parto-pos-parto'],
+            ['Trauma', 'trauma'],
+            ['Luto', 'luto'],
+            ['Mudança de Hábitos', 'mudanca-habitos'],
+            ['Relacionamentos e Sexualidade', 'relacionamentos-sexualidade'],
+            ['Vícios', 'vicios'],
+            ['Hipnoterapia Infantil', 'infantil'],
+            ['Vidas Passadas', 'vidas-passadas'],
+            ['Depressão', 'depressao'],
+          ].map(([nome, slug]) => (
+            <a class="area-item" href={`/areas/${slug}`}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3Z"/></svg>
+              <span>{nome}</span>
+              <i aria-hidden="true">→</i>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
-
   <!-- PROGRAMAS — Coleção de Transformação (vitrine editorial) -->
   <section class="section" id="programas" style="background: var(--paper-deep); padding-block: clamp(3.5rem, 7vw, 5.5rem);">
     <div class="wrap">
