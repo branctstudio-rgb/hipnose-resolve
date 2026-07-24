@@ -20,6 +20,10 @@ import fotoStress from '../assets/img/stress.webp';
 import fotoMedos from '../assets/img/medos.jpg';
 
 const programas = (await getCollection('programas')).sort((a, b) => a.data.ordem - b.data.ordem);
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.data).getTime() - new Date(a.data.data).getTime())
+  .slice(0, 3);
+const fmtData = (d: string) => new Date(d).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const ico = {
   pessoa: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5',
@@ -415,6 +419,29 @@ const schema = [
       <p class="reveal" style="text-align:center; margin-top:1.8rem; font-size:.78rem; color: rgba(247, 232, 210, .65);">
         Os testemunhos representam experiências individuais. Os resultados podem variar.
       </p>
+    </div>
+  </section>
+
+  <!-- BLOG (últimos artigos) -->
+  <section class="section" id="blog" style="padding-block: clamp(3.5rem, 7vw, 5.5rem);">
+    <div class="wrap">
+      <div class="equipa__topo reveal">
+        <div>
+          <p class="eyebrow">Do nosso blog</p>
+          <h2>Ler também <em>transforma</em></h2>
+        </div>
+        <a class="percurso__link" href="/blog">Ver todos os artigos →</a>
+      </div>
+      <div class="cards" style="margin-top: 2.6rem;">
+        {posts.map((p, i) => (
+          <a class="card-l reveal" data-d={String(i)} href={`/blog/${p.id}`}>
+            <span class="meta">{fmtData(p.data.data)} · {p.data.categoria}</span>
+            <h3>{p.data.titulo}</h3>
+            <p>{p.data.resumo}</p>
+            <span class="mais">Ler artigo →</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
