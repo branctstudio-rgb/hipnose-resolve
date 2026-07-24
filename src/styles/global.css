@@ -24,7 +24,8 @@
 
   /* --- Cor · papel e tinta --- */
   --paper: #e9e3d5;          /* marfim oficial */
-  --paper-deep: #dacab9;     /* nude médio (secções alternadas) */
+  /* lavagem nude: nasce e morre no marfim base — transições invisíveis */
+  --paper-deep: linear-gradient(180deg, #e9e3d5 0%, #e4d7c3 26%, #e2d4be 74%, #e9e3d5 100%);
   --card: #fdfcfe;           /* branco oficial */
   --ink: #101010;            /* preto oficial */
   --ink-soft: #6e6152;       /* texto secundário (neutro quente derivado) */
@@ -875,7 +876,9 @@ h1 em, h2 em, em, .accent-i {
 
 /* banda-manifesto (storytelling com revelação por palavra no scroll) */
 .manifesto {
-  background: linear-gradient(180deg, var(--sage-ink) 0%, #1c1610 100%);
+  background:
+    radial-gradient(64% 90% at 50% 0%, rgba(182, 131, 64, .14) 0%, transparent 58%),
+    linear-gradient(180deg, #241b12 0%, #141110 100%);
   padding-block: clamp(4.5rem, 10vw, 7.5rem);
 }
 .manifesto p {
