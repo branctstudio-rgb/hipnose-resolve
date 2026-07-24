@@ -12,6 +12,11 @@ import martaRosto from '../assets/img/marta-rosto.jpg';
 import percursoCliente from '../assets/img/percurso-cliente.jpg';
 import martaBlazer from '../assets/img/marta-blazer.jpg';
 import fotoCatia from '../assets/img/catia.jpg';
+import blogPoltrona from '../assets/img/blog-a.jpg';
+import blogJanela from '../assets/img/blog-b.jpg';
+import blogFruta from '../assets/img/blog-c.jpg';
+const fotoDoPost = (titulo: string) =>
+  /hipnoterapia/i.test(titulo) ? blogPoltrona : /ansiedade/i.test(titulo) ? blogJanela : blogFruta;
 import fotoMagra from '../assets/img/magramente-1.jpg';
 import fotoTabaco from '../assets/img/tabaco.jpeg';
 import fotoAnsiedade from '../assets/img/ansiedade.png';
@@ -435,6 +440,9 @@ const schema = [
       <div class="cards" style="margin-top: 2.6rem;">
         {posts.map((p, i) => (
           <a class="card-l reveal" data-d={String(i)} href={`/blog/${p.id}`}>
+            <div class="card-l__img">
+              <Image src={fotoDoPost(p.data.titulo)} alt="" widths={[480, 760]} sizes="(max-width: 940px) 92vw, 30vw" />
+            </div>
             <span class="meta">{fmtData(p.data.data)} · {p.data.categoria}</span>
             <h3>{p.data.titulo}</h3>
             <p>{p.data.resumo}</p>
